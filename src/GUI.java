@@ -16,10 +16,15 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
-
+/**
+ * This class creates a reusable object frame.......
+ * @author noahgoldsmith
+ *
+ */
 public class GUI {
 
-	private JFrame frame;
+	public JFrame frame; //Make a setter and getter for this, rather than making it public
+	
 	private JTextField txtSearch;
 	private JTextField txtFirstName;
 	private JTextField textEmail;
@@ -35,21 +40,6 @@ public class GUI {
 	private JLabel lblSortBy;
 	private JLabel lblSearchBy;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI window = new GUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -219,5 +209,10 @@ public class GUI {
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNotes.setBounds(618, 200, 61, 16);
 		frame.getContentPane().add(lblNotes);
+		
+		JButton btnPrintToConsole = new JButton("Print to Console");
+		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		btnPrintToConsole.setBounds(615, 398, 322, 50);
+		frame.getContentPane().add(btnPrintToConsole);
 	}
 }

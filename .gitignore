@@ -1,5 +1,4 @@
-# ignore all .class files
-*.class
+
 
 # ignore bin directory
 bin/
