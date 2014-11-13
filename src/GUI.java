@@ -209,5 +209,10 @@ public class GUI {
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNotes.setBounds(618, 200, 61, 16);
 		frame.getContentPane().add(lblNotes);
+		
+		JButton btnPrintToConsole = new JButton("Print to Console");
+		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		btnPrintToConsole.setBounds(615, 398, 322, 50);
+		frame.getContentPane().add(btnPrintToConsole);
 	}
 }
