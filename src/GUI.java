@@ -2,7 +2,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintStream;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -13,6 +14,7 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 
@@ -29,26 +31,32 @@ public class GUI {
 	private JTextField textLastName;
 	private JTextField textMiddleInitial;
 	private JTextPane txtpnNotes;
+	@SuppressWarnings("rawtypes")
 	private JList list;
+	@SuppressWarnings("rawtypes")
 	private JComboBox comboSortBy;
 	private JLabel lblSortBy;
 	private JLabel lblSearchBy;
 	private JButton btnPrintToConsole;
+	private JButton openConsole;
 
 	/**
-	 * Create the GUI
+	 * This method constructs the GUI.
 	 */
 	public GUI() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * This method initializes the content of the GUI frame
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 943, 499);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addWindowListener(new WindowEventHandler());
+		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		txtSearch = new JTextField();
@@ -203,15 +211,41 @@ public class GUI {
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNotes.setBounds(618, 200, 61, 16);
 		frame.getContentPane().add(lblNotes);
-		
+
 		btnPrintToConsole = new JButton("Print To Console");
 		btnPrintToConsole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		
+				System.out.println("test");
 			}
 		});
-		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		btnPrintToConsole.setBounds(615, 404, 323, 51);
+		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnPrintToConsole.setBounds(782, 404, 156, 51);
 		frame.getContentPane().add(btnPrintToConsole);
+
+		openConsole = new JButton("Open Console");
+		openConsole.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unused")
+				Console console = new Console("Console");
+			}
+		});
+		openConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		openConsole.setBounds(615, 404, 156, 51);
+		frame.getContentPane().add(openConsole);
+
 	}
+
+	class WindowEventHandler extends WindowAdapter {
+		
+		/**
+		 * This method performs an action when the GUI window is closed.
+		 */
+		public void windowClosing(WindowEvent evt) {
+			//Close action goes here
+			System.exit(0);
+
+		}
+
+	}
+
 }
