@@ -1,9 +1,10 @@
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintStream;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -14,12 +15,10 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JPanel;
 
 public class GUI {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JTextField txtSearch;
 	private JTextField txtFirstName;
 	private JTextField textEmail;
@@ -34,25 +33,10 @@ public class GUI {
 	private JComboBox comboSortBy;
 	private JLabel lblSortBy;
 	private JLabel lblSearchBy;
+	private JButton btnPrintToConsole;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI window = new GUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
+	 * Create the GUI
 	 */
 	public GUI() {
 		initialize();
@@ -219,5 +203,15 @@ public class GUI {
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNotes.setBounds(618, 200, 61, 16);
 		frame.getContentPane().add(lblNotes);
+		
+		btnPrintToConsole = new JButton("Print To Console");
+		btnPrintToConsole.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		
+			}
+		});
+		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		btnPrintToConsole.setBounds(615, 404, 323, 51);
+		frame.getContentPane().add(btnPrintToConsole);
 	}
 }
