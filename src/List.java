@@ -1,7 +1,7 @@
 /*
  * Define a reusable class List.
  * It allows the user to select the view they want to do search/sort
- * and returns these results in array list.
+ * and returns these results in array list
  */
 public class List {
 	private final int LIST_MAX_LENGTH = 100;			//its value can be changed

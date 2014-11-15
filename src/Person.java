@@ -18,21 +18,21 @@ public class Person {
 	}
 	
 	/**
-	 * Set the value for visible email to "newVizEmail"
+	 * Set the value for visible email
 	 */
 	public void setVizEmail (String newVizEmail) {
 		
 	}
 	
 	/**
-	 * Set the value for visible phone number to "newVizPhoneNumber"
+	 * Set the value for visible phone number
 	 */
 	public void setVizPhoneNumber(String newVizPhoneNumber) {
 		
 	}
 
 	/**
-	 * Set the value for visible notes to "newVizNotes"
+	 * Set the value for visible notes
 	 */
 	public void setVizNotes(String newVizNotes) {
 		
@@ -60,21 +60,21 @@ public class Person {
 	}
 	
 	/**
-	 * Set the value for search/sort email to "newSSEmail"
+	 * Set the value for search/sort email
 	 */
 	public void setSSEmail (String newSSEmail) {
 		
 	}
 	
 	/**
-	 * Set the value for search/sort phone number to "newSSPhoneNumber"
+	 * Set the value for search/sort phone number
 	 */
 	public void setSSPhoneNumber(String newSSPhoneNumber) {
 		
 	}
 
 	/**
-	 * Set the value for search/sort notes to "newSSNotes"
+	 * Set the value for search/sort notes to
 	 */
 	public void setSSNotes(String newSSNotes) {
 		
