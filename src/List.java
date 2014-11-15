@@ -14,21 +14,21 @@ public class List {
 	}
 	
 	/**
-	 * Set the value of the field being searched to "newSearchField"
+	 * Set the value of the field being searched
 	 */
 	public void searchByField(String newSearchField) {
 		String searchField;
 	}
 	
 	/**
-	 * Set the value of the field being sorted to "newSortField"
+	 * Set the value of the field being sorted
 	 */
 	public void sortByField(String newSortField) {
 		String sortField;
 	}
 	
 	/**
-	 * Return string if no search is matched
+	 * Return value if no search is matched
 	 */
 	public String NoSearchMatch() {
 		
