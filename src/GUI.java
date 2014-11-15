@@ -1,9 +1,10 @@
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintStream;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -14,17 +15,10 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JPanel;
-/**
- * This class creates a reusable object frame.......
- * @author noahgoldsmith
- *
- */
+
 public class GUI {
 
-	public JFrame frame; //Make a setter and getter for this, rather than making it public
-	
+	public JFrame frame;
 	private JTextField txtSearch;
 	private JTextField txtFirstName;
 	private JTextField textEmail;
@@ -39,10 +33,10 @@ public class GUI {
 	private JComboBox comboSortBy;
 	private JLabel lblSortBy;
 	private JLabel lblSearchBy;
-
+	private JButton btnPrintToConsole;
 
 	/**
-	 * Create the application.
+	 * Create the GUI
 	 */
 	public GUI() {
 		initialize();
@@ -210,9 +204,14 @@ public class GUI {
 		lblNotes.setBounds(618, 200, 61, 16);
 		frame.getContentPane().add(lblNotes);
 		
-		JButton btnPrintToConsole = new JButton("Print to Console");
+		btnPrintToConsole = new JButton("Print To Console");
+		btnPrintToConsole.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		
+			}
+		});
 		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		btnPrintToConsole.setBounds(615, 398, 322, 50);
+		btnPrintToConsole.setBounds(615, 404, 323, 51);
 		frame.getContentPane().add(btnPrintToConsole);
 	}
 }
