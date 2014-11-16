@@ -5,23 +5,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
-import javax.swing.AbstractListModel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JSeparator;
 
 public class GUI {
 
@@ -43,7 +41,7 @@ public class GUI {
 	private JLabel lblSortBy;
 	private JLabel lblSearchBy;
 	private JButton btnPrintToConsole;
-	private JButton openConsole;
+	private JButton btnToggleConsole;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
 	private JSeparator separator;
@@ -172,7 +170,7 @@ public class GUI {
 		frame.getContentPane().add(lblAddress);
 
 		btnSave = new JButton("Save");
-		btnSave.setBounds(325, 342, 180, 50);
+		btnSave.setBounds(252, 342, 140, 50);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Save button action here
@@ -183,7 +181,7 @@ public class GUI {
 		frame.getContentPane().add(btnSave);
 
 		btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(514, 342, 180, 50);
+		btnCancel.setBounds(252, 404, 140, 50);
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Cancel button action here
@@ -199,7 +197,7 @@ public class GUI {
 		frame.getContentPane().add(lblNotes);
 
 		btnPrintToConsole = new JButton("Print To Console");
-		btnPrintToConsole.setBounds(514, 404, 180, 51);
+		btnPrintToConsole.setBounds(403, 404, 140, 50);
 		btnPrintToConsole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("test");
@@ -208,16 +206,16 @@ public class GUI {
 		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		frame.getContentPane().add(btnPrintToConsole);
 
-		openConsole = new JButton("Open Console");
-		openConsole.setBounds(325, 404, 180, 51);
-		openConsole.addActionListener(new ActionListener() {
+		btnToggleConsole = new JButton("Toggle Console");
+		btnToggleConsole.setBounds(403, 342, 140, 50);
+		btnToggleConsole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				@SuppressWarnings("unused")
 				Console console = new Console("Console");
 			}
 		});
-		openConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		frame.getContentPane().add(openConsole);
+		btnToggleConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		frame.getContentPane().add(btnToggleConsole);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -263,6 +261,16 @@ public class GUI {
 								separator.setOrientation(SwingConstants.VERTICAL);
 								separator.setBounds(234, 0, 12, 477);
 								frame.getContentPane().add(separator);
+								
+								JButton btnExport = new JButton("Export");
+								btnExport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+								btnExport.setBounds(554, 404, 140, 50);
+								frame.getContentPane().add(btnExport);
+								
+								JButton btnImport = new JButton("Import");
+								btnImport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+								btnImport.setBounds(554, 342, 140, 50);
+								frame.getContentPane().add(btnImport);
 
 	}
 

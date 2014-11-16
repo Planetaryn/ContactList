@@ -28,10 +28,10 @@ public class List {
 	}
 	
 	/**
-	 * Return value if no search is matched
+	 * Returns true if no search is matched
 	 */
-	public String NoSearchMatch() {
-		
+	public boolean noSearchMatch() {
+		 return true;
 	}
 	
 }
