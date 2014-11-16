@@ -62,7 +62,7 @@ public class Disk {
 		return successfulyWrittenToDisk;
 	}
 
-	/*
+	/**
 	 * The readFromDisk method reads the directory file from the disk and returns a
 	 * List object containing the whole directory.
 	 */
