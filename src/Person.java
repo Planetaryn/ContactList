@@ -11,7 +11,7 @@ public class Person {
 	private String ssNotes;
 	
 	/**
-	 * It is a parameterized constructor that runs Name, StreetAddress and Notes.
+	 * It is a parameterized constructor that runs Name and StreetAddress.
 	 */
 	public void Constructor() {
 		
