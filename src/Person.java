@@ -6,11 +6,14 @@ public class Person {
 	private String vizEmail;
 	private String vizPhoneNumber;
 	private String vizNotes;
-	private String ssEmail;
-	private int ssPhoneNumber;
-	private String ssNotes;
-	
-	/**
+	private String normalizedEmail;
+	private String normalizedPhoneNumber;
+	private String normalizedNotes;
+    private String firstName;
+    private String lastName;
+
+
+    /**
 	 * It is a parameterized constructor that runs Name and StreetAddress.
 	 */
 	public void Constructor() {
@@ -62,21 +65,21 @@ public class Person {
 	/**
 	 * Set the value for search/sort email
 	 */
-	public void setSSEmail (String newSSEmail) {
+	public void setNormalizedEmail (String newSSEmail) {
 		
 	}
 	
 	/**
 	 * Set the value for search/sort phone number
 	 */
-	public void setSSPhoneNumber(String newSSPhoneNumber) {
+	public void setNormalizedPhoneNumber(String newSSPhoneNumber) {
 		
 	}
 
 	/**
 	 * Set the value for search/sort notes to
 	 */
-	public void setSSNotes(String newSSNotes) {
+	public void setNormalizedNotes(String newSSNotes) {
 		
 	}
 	
@@ -84,21 +87,21 @@ public class Person {
 	 * Return the result that search/sort by email
 	 */
 	public String getSSEmail() {
-		return ssEmail;
+		return normalizedEmail;
 	}
 	
 	/**
 	 * Return the result that search/sort by phone number
 	 */
-	public int getSSPhoneNumber() {
-		return ssPhoneNumber;
+	public String getNormalizedPhoneNumber() {
+		return normalizedPhoneNumber;
 	}
 	
 	/**
 	 * Return the result that search/sort by notes
 	 */
-	public String getSSNotes() {
-		return ssNotes;
+	public String getNormalizedNotes() {
+		return normalizedNotes;
 	}
 
 	/**
@@ -124,4 +127,49 @@ public class Person {
 	public boolean verifyEmailFormat(String newVizEmail) {
 		return true;
 	}
+
+
+    /**
+     * Sets the value for firstName to "first"
+     * @param first
+     */
+    public void setFirstName(String first) {
+        System.out.println("Using method setFirstName ");
+    }
+
+    /**
+     * Sets the value for firstName to "last"
+     * @param last
+     */
+
+    public void setLastName(String last) {
+        System.out.println("Using method setLastName ");
+    }
+
+    /**
+     * Returns the value in firstName
+     * @return
+     */
+    public String getFirsName() {
+        System.out.println("Using method getFirstName ");
+        return firstName;
+    }
+
+    /**
+     * Returns the value in lastName
+     * @return
+     */
+    public String getLastName() {
+        System.out.println("Using method getLastName ");
+        return lastName;
+    }
+
+    /**
+     * Prints the values for lastNmae and firstName fo the Name that calls this method.
+     */
+    public void printName(){
+        System.out.println("Using method printName ");
+    }
+
+
 }
