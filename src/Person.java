@@ -9,8 +9,11 @@ public class Person {
 	private String normalizedEmail;
 	private String normalizedPhoneNumber;
 	private String normalizedNotes;
-	
-	/**
+    private String firstName;
+    private String lastName;
+
+
+    /**
 	 * It is a parameterized constructor that runs Name and StreetAddress.
 	 */
 	public void Constructor() {
@@ -124,4 +127,49 @@ public class Person {
 	public boolean verifyEmailFormat(String newVizEmail) {
 		return true;
 	}
+
+
+    /**
+     * Sets the value for firstName to "first"
+     * @param first
+     */
+    public void setFirstName(String first) {
+        System.out.println("Using method setFirstName ");
+    }
+
+    /**
+     * Sets the value for firstName to "last"
+     * @param last
+     */
+
+    public void setLastName(String last) {
+        System.out.println("Using method setLastName ");
+    }
+
+    /**
+     * Returns the value in firstName
+     * @return
+     */
+    public String getFirsName() {
+        System.out.println("Using method getFirstName ");
+        return firstName;
+    }
+
+    /**
+     * Returns the value in lastName
+     * @return
+     */
+    public String getLastName() {
+        System.out.println("Using method getLastName ");
+        return lastName;
+    }
+
+    /**
+     * Prints the values for lastNmae and firstName fo the Name that calls this method.
+     */
+    public void printName(){
+        System.out.println("Using method printName ");
+    }
+
+
 }
