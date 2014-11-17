@@ -9,7 +9,7 @@ import java.util.*;
 
  * @author Shmuel Shaffer
  */
-public class List {
+public class ContactList {
 
 	ArrayList <Person> list = new ArrayList <Person>();
 	// Person contact1 =new Person("Foe", "Smith") ;
