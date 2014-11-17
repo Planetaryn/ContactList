@@ -15,6 +15,7 @@ public class Disk {
 	 * closes it
 	 */
 	Disk() {
+        System.out.println("Using Disk Constructor");
 
 	}
 	
@@ -30,6 +31,8 @@ public class Disk {
 												// be resolved once we have the
 												// Person class
 		String personAsString = "";
+        System.out.println("Using method toStorableString");
+
 		return personAsString;
 	}
 
@@ -46,7 +49,10 @@ public class Disk {
 		boolean successfulyWrittenToDisk = true;
 	
 		successfulyWrittenToDisk= writeToDisk(oneContact);
+        System.out.println("Using method writeToDisk - List as a parameter");
 		return successfulyWrittenToDisk;
+
+
 	}
 
 	/**
@@ -60,6 +66,8 @@ public class Disk {
 													// should be resolved once
 													// we have the Person class
 		boolean successfulyWrittenToDisk = true;
+        System.out.println("Using method writeToDisk - Person as a parameter");
+
 		return successfulyWrittenToDisk;
 	}
 
@@ -73,6 +81,7 @@ public class Disk {
 		String lineFromDisk="";
 		Person contact;
 		contact=this.fromString(lineFromDisk);
+        System.out.println("Using method readFromDisk");
 		return directoryOfContacts;
 	}
 
@@ -83,9 +92,10 @@ public class Disk {
 	 * remain an empty string "".
 	 * 
 	 */
-	public Person fromString(String contact) { // This compilation error should
-												// be resolved once we have the
-		Person directoryOfContacts  = new Person("joe","smith");	;
+	public Person fromString(String contact) { 
+		Person directoryOfContacts  = new Person("joe","smith");
+        System.out.println("Using method fromString");
+
 		return directoryOfContacts;
 	}
 }
