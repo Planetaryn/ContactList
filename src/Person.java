@@ -4,10 +4,10 @@
  */
 public class Person {
 	private String vizEmail;
-	private String vizPhoneNumber;
+	private int vizPhoneNumber;
 	private String vizNotes;
 	private String ssEmail;
-	private String ssPhoneNumber;
+	private int ssPhoneNumber;
 	private String ssNotes;
 	
 	/**
@@ -27,7 +27,7 @@ public class Person {
 	/**
 	 * Set the value for visible phone number
 	 */
-	public void setVizPhoneNumber(String newVizPhoneNumber) {
+	public void setVizPhoneNumber(int newVizPhoneNumber) {
 		
 	}
 
@@ -69,7 +69,7 @@ public class Person {
 	/**
 	 * Set the value for search/sort phone number
 	 */
-	public void setSSPhoneNumber(String newSSPhoneNumber) {
+	public void setSSPhoneNumber(int newSSPhoneNumber) {
 		
 	}
 
