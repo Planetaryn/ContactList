@@ -1,6 +1,11 @@
 /**
  * Define a reusable class Person. One object of class Person includes email, 
  * phone number, notes.
+ * File History:
+ * Author Kelly Lam  Version 1
+ * Version 2:
+ * Irma added variable and  methods to handle first and last name
+ *
  */
 public class Person {
 	private String vizEmail;
