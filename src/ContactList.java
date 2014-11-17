@@ -34,4 +34,10 @@ public class List {
 		
 	}
 	
+	/**
+	 * Call the programme to create a new Person
+	 */
+	public void newPerson() {
+		
+	}
 }
