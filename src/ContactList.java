@@ -40,4 +40,11 @@ public class List {
 	public void newPerson() {
 		
 	}
+	
+	/**
+	 * Return the String
+	 */
+	public String toString() {
+	
+	}
 }
