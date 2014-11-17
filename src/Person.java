@@ -6,9 +6,9 @@ public class Person {
 	private String vizEmail;
 	private String vizPhoneNumber;
 	private String vizNotes;
-	private String ssEmail;
-	private int ssPhoneNumber;
-	private String ssNotes;
+	private String normalizedEmail;
+	private String normalizedPhoneNumber;
+	private String normalizedNotes;
 	
 	/**
 	 * It is a parameterized constructor that runs Name and StreetAddress.
@@ -62,21 +62,21 @@ public class Person {
 	/**
 	 * Set the value for search/sort email
 	 */
-	public void setSSEmail (String newSSEmail) {
+	public void setNormalizedEmail (String newSSEmail) {
 		
 	}
 	
 	/**
 	 * Set the value for search/sort phone number
 	 */
-	public void setSSPhoneNumber(String newSSPhoneNumber) {
+	public void setNormalizedPhoneNumber(String newSSPhoneNumber) {
 		
 	}
 
 	/**
 	 * Set the value for search/sort notes to
 	 */
-	public void setSSNotes(String newSSNotes) {
+	public void setNormalizedNotes(String newSSNotes) {
 		
 	}
 	
@@ -84,21 +84,21 @@ public class Person {
 	 * Return the result that search/sort by email
 	 */
 	public String getSSEmail() {
-		return ssEmail;
+		return normalizedEmail;
 	}
 	
 	/**
 	 * Return the result that search/sort by phone number
 	 */
-	public int getSSPhoneNumber() {
-		return ssPhoneNumber;
+	public String getNormalizedPhoneNumber() {
+		return normalizedPhoneNumber;
 	}
 	
 	/**
 	 * Return the result that search/sort by notes
 	 */
-	public String getSSNotes() {
-		return ssNotes;
+	public String getNormalizedNotes() {
+		return normalizedNotes;
 	}
 
 	/**

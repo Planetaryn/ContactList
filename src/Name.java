@@ -1,5 +1,6 @@
 /**
- * One object of class Name represents the First and Last Name
+ * Defines a reusable class Name. 
+ * One object of class Name represents the First and Last Name.
  */
 public class Name {
     private String firstName;
@@ -26,7 +27,7 @@ public class Name {
      * Returns the value in firstName
      * @return
      */
-    public String getFirsName() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -39,7 +40,7 @@ public class Name {
     }
 
     /**
-     * Prints the values for lastNmae and firstName fo the Name that calls this method.
+     * Prints the values for lastNmae and firstName for the Name that calls this method.
      */
     public void printName(){
 
