@@ -60,49 +60,49 @@ public class Person {
 	}
 	
 	/**
-	 * Set the value for search/sort email
+	 * Set the value for normalized email
 	 */
 	public void setNormalizedEmail (String newNormailizedEmail) {
 		
 	}
 	
 	/**
-	 * Set the value for search/sort phone number
+	 * Set the value for normalized phone number
 	 */
 	public void setNormalizedPhoneNumber(int newNormalizedPhoneNumber) {
 		
 	}
 
 	/**
-	 * Set the value for search/sort notes to
+	 * Set the value for normalized notes to
 	 */
 	public void setNormalizedNotes(String newNormailzedNotes) {
 		
 	}
 	
 	/**
-	 * Return the result that search/sort by email
+	 * Return the result of normalized email
 	 */
 	public String getNormalizedEmail() {
 		
 	}
 	
 	/**
-	 * Return the result that search/sort by phone number
+	 * Return the result of normalized phone number
 	 */
 	public int getNormalizedPhoneNumber() {
 		
 	}
 	
 	/**
-	 * Return the result that search/sort by notes
+	 * Return the result normalized notes
 	 */
 	public String getNormlizedNotes() {
 		
 	}
 
 	/**
-	 * Return all the data of the people
+	 * Return all the information of the contact list
 	 */
 	public String toString() {
 		
