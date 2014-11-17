@@ -36,7 +36,7 @@ public class Disk {
 
 
 	/**
-	 * The writeToDisk method gets the List directory as an input and
+	 * The writeToDisk method gets the List directory as an input and   
 	 * overrides the existing directory file with a new directory file.
 	 * The method returns true if successful, and false if an error occurs.
 	 */
