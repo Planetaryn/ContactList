@@ -40,7 +40,7 @@ public class Disk {
 	 * overrides the existing directory file with a new directory file.
 	 * The method returns true if successful, and false if an error occurs.
 	 */
-	public boolean writeToDisk(List manyContacts) { // This compilation error should
+	public boolean writeToDisk(ContactList manyContacts) { // This compilation error should
 												// be resolved once we have the
 		Person oneContact = new Person("joe","smith");									// Person class
 		boolean successfulyWrittenToDisk = true;
@@ -66,9 +66,9 @@ public class Disk {
 	 * The readFromDisk method reads the directory file from the disk and returns a
 	 * List object containing the whole directory.
 	 */
-	public List readFromDisk() { // This compilation error should be resolved
+	public ContactList readFromDisk() { // This compilation error should be resolved
 									// once we have the List class
-		List directoryOfContacts=new List();
+		ContactList directoryOfContacts=new ContactList();
 		String lineFromDisk="";
 		Person contact;
 		contact=this.fromString(lineFromDisk);
