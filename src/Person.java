@@ -13,6 +13,7 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private String notes;
+	private StreetAddress address;
 
 	/**
 	 * This method creates a new object of class StreetAddress when a new object
