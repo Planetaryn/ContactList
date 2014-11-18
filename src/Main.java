@@ -18,6 +18,7 @@ public class Main {
 				try {
 					GUI window = new GUI();
 					window.frame.setVisible(true);
+					System.out.println("Program has compiled and is running");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -32,6 +33,8 @@ public class Main {
 			}
 			
 
+			
+
 		});
 		
 		
@@ -39,3 +42,8 @@ public class Main {
 
 	}
 }
+
+/* ---Paste of run from console---
+ * 
+ * Program has compiled and is running
+ */
