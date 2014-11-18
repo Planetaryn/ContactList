@@ -13,11 +13,14 @@ public class ContactList {
 	 * @param contactListLength
 	 */
 	public ContactList(int contactListLength) {
-		System.out.println("An object of class ContactList has been constructed");
+		System.out
+				.println("An object of class ContactList has been constructed");
 	}
 
 	/**
-	 * Sets the value of searchField to the value of the parameter newSearchField, and returns the array indices of the person objects which match the search
+	 * Sets the value of searchField to the value of the parameter
+	 * newSearchField, and returns the array indices of the person objects which
+	 * match the search
 	 * 
 	 * @param newSearchField
 	 * @return
@@ -25,12 +28,13 @@ public class ContactList {
 	public int[] searchByField(String newSearchField) {
 		String searchField;
 		System.out.println("Method ContactList.searchByField called");
-		int[] placeHolder = {1,2,3};
+		int[] placeHolder = { 1, 2, 3 };
 		return placeHolder;
 	}
 
 	/**
-	 * Sets the value of sortField to the value of the parameter newSortField, and sorts the ContactList by sortField
+	 * Sets the value of sortField to the value of the parameter newSortField,
+	 * and sorts the ContactList by sortField
 	 * 
 	 * @param newSortField
 	 * @return
