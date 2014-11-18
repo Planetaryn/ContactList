@@ -7,14 +7,13 @@ import java.util.*;
 public class ContactList {
 	private final int LIST_MAX_LENGTH = 100;
 
-
 	/**
 	 * Constructs a new object of class ContactList of length contactListLength
 	 * 
 	 * @param contactListLength
 	 */
 	public ContactList(int contactListLength) {
-
+		System.out.println("An object of class ContactList has been constructed");
 	}
 
 	/**

@@ -23,7 +23,7 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of vizEmail
+	 * Sets the value of vizEmail to the value of the parameter newVizEmail
 	 * 
 	 * @param newVizEmail
 	 */
@@ -32,7 +32,7 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of normalizedEmail
+	 * Sets the value of normalizedEmail to the value of the parameter newNormalizedEmail
 	 * 
 	 * @param newNormalizedEmail
 	 */
@@ -41,7 +41,7 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of vizPhoneNumber
+	 * Sets the value of vizPhoneNumber to the value of the parameter newVizPhoneNumber
 	 * 
 	 * @param newVizPhoneNumber
 	 */
@@ -50,34 +50,34 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of normalizedPhoneNumber
+	 * Sets the value of normalizedPhoneNumber to the value of the parameter newNormalizedPhoneNumber
 	 * 
-	 * @param newSSPhoneNumber
+	 * @param newNormalizedPhoneNumber
 	 */
 	public void setNormalizedPhoneNumber(String newNormalizedPhoneNumber) {
 		System.out.println("Method Person.setNormalizedPhoneNumber called");
 	}
 
 	/**
-	 * Sets the value of firstName to the parameter newFirstName
+	 * Sets the value of firstName to the value parameter newFirstName
 	 * 
-	 * @param first
+	 * @param newFirstName
 	 */
 	public void setFirstName(String newFirstName) {
 		System.out.println("Method Person.setFirstName called");
 	}
 
 	/**
-	 * Sets the value of lastName to the parameter newLastName
+	 * Sets the value of lastName to the value of the parameter newLastName
 	 * 
-	 * @param last
+	 * @param newLastName
 	 */
 	public void setLastName(String newLastName) {
 		System.out.println("Method Person.setLastName called");
 	}
 
 	/**
-	 * Sets the value of notes to the parameter newNotes
+	 * Sets the value of notes to the value of the parameter newNotes
 	 * 
 	 * @param newNotes
 	 */
