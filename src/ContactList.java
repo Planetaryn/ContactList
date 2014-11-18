@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Define a reusable class List. It allows the user to select the view they want
+ * Define a reusable class ContactList. It allows the user to select the view they want
  * to do search/sort and returns these results in array list
  * File History:
  * Author: Kelly Lam version 1
