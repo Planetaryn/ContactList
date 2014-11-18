@@ -1,7 +1,7 @@
 /*
  * Define a reusable class Person. One object of class Person includes email, 
  * phone number, notes.
- * File History:
+ * File History :
  * Author Kelly Lam Version 1
  * Version 2: Irma added variables and methods to handle first name and last name
  */
