@@ -6,35 +6,37 @@ import java.util.*;
  */
 public class ContactList {
 	private final int LIST_MAX_LENGTH = 100;
-	private ContactList list;
-	
+	private ArrayList<Person> contactList;
+
 	/**
 	 * Constructs a new object of class ContactList of length contactListLength
 	 * 
 	 * @param contactListLength
 	 */
 	public ContactList(int contactListLength) {
-		list = new ContactList(contactListLength);
+		contactList = new ArrayList<Person>(contactListLength);
 		System.out
 				.println("An object of class ContactList has been constructed");
 	}
 
 	/**
 	 * Sets the value of searchField to the value of the parameter
-	 * newSearchField, and returns the array indices of the person objects which
-	 * match the search
+	 * newSearchField, and returns objects in the contact list that match the
+	 * search
 	 * 
 	 * @param newSearchField
 	 * @return
 	 */
-	public Person[] searchByField(String newSearchField, String searchValue) {
+	public ArrayList<Person> searchByField(String newSearchField,
+			String newSearchValue) {
 		String searchField;
+		String searchValue;
 		System.out.println("Method ContactList.searchByField called");
 		// Call to method to extract field value and compare to searchValue
 		// Store array of objects that match the search
 		// Return that array
-		Person[] placeHolder = {};
-		return placeHolder;
+		ArrayList<Person> matches = new ArrayList<Person>();
+		return matches;
 	}
 
 	/**
@@ -47,7 +49,7 @@ public class ContactList {
 	public void sortByField(String newSortField) {
 		String sortField;
 		System.out.println("Method ContactList.sortByField called");
-		
+
 	}
 
 	/**
