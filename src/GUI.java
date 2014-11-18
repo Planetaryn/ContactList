@@ -21,6 +21,12 @@ import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 
+/**
+ * Defines a reusable class GUI. One object of class GUI contains the graphical
+ * user interface for the contact list program.
+ * 
+ * @author noahgoldsmith
+ */
 public class GUI {
 
 	public JFrame frame;
@@ -41,7 +47,7 @@ public class GUI {
 	private JLabel lblSortBy;
 	private JLabel lblSearchBy;
 	private JButton btnPrintToConsole;
-	private JButton btnToggleConsole;
+	private JButton btnOpenConsole;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
 	private JSeparator separator;
@@ -205,16 +211,16 @@ public class GUI {
 		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		frame.getContentPane().add(btnPrintToConsole);
 
-		btnToggleConsole = new JButton("Toggle Console");
-		btnToggleConsole.setBounds(403, 342, 140, 50);
-		btnToggleConsole.addActionListener(new ActionListener() {
+		btnOpenConsole = new JButton("Open Console");
+		btnOpenConsole.setBounds(403, 342, 140, 50);
+		btnOpenConsole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				@SuppressWarnings("unused")
 				Console console = new Console("Console");
 			}
 		});
-		btnToggleConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		frame.getContentPane().add(btnToggleConsole);
+		btnOpenConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		frame.getContentPane().add(btnOpenConsole);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
