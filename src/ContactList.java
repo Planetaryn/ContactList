@@ -12,7 +12,6 @@ public class ContactList {
 
 	/**
 	 * Constructs a new object of class ContactList of length contactListLength
-	 * 
 	 * @param contactListLength
 	 */
 	public ContactList(int contactListLength) {

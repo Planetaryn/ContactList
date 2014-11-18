@@ -3,7 +3,7 @@
  * phone number, notes.
  * File History:
  * Author Kelly Lam Version 1
- * Version 2: Irma added variables and methods to handle first and last name
+ * Version 2: Irma added variables and methods to handle first name and last name
  */
 public class Person {
 	private String vizEmail;
