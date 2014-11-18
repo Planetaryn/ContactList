@@ -1,113 +1,147 @@
 /**
- * One object of class StreetAddress represents Country, Zip, State, City, Street
- * HouseNumber
+ * Defines a reusable class StreetAddress. One object of class StreetAddress
+ * contains a house number, street, zip, city, state, & country.
+ * 
+ * @author irmarodarte
  */
 public class StreetAddress {
-    private String country;
-    private String zip;
-    private String state;
-    private String city;
-    private String street;
-    private String houseNumber;
+	private String houseNumber;
+	private String street;
+	private String zip;
+	private String city;
+	private String state;
+	private String country;
 
-    /**
-     * Returns the value for country
-     */
-    public String getCountry() {
-        System.out.println("Using method getCountry ");
-        return country;
-    }
+	/**
+	 * Sets the value of houseNumber, street, zip, city, state, & country when a
+	 * new object of class StreetAddress is created
+	 */
+	public StreetAddress() {
+		System.out.println("New object of class StreetAddress constructed");
+	}
 
-    /**
-     * Set the value for country
-     */
-    public void setCountry(String country) {
-        System.out.println("Using method setCountry ");
-    }
+	/**
+	 * Sets the value of houseNumber to the value of the parameter
+	 * newHouseNumber
+	 * 
+	 * @param houseNumber
+	 */
+	public void setHouseNumber(String newHouseNumber) {
+		System.out.println("Method StreetAddress.setHouseNumber called");
+	}
 
-    /**
-     * Returns the value for zip
-     */
-    public String getZip() {
-        System.out.println("Using method getZip ");
-        return zip;
-    }
+	/**
+	 * Sets the value of street to the value of the parameter newStreet
+	 * 
+	 * @param newStreet
+	 */
+	public void setStreet(String newStreet) {
+		System.out.println("Method StreetAddress.setStreet called");
+	}
 
-    /**
-     * Set the value for zip
-     */
-    public void setZip(String zip) {
-        System.out.println("Using method getZip ");
-    }
+	/**
+	 * Sets the value of zip to the value of the parameter newZip
+	 * 
+	 * @param newZip
+	 */
+	public void setZip(String newZip) {
+		System.out.println("Method StreetAddress.setZip called");
+	}
 
-    /**
-     * Returns the value for state
-     */
-    public String getState() {
-        System.out.println("Using method getState ");
-        return state;
-    }
+	/**
+	 * Sets the value of city to the value of the parameter newCity
+	 * 
+	 * @param newCity
+	 */
+	public void setCity(String newCity) {
+		System.out.println("Method StreetAddress.setCity called");
+	}
 
-    /**
-     * Set the value for state
-     */
-    public void setState(String state) {
-        System.out.println("Using method setState ");
-    }
+	/**
+	 * Sets the value of state to the value of the parameter newState
+	 * 
+	 * @param newState
+	 */
+	public void setState(String newState) {
+		System.out.println("Method StreetAddress.setState called");
+	}
 
-    /**
-     * Returns the value for city
-     */
-    public String getCity() {
-        System.out.println("Using method getCity ");
-        return city;
-    }
+	/**
+	 * Sets the value of country to the value of the parameter newCountry
+	 * 
+	 * @param newCountry
+	 */
+	public void setCountry(String newCountry) {
+		System.out.println("Method StreetAddress.setCountry called");
+	}
 
-    /**
-     * Set the value for city
-     */
-    public void setCity(String city) {
-        System.out.println("Using method setCity ");
-    }
+	/**
+	 * Returns the value of houseNumber
+	 * 
+	 * @return
+	 */
+	public String getHouseNumber() {
+		System.out.println("Method StreetAddress.getHouseNumber called");
+		return houseNumber;
+	}
 
-    /**
-     * Returns the value for street
-     */
-    public String getStreet() {
-        System.out.println("Using method getStreet ");
-        return street;
-    }
+	/**
+	 * Returns the value of street
+	 * 
+	 * @return
+	 */
+	public String getStreet() {
+		System.out.println("Method StreetAddress.getStreet called");
+		return street;
+	}
 
-    /**
-     * Set the value for street
-     */
-    public void setStreet(String street) {
-        System.out.println("Using method setStreet ");
-    }
+	/**
+	 * Returns the value of zip
+	 * 
+	 * @return
+	 */
+	public String getZip() {
+		System.out.println("Method StreetAddress.getZip called");
+		return zip;
+	}
 
-    /**
-     * Returns the value for houseNumber
-     */
-    public String getHouseNumber() {
-        System.out.println("Using method getHouseNumber ");
-        return houseNumber;
-    }
+	/**
+	 * Returns the value of city
+	 * 
+	 * @return
+	 */
+	public String getCity() {
+		System.out.println("Method StreetAddress.getCity called");
+		return city;
+	}
 
-    /**
-     * Set the value for country
-     */
+	/**
+	 * Returns the value of state
+	 * 
+	 * @return
+	 */
+	public String getState() {
+		System.out.println("Method StreetAddress.getState called");
+		return state;
+	}
 
-    public void setHouseNumber(String houseNumber) {
-        System.out.println("Using method setHouseNumber ");
-    }
+	/**
+	 * Returns the value of country
+	 * 
+	 * @return
+	 */
+	public String getCountry() {
+		System.out.println("Method StreetAddress.getCountry called");
+		return country;
+	}
 
-    /**
-     * Prints the values for StreetAddress represents Country, Zip, State, City, Street
-     * of the StreetAddress that calls this method.
-     */
-    public void printStreetAddress(){
-        System.out.println("Using method printStreetAddress ");
-    }
-
+	/**
+	 * Returns a string containing the values of house number, street, city,
+	 * zip, state, & country
+	 */
+	public String toString() {
+		System.out.println("Method StreetAddress.toString called");
+		return ("");
+	}
 
 }

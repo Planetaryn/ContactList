@@ -5,7 +5,7 @@
  * or save the whole directory (override the existing file). The class can read
  * the directory from the disk and return the directory to the invoking class.
  * 
- * @author Shmuel Shaffer
+ * @author ShmuelShaffer
  */
 public class Disk {
 
@@ -14,7 +14,7 @@ public class Disk {
 	 * exists. If it does not exists, the constructor created the file and
 	 * closes it
 	 */
-	Disk() {
+	public Disk() {
 
 	}
 
@@ -25,9 +25,7 @@ public class Disk {
 	 * Person object string and inserts a "\n" at the end of the string to marks
 	 * the end of the contact object string.
 	 */
-	String toStorableString(Person contact) { // This compilation error should
-												// be resolved once we have the
-												// Person class
+	String toStorableString(Person contact) {
 		String personAsString = "";
 		return personAsString;
 	}
@@ -37,12 +35,9 @@ public class Disk {
 	 * the existing directory file with a new directory file. The method returns
 	 * true if successful, and false if an error occurs.
 	 */
-	public boolean writeToDisk(ContactList manyContacts) { // This compilation
-															// error should
-		// be resolved once we have the
-		Person oneContact = new Person("joe", "smith"); // Person class
+	public boolean writeToDisk(ContactList manyContacts) {
+		Person oneContact = new Person();
 		boolean successfulyWrittenToDisk = true;
-
 		successfulyWrittenToDisk = writeToDisk(oneContact);
 		return successfulyWrittenToDisk;
 	}
@@ -53,9 +48,7 @@ public class Disk {
 	 * with a new with a new person data. The method returns true if successful,
 	 * and false if an error occurs.
 	 */
-	public boolean writeToDisk(Person contact) { // This compilation error
-													// should be resolved once
-													// we have the Person class
+	public boolean writeToDisk(Person contact) {
 		boolean successfulyWrittenToDisk = true;
 		return successfulyWrittenToDisk;
 	}
@@ -64,10 +57,8 @@ public class Disk {
 	 * The readFromDisk method reads the directory file from the disk and
 	 * returns a List object containing the whole directory.
 	 */
-	public ContactList readFromDisk() { // This compilation error should be
-										// resolved
-		// once we have the List class
-		ContactList directoryOfContacts = new ContactList();
+	public ContactList readFromDisk() {
+		ContactList directoryOfContacts = new ContactList(1);
 		String lineFromDisk = "";
 		Person contact;
 		contact = this.fromString(lineFromDisk);
@@ -81,10 +72,8 @@ public class Disk {
 	 * directory remain an empty string "".
 	 * 
 	 */
-	public Person fromString(String contact) { // This compilation error should
-												// be resolved once we have the
-		Person directoryOfContacts = new Person("joe", "smith");
-		;
+	public Person fromString(String contact) {
+		Person directoryOfContacts = new Person();
 		return directoryOfContacts;
 	}
 }

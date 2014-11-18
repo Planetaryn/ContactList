@@ -59,7 +59,7 @@ public class Console extends JFrame implements KeyListener {
 
 		getContentPane().add(p);
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		setSize(392, 400);
 		setLocationRelativeTo(null);
