@@ -12,3 +12,4 @@ bin/
 
 # ignore project files
 .settings
+/ContactList/
