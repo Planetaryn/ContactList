@@ -20,6 +20,8 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.JPanel;
+import javax.swing.border.MatteBorder;
 
 /**
  * Defines a reusable class GUI. One object of class GUI contains the graphical
@@ -49,8 +51,13 @@ public class GUI {
 	private JButton btnPrintToConsole;
 	private JButton btnOpenConsole;
 	private JScrollPane scrollPane_1;
-	private JScrollPane scrollPane_2;
 	private JSeparator separator;
+	private JTextField txtHouseNumber;
+	private JTextField txtElMonteRoad;
+	private JTextField txtLosAltosHills;
+	private JTextField txtCa;
+	private JTextField txtUnitedStates;
+	private JTextField textField;
 
 	/**
 	 * This method constructs the GUI.
@@ -261,7 +268,7 @@ public class GUI {
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		scrollPane_1.setBounds(325, 198, 369, 132);
+		scrollPane_1.setBounds(325, 200, 369, 130);
 		frame.getContentPane().add(scrollPane_1);
 
 		txtpnNotes = new JTextPane();
@@ -269,18 +276,6 @@ public class GUI {
 		txtpnNotes
 				.setText("NotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes");
 		txtpnNotes.setBorder(null);
-
-		scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
-		scrollPane_2.setBounds(325, 132, 369, 54);
-		frame.getContentPane().add(scrollPane_2);
-
-		JTextPane textpnAddress = new JTextPane();
-		scrollPane_2.setViewportView(textpnAddress);
-		textpnAddress.setBorder(null);
-		textpnAddress
-				.setText("12345 El Monte Road\nLos Altos Hills, CA 94022\nUnited States");
 
 		separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
@@ -296,6 +291,55 @@ public class GUI {
 		btnImport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnImport.setBounds(554, 342, 140, 50);
 		frame.getContentPane().add(btnImport);
+		
+		JPanel panelAddress = new JPanel();
+		panelAddress.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panelAddress.setBackground(Color.WHITE);
+		panelAddress.setBounds(325, 132, 369, 57);
+		frame.getContentPane().add(panelAddress);
+		panelAddress.setLayout(null);
+		
+		txtHouseNumber = new JTextField();
+		txtHouseNumber.setText("12345");
+		txtHouseNumber.setBounds(6, 6, 70, 16);
+		txtHouseNumber.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		panelAddress.add(txtHouseNumber);
+		txtHouseNumber.setColumns(10);
+		
+		txtElMonteRoad = new JTextField();
+		txtElMonteRoad.setText("El Monte Road");
+		txtElMonteRoad.setColumns(10);
+		txtElMonteRoad.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtElMonteRoad.setBounds(75, 6, 288, 16);
+		panelAddress.add(txtElMonteRoad);
+		
+		txtLosAltosHills = new JTextField();
+		txtLosAltosHills.setText("Los Altos Hills");
+		txtLosAltosHills.setColumns(10);
+		txtLosAltosHills.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtLosAltosHills.setBounds(6, 21, 122, 16);
+		panelAddress.add(txtLosAltosHills);
+		
+		txtCa = new JTextField();
+		txtCa.setText("CA");
+		txtCa.setColumns(10);
+		txtCa.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtCa.setBounds(127, 21, 24, 16);
+		panelAddress.add(txtCa);
+		
+		txtUnitedStates = new JTextField();
+		txtUnitedStates.setText("United States");
+		txtUnitedStates.setColumns(10);
+		txtUnitedStates.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtUnitedStates.setBounds(6, 36, 357, 16);
+		panelAddress.add(txtUnitedStates);
+		
+		textField = new JTextField();
+		textField.setText("94022");
+		textField.setColumns(10);
+		textField.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		textField.setBounds(150, 21, 213, 16);
+		panelAddress.add(textField);
 
 	}
 
