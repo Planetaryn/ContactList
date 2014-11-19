@@ -1,26 +1,40 @@
 import java.util.ArrayList;
 import java.util.*;
 
-
-
 /**
- * This is a dummy class that I need to build my skeleton classes.
- * It will be replaced by the actual Person class once it is available.
-
- * @author Shmuel Shaffer
+ * Define a reusable class List.
+ * It allows the user to select the view they want to do search/sort
+ * and returns these results in array list
  */
 public class ContactList {
+	private final int LIST_MAX_LENGTH = 100;			//its value can be changed
 
-	ArrayList <Person> list = new ArrayList <Person>();
-	// Person contact1 =new Person("Foe", "Smith") ;
-
-	// list.add(contact1);
+	/**
+	 * It is a constructor that creates an array list
+	 */
+	public void construct() {
+		
+	}
 	
-//	  ArrayList<String> obj = new ArrayList<String>();
-	  public void addContact(Person newContact) {
-	  /*This is how elements should be added to the array list*/
-	  list.add(newContact);
-
-
-}
+	/**
+	 * Set the value of the field being searched
+	 */
+	public void searchByField(String newSearchField) {
+		String searchField;
+	}
+	
+	/**
+	 * Set the value of the field being sorted
+	 */
+	public void sortByField(String newSortField) {
+		String sortField;
+	}
+	
+	/**
+	 * Returns true if no search is matched
+	 */
+	public boolean noSearchMatch() {
+		 return true;
+	}
+	
 }
