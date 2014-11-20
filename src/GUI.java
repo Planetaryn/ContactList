@@ -273,22 +273,13 @@ public class GUI {
 		list = new JList(guiArray);
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
-			
-			/**
-			 * This method returns the length of the guiArray
-			 */
+			String[] values = new String[] {"Noah Goldsmith", "Homer Simpson"};
 			public int getSize() {
-				return guiArray.length;
+				return values.length;
 			}
-
-			/**
-			 * This method returns the array index in guiArray of the currently selected name.
-			 * The array index in guiArray should match the array index in contactList.
-			 */
 			public Object getElementAt(int index) {
-				return guiArray[index];
+				return values[index];
 			}
-			
 		});
 		list.setBorder(null);
 

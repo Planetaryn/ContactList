@@ -70,7 +70,14 @@ public class Main {
 	private void noSearchMatch() {
 		
 	}
-
+	
+	/**
+	 * This method instructs class Disk to save to the disk.
+	 */
+	private void save(){
+		
+	}
+	
 	/**
 	 * This method sets up a new person and adds it to the list
 	 */
