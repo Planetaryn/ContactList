@@ -16,25 +16,24 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
+
 /**
  * This class creates a reusable object frame.......
- * @author noahgoldsmith
- * File History:
- * Version 1: 
- * 	Author: noahgoldsmith 	Date: 11/13/2014 
- * 	Content: GUI infrastructure and a GUI screen 
- * Version 2: 
- * 	Author: Shmuel Shaffer 	Date: 11/14/2014
- *  Content: Four screen GUI framework accompanied with explanatory power point
- 
-
  * 
- *
+ * @author noahgoldsmith File History: Version 1: Author: noahgoldsmith Date:
+ *         11/13/2014 Content: GUI infrastructure and a GUI screen Version 2:
+ *         Author: Shmuel Shaffer Date: 11/14/2014 Content: Four screen GUI
+ *         framework accompanied with explanatory power point
+ * 
+ * 
+ * 
+ * 
  */
 public class GUIs {
 
-	public JFrame frame; //Make a setter and getter for this, rather than making it public
-	
+	public JFrame frame; // Make a setter and getter for this, rather than
+							// making it public
+
 	private JTextField txtSearch;
 	private JTextField txtFirstName;
 	private JTextField textEmail;
@@ -54,21 +53,25 @@ public class GUIs {
 	private JLabel lblSortBy;
 	private JLabel lblWelcome;
 	private JLabel lblSearchBy;
-	final int MENU_FROM_TOP =390;
+	final int MENU_FROM_TOP = 390;
 
 	/**
 	 * Create the application.
 	 */
 	public GUIs() {
-		VeryFirstScreen(); // Used only first time when there is no disk file or it is empty 
-		welcomeScreen();   // Used when user invokes application and there are names in the file
+		VeryFirstScreen(); // Used only first time when there is no disk file or
+							// it is empty
+		welcomeScreen(); // Used when user invokes application and there are
+							// names in the file
 		addContactScreen(); // Used to add a person to the list
-		RetrieveContactScreen();   // Used when user invokes application and there are names in the file
+		RetrieveContactScreen(); // Used when user invokes application and there
+									// are names in the file
 
 	}
 
-	/** This screen is shown the very first time when the user invokes the application
-	 * and the application cannot retrieve a list from the disk.
+	/**
+	 * This screen is shown the very first time when the user invokes the
+	 * application and the application cannot retrieve a list from the disk.
 	 */
 	private void VeryFirstScreen() {
 		frame = new JFrame();
@@ -76,22 +79,21 @@ public class GUIs {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Team 7 Directory");
 		frame.getContentPane().setLayout(null);
-		
-	    lblWelcome = new JLabel("Welcome to Team 7 Directory");
-	    
+
+		lblWelcome = new JLabel("Welcome to Team 7 Directory");
+
 		lblWelcome.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblWelcome.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblWelcome.setBounds(10, 50, 422, 50);
 		frame.getContentPane().add(lblWelcome);
-		
 
-	    lblWelcome = new JLabel("To add contacts, press Add Contact");
-	    
+		lblWelcome = new JLabel("To add contacts, press Add Contact");
+
 		lblWelcome.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblWelcome.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblWelcome.setBounds(10, 150, 470, 50);
 		frame.getContentPane().add(lblWelcome);
-		
+
 		btnAddNewPerson = new JButton("Add Contact");
 		btnAddNewPerson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -102,7 +104,6 @@ public class GUIs {
 		btnAddNewPerson.setForeground(new Color(0, 128, 0));
 		btnAddNewPerson.setBounds(50, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnAddNewPerson);
-		
 
 		btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
@@ -114,11 +115,12 @@ public class GUIs {
 		btnExit.setForeground(new Color(255, 0, 0));
 		btnExit.setBounds(250, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnExit);
-	
+
 	}
-	
-	/** This screen is shown whenever the user invokes the application
-	 * and the application can retrieve a non-empty list from the disk.
+
+	/**
+	 * This screen is shown whenever the user invokes the application and the
+	 * application can retrieve a non-empty list from the disk.
 	 */
 	private void welcomeScreen() {
 		frame = new JFrame();
@@ -126,23 +128,21 @@ public class GUIs {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Team 7 Directory");
 		frame.getContentPane().setLayout(null);
-		
-	    lblWelcome = new JLabel("Welcome to Team 7 Directory");
-	    
+
+		lblWelcome = new JLabel("Welcome to Team 7 Directory");
+
 		lblWelcome.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblWelcome.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblWelcome.setBounds(10, 50, 422, 50);
 		frame.getContentPane().add(lblWelcome);
-		
 
-	    lblWelcome = new JLabel("Please select from the list below");
-	    
+		lblWelcome = new JLabel("Please select from the list below");
+
 		lblWelcome.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblWelcome.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblWelcome.setBounds(10, 150, 470, 50);
 		frame.getContentPane().add(lblWelcome);
-		
-		
+
 		btnAddNewPerson = new JButton("Add Contacts");
 		btnAddNewPerson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -153,8 +153,7 @@ public class GUIs {
 		btnAddNewPerson.setForeground(new Color(0, 128, 0));
 		btnAddNewPerson.setBounds(50, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnAddNewPerson);
-		
-		
+
 		btnPrintList = new JButton("Print List");
 		btnPrintList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -165,8 +164,7 @@ public class GUIs {
 		btnPrintList.setForeground(new Color(0, 128, 0));
 		btnPrintList.setBounds(250, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnPrintList);
-		
-		
+
 		btnRetrievePerson = new JButton("Retrieve Contact");
 		btnRetrievePerson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -177,7 +175,7 @@ public class GUIs {
 		btnRetrievePerson.setForeground(new Color(0, 128, 0));
 		btnRetrievePerson.setBounds(450, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnRetrievePerson);
-	
+
 		btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -188,42 +186,42 @@ public class GUIs {
 		btnExit.setForeground(new Color(255, 0, 0));
 		btnExit.setBounds(650, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnExit);
-		
-		
+
 	}
-	
+
 	/**
 	 * This is the screen used to add contact to the directory
 	 */
 	private void addContactScreen() {
-		int leftTab =150;
+		int leftTab = 150;
 		int topTab = 60;
-		int tabDelta =30;
-		int boxHeieght =24;
-		final int MENU_FROM_TOP =390;
+		int tabDelta = 30;
+		int boxHeieght = 24;
+		final int MENU_FROM_TOP = 390;
 		frame = new JFrame();
 		frame.setBounds(100, 100, 943, 499);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Team 7 Directory -> Add a Contact");
 		frame.getContentPane().setLayout(null);
 
-	    JLabel lblAddPerson = new JLabel("Please add Contact info and press Save");
-	    
-	    lblAddPerson.setHorizontalAlignment(SwingConstants.RIGHT);
-	    lblAddPerson.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-	    lblAddPerson.setBounds(100, 5, 370, 50);
+		JLabel lblAddPerson = new JLabel(
+				"Please add Contact info and press Save");
+
+		lblAddPerson.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAddPerson.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblAddPerson.setBounds(100, 5, 370, 50);
 		frame.getContentPane().add(lblAddPerson);
-		
-	    JLabel lblMandatory = new JLabel("* Denotes mandatiory field");
-	    
-	    lblMandatory.setHorizontalAlignment(SwingConstants.RIGHT);
-	    lblMandatory.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-	    lblMandatory.setBounds(30, 345, 320, 50);
+
+		JLabel lblMandatory = new JLabel("* Denotes mandatiory field");
+
+		lblMandatory.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMandatory.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lblMandatory.setBounds(30, 345, 320, 50);
 		frame.getContentPane().add(lblMandatory);
-		
+
 		JLabel lblFirstName = new JLabel("First Name:");
 		lblFirstName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFirstName.setBounds(leftTab-35, topTab+2, 81, 16);
+		lblFirstName.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lblFirstName);
 
 		JTextField textFirstName = new JTextField();
@@ -231,15 +229,15 @@ public class GUIs {
 		textFirstName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textFirstName.setBackground(Color.WHITE);
-		textFirstName.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textFirstName.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textFirstName);
 		textFirstName.setColumns(10);
-		
-		topTab+=tabDelta;
-		
+
+		topTab += tabDelta;
+
 		JLabel lblMidName = new JLabel("Mid Name:");
 		lblMidName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblMidName.setBounds(leftTab-35, topTab+2, 81, 16);
+		lblMidName.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lblMidName);
 
 		JTextField textmidName = new JTextField();
@@ -247,15 +245,15 @@ public class GUIs {
 		textmidName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textmidName.setBackground(Color.WHITE);
-		textmidName.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textmidName.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textmidName);
-		textmidName.setColumns(10); 
+		textmidName.setColumns(10);
 
-		topTab+=tabDelta;
-		
+		topTab += tabDelta;
+
 		JLabel lbLastName = new JLabel("* Last Name:");
 		lbLastName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lbLastName.setBounds(leftTab-35, topTab+2, 81, 16);
+		lbLastName.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lbLastName);
 
 		JTextField textLastName = new JTextField();
@@ -263,14 +261,14 @@ public class GUIs {
 		textLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textLastName.setBackground(Color.WHITE);
-		textLastName.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textLastName.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textLastName);
 		textLastName.setColumns(10);
-		
-		topTab+=tabDelta;
+
+		topTab += tabDelta;
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmail.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblEmail.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblEmail);
 
 		textEmail = new JTextField();
@@ -278,15 +276,15 @@ public class GUIs {
 		textEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textEmail.setBackground(Color.WHITE);
-		textEmail.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textEmail.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textEmail);
 		textEmail.setColumns(10);
-		
-		topTab+=tabDelta;
-		
+
+		topTab += tabDelta;
+
 		lblPhone = new JLabel("Phone:");
 		lblPhone.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPhone.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblPhone.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblPhone);
 
 		textPhone = new JTextField();
@@ -295,15 +293,15 @@ public class GUIs {
 				null, null, null));
 		textPhone.setColumns(10);
 		textPhone.setBackground(Color.WHITE);
-		textPhone.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textPhone.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textPhone);
-// Address
-		
-		topTab+=tabDelta;
-		
+		// Address
+
+		topTab += tabDelta;
+
 		JLabel lblAddress1 = new JLabel("Address 1:");
 		lblAddress1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAddress1.setBounds(leftTab-35, topTab+2, 81, 16);
+		lblAddress1.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lblAddress1);
 
 		JTextField textAddress1 = new JTextField();
@@ -311,46 +309,45 @@ public class GUIs {
 		textAddress1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textAddress1.setBackground(Color.WHITE);
-		textAddress1.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textAddress1.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textAddress1);
 		textAddress1.setColumns(10);
-		
-		topTab+=tabDelta;
+
+		topTab += tabDelta;
 		JLabel lblAddr2 = new JLabel("Address 2:");
 		lblAddr2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAddr2.setBounds(leftTab-35, topTab+2, 81, 16);
+		lblAddr2.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lblAddr2);
-
 
 		JTextField textAddress2 = new JTextField();
 		textAddress2.setText("e.g., Appartment 301");
 		textAddress2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textAddress2.setBackground(Color.WHITE);
-		textAddress2.setBounds(leftTab+50, topTab+2, 246, boxHeieght);
+		textAddress2.setBounds(leftTab + 50, topTab + 2, 246, boxHeieght);
 		frame.getContentPane().add(textAddress2);
 		textAddress2.setColumns(10);
-		
-		topTab+=tabDelta;
+
+		topTab += tabDelta;
 		JLabel lblCity = new JLabel("City:");
 		lblCity.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCity.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblCity.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblCity);
 
 		JTextField textCity = new JTextField();
 		textCity.setText("e.g., New York");
-		textCity.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
+		textCity.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
+				null, null));
 		textCity.setBackground(Color.WHITE);
-		textCity.setBounds(leftTab+50, topTab+2, 246, boxHeieght);
+		textCity.setBounds(leftTab + 50, topTab + 2, 246, boxHeieght);
 		frame.getContentPane().add(textCity);
 		textCity.setColumns(10);
-				
-		topTab+=tabDelta;
+
+		topTab += tabDelta;
 		// State
 		JLabel lblState = new JLabel("State:");
 		lblState.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblState.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblState.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblState);
 
 		JTextField textState = new JTextField();
@@ -358,31 +355,30 @@ public class GUIs {
 		textState.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textState.setBackground(Color.WHITE);
-		textState.setBounds(leftTab+50, topTab+2, 246, boxHeieght);
+		textState.setBounds(leftTab + 50, topTab + 2, 246, boxHeieght);
 		frame.getContentPane().add(textState);
 		textCity.setColumns(10);
-		topTab+=tabDelta;
+		topTab += tabDelta;
 		// ZIP Code
 		JLabel lblZip = new JLabel("Zip Code:");
 		lblZip.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblZip.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblZip.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblZip);
 
 		JTextField textZip = new JTextField();
 		textZip.setText("e.g., 00123");
-		textZip.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
+		textZip.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
+				null, null));
 		textZip.setBackground(Color.WHITE);
-		textZip.setBounds(leftTab+50, topTab+2, 246, boxHeieght);
+		textZip.setBounds(leftTab + 50, topTab + 2, 246, boxHeieght);
 		frame.getContentPane().add(textZip);
 		textZip.setColumns(10);
-
 
 		JLabel lblNotes = new JLabel("Notes:");
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNotes.setBounds(508, 80, 61, 16);
 		frame.getContentPane().add(lblNotes);
-		
+
 		txtpnNotes = new JTextPane();
 		txtpnNotes
 				.setText("NotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes");
@@ -413,10 +409,8 @@ public class GUIs {
 		btnCancel.setBounds(717, 250, 155, 50);
 		frame.getContentPane().add(btnCancel);
 
-		
 		// Menu buttons
-		
-		
+
 		btnPrintList = new JButton("Print List");
 		btnPrintList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -427,8 +421,7 @@ public class GUIs {
 		btnPrintList.setForeground(new Color(0, 128, 0));
 		btnPrintList.setBounds(250, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnPrintList);
-		
-		
+
 		btnRetrievePerson = new JButton("Retrieve Contact");
 		btnRetrievePerson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -439,7 +432,7 @@ public class GUIs {
 		btnRetrievePerson.setForeground(new Color(0, 128, 0));
 		btnRetrievePerson.setBounds(450, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnRetrievePerson);
-	
+
 		btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -452,18 +445,19 @@ public class GUIs {
 		frame.getContentPane().add(btnExit);
 
 	}
-	/** Retrieve screen
-	 * 
-	 * 	
+
 	/**
-	 * This is the screen used to Retrieve contact to the directory
+	 * Retrieve screen
+	 * 
+	 * 
+	 * /** This is the screen used to Retrieve contact to the directory
 	 */
 	private void RetrieveContactScreen() {
-		int leftTab =150;
+		int leftTab = 150;
 		int topTab = 60;
-		int tabDelta =30;
-		int boxHeieght =24;
-		final int MENU_FROM_TOP =390;
+		int tabDelta = 30;
+		int boxHeieght = 24;
+		final int MENU_FROM_TOP = 390;
 		final int checkBoxOffset = 310;
 		frame = new JFrame();
 		frame.setBounds(100, 100, 943, 499);
@@ -471,23 +465,25 @@ public class GUIs {
 		frame.setTitle("Add a Contact");
 		frame.getContentPane().setLayout(null);
 
-	    JLabel lblAddRetrieve = new JLabel("Select field, enter search data, and press Search");
-	    
-	    lblAddRetrieve.setHorizontalAlignment(SwingConstants.RIGHT);
-	    lblAddRetrieve.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-	    lblAddRetrieve.setBounds(20, 5, 470, 50);
+		JLabel lblAddRetrieve = new JLabel(
+				"Select field, enter search data, and press Search");
+
+		lblAddRetrieve.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAddRetrieve.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblAddRetrieve.setBounds(20, 5, 470, 50);
 		frame.getContentPane().add(lblAddRetrieve);
-		
-	 /*   JLabel lblMandatory = new JLabel("* Denotes supported search field");
-	    
-	    lblMandatory.setHorizontalAlignment(SwingConstants.RIGHT);
-	    lblMandatory.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-	    lblMandatory.setBounds(30, 315, 320, 50);
-		frame.getContentPane().add(lblMandatory);
-	*/	
+
+		/*
+		 * JLabel lblMandatory = new JLabel("* Denotes supported search field");
+		 * 
+		 * lblMandatory.setHorizontalAlignment(SwingConstants.RIGHT);
+		 * lblMandatory.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		 * lblMandatory.setBounds(30, 315, 320, 50);
+		 * frame.getContentPane().add(lblMandatory);
+		 */
 		JLabel lblFirstName = new JLabel("First Name:");
 		lblFirstName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFirstName.setBounds(leftTab-35, topTab+2, 81, 16);
+		lblFirstName.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lblFirstName);
 
 		JTextField textFirstName = new JTextField();
@@ -495,23 +491,24 @@ public class GUIs {
 		textFirstName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textFirstName.setBackground(Color.WHITE);
-		textFirstName.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textFirstName.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textFirstName);
-		textFirstName.setColumns(10); 
+		textFirstName.setColumns(10);
 		// Check Box
 		JTextField textCheckFirstName = new JTextField();
 		textCheckFirstName.setText(" ");
-		textCheckFirstName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
+		textCheckFirstName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED,
+				null, null, null, null));
 		textCheckFirstName.setBackground(Color.WHITE);
-		textCheckFirstName.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
+		textCheckFirstName.setBounds(leftTab + checkBoxOffset, topTab, 24,
+				boxHeieght);
 		frame.getContentPane().add(textCheckFirstName);
-		
-		topTab+=tabDelta;
-		
+
+		topTab += tabDelta;
+
 		JLabel lblMidName = new JLabel("Middle Name:");
 		lblMidName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblMidName.setBounds(leftTab-35, topTab+2, 81, 16);
+		lblMidName.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lblMidName);
 
 		JTextField textmidName = new JTextField();
@@ -519,23 +516,24 @@ public class GUIs {
 		textmidName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textmidName.setBackground(Color.WHITE);
-		textmidName.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textmidName.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textmidName);
-		textmidName.setColumns(10); 
+		textmidName.setColumns(10);
 		// Check Box
 		JTextField textCheckMidName = new JTextField();
 		textCheckMidName.setText(" ");
-		textCheckMidName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
+		textCheckMidName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED,
+				null, null, null, null));
 		textCheckMidName.setBackground(Color.WHITE);
-		textCheckMidName.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
+		textCheckMidName.setBounds(leftTab + checkBoxOffset, topTab, 24,
+				boxHeieght);
 		frame.getContentPane().add(textCheckMidName);
-		
-		topTab+=tabDelta;
-		
+
+		topTab += tabDelta;
+
 		JLabel lbLastName = new JLabel("* Last Name:");
 		lbLastName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lbLastName.setBounds(leftTab-35, topTab+2, 81, 16);
+		lbLastName.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lbLastName);
 
 		JTextField textLastName = new JTextField();
@@ -543,21 +541,22 @@ public class GUIs {
 		textLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textLastName.setBackground(Color.WHITE);
-		textLastName.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textLastName.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textLastName);
 		textLastName.setColumns(10);
 		// Check Box
 		JTextField textCheckLasttName = new JTextField();
 		textCheckLasttName.setText(" X");
-		textCheckLasttName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
+		textCheckLasttName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED,
+				null, null, null, null));
 		textCheckLasttName.setBackground(Color.WHITE);
-		textCheckLasttName.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
+		textCheckLasttName.setBounds(leftTab + checkBoxOffset, topTab, 24,
+				boxHeieght);
 		frame.getContentPane().add(textCheckLasttName);
-		topTab+=tabDelta;
+		topTab += tabDelta;
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmail.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblEmail.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblEmail);
 
 		textEmail = new JTextField();
@@ -565,22 +564,23 @@ public class GUIs {
 		textEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textEmail.setBackground(Color.WHITE);
-		textEmail.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textEmail.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textEmail);
 		textEmail.setColumns(10);
 		// Check Box
 		JTextField textCheckEmail = new JTextField();
 		textCheckEmail.setText(" ");
 		textCheckEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-						null, null, null));
+				null, null, null));
 		textCheckEmail.setBackground(Color.WHITE);
-		textCheckEmail.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
-				frame.getContentPane().add(textCheckEmail);
-		topTab+=tabDelta;
-		
+		textCheckEmail.setBounds(leftTab + checkBoxOffset, topTab, 24,
+				boxHeieght);
+		frame.getContentPane().add(textCheckEmail);
+		topTab += tabDelta;
+
 		lblPhone = new JLabel("Phone:");
 		lblPhone.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPhone.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblPhone.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblPhone);
 
 		textPhone = new JTextField();
@@ -589,24 +589,25 @@ public class GUIs {
 				null, null, null));
 		textPhone.setColumns(10);
 		textPhone.setBackground(Color.WHITE);
-		textPhone.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textPhone.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textPhone);
-		
+
 		// Check Box
 		JTextField textCheckPhone = new JTextField();
 		textCheckPhone.setText(" ");
 		textCheckPhone.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-						null, null, null));
+				null, null, null));
 		textCheckPhone.setBackground(Color.WHITE);
-		textCheckPhone.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
-				frame.getContentPane().add(textCheckPhone);
-// Address
-		
-		topTab+=tabDelta;
-		
+		textCheckPhone.setBounds(leftTab + checkBoxOffset, topTab, 24,
+				boxHeieght);
+		frame.getContentPane().add(textCheckPhone);
+		// Address
+
+		topTab += tabDelta;
+
 		JLabel lblAddress1 = new JLabel("Address 1:");
 		lblAddress1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAddress1.setBounds(leftTab-35, topTab+2, 81, 16);
+		lblAddress1.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lblAddress1);
 
 		JTextField textAddress1 = new JTextField();
@@ -614,61 +615,62 @@ public class GUIs {
 		textAddress1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textAddress1.setBackground(Color.WHITE);
-		textAddress1.setBounds(leftTab+50, topTab, 246, boxHeieght);
+		textAddress1.setBounds(leftTab + 50, topTab, 246, boxHeieght);
 		frame.getContentPane().add(textAddress1);
 		textAddress1.setColumns(10);
 		// Check Box
 		JTextField textCheckAddress = new JTextField();
 		textCheckAddress.setText(" ");
-		textCheckAddress.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-								null, null, null));
+		textCheckAddress.setBorder(new SoftBevelBorder(BevelBorder.LOWERED,
+				null, null, null, null));
 		textCheckAddress.setBackground(Color.WHITE);
-		textCheckAddress.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
+		textCheckAddress.setBounds(leftTab + checkBoxOffset, topTab, 24,
+				boxHeieght);
 		frame.getContentPane().add(textCheckAddress);
-		
-		topTab+=tabDelta;
+
+		topTab += tabDelta;
 		JLabel lblAddr2 = new JLabel("Address 2:");
 		lblAddr2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAddr2.setBounds(leftTab-35, topTab+2, 81, 16);
+		lblAddr2.setBounds(leftTab - 35, topTab + 2, 81, 16);
 		frame.getContentPane().add(lblAddr2);
-
 
 		JTextField textAddress2 = new JTextField();
 		textAddress2.setText("e.g., Appartment 301");
 		textAddress2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textAddress2.setBackground(Color.WHITE);
-		textAddress2.setBounds(leftTab+50, topTab+2, 246, boxHeieght);
+		textAddress2.setBounds(leftTab + 50, topTab + 2, 246, boxHeieght);
 		frame.getContentPane().add(textAddress2);
 		textAddress2.setColumns(10);
-		
-		topTab+=tabDelta;
+
+		topTab += tabDelta;
 		JLabel lblCity = new JLabel("City:");
 		lblCity.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCity.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblCity.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblCity);
 
 		JTextField textCity = new JTextField();
 		textCity.setText("e.g., New York");
-		textCity.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
+		textCity.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
+				null, null));
 		textCity.setBackground(Color.WHITE);
-		textCity.setBounds(leftTab+50, topTab+2, 246, boxHeieght);
+		textCity.setBounds(leftTab + 50, topTab + 2, 246, boxHeieght);
 		frame.getContentPane().add(textCity);
 		textCity.setColumns(10);
 		// Check Box
 		JTextField textCheckCity = new JTextField();
 		textCheckCity.setText(" ");
 		textCheckCity.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-								null, null, null));
+				null, null, null));
 		textCheckCity.setBackground(Color.WHITE);
-		textCheckCity.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
+		textCheckCity.setBounds(leftTab + checkBoxOffset, topTab, 24,
+				boxHeieght);
 		frame.getContentPane().add(textCheckCity);
-		topTab+=tabDelta;
+		topTab += tabDelta;
 		// State
 		JLabel lblState = new JLabel("State:");
 		lblState.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblState.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblState.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblState);
 
 		JTextField textState = new JTextField();
@@ -676,48 +678,49 @@ public class GUIs {
 		textState.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textState.setBackground(Color.WHITE);
-		textState.setBounds(leftTab+50, topTab+2, 246, boxHeieght);
+		textState.setBounds(leftTab + 50, topTab + 2, 246, boxHeieght);
 		frame.getContentPane().add(textState);
 		textCity.setColumns(10);
 		// Check Box
 		JTextField textCheckState = new JTextField();
 		textCheckState.setText(" ");
 		textCheckState.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-								null, null, null));
+				null, null, null));
 		textCheckState.setBackground(Color.WHITE);
-		textCheckState.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
+		textCheckState.setBounds(leftTab + checkBoxOffset, topTab, 24,
+				boxHeieght);
 		frame.getContentPane().add(textCheckState);
-		
-		topTab+=tabDelta;
+
+		topTab += tabDelta;
 		// ZIP Code
 		JLabel lblZip = new JLabel("Zip Code:");
 		lblZip.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblZip.setBounds(leftTab-15, topTab+2, 61, 16);
+		lblZip.setBounds(leftTab - 15, topTab + 2, 61, 16);
 		frame.getContentPane().add(lblZip);
 
 		JTextField textZip = new JTextField();
 		textZip.setText("e.g., 00123");
-		textZip.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
+		textZip.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
+				null, null));
 		textZip.setBackground(Color.WHITE);
-		textZip.setBounds(leftTab+50, topTab+2, 246, boxHeieght);
+		textZip.setBounds(leftTab + 50, topTab + 2, 246, boxHeieght);
 		frame.getContentPane().add(textZip);
 		textZip.setColumns(10);
 		// Check Box
 		JTextField textCheckZIP = new JTextField();
 		textCheckZIP.setText(" ");
 		textCheckZIP.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-								null, null, null));
+				null, null, null));
 		textCheckZIP.setBackground(Color.WHITE);
-		textCheckZIP.setBounds(leftTab+checkBoxOffset, topTab, 24, boxHeieght);
+		textCheckZIP
+				.setBounds(leftTab + checkBoxOffset, topTab, 24, boxHeieght);
 		frame.getContentPane().add(textCheckZIP);
-		
 
 		JLabel lblNotes = new JLabel("Contact(s):");
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNotes.setBounds(508, 70, 71, 16);
 		frame.getContentPane().add(lblNotes);
-		
+
 		txtpnNotes = new JTextPane();
 		txtpnNotes
 				.setText("John Paul Smith\n555-234-2345\njohn.smith@gmail.com\n12345 El Monte Road\nLos Altos Hills, CA 94022");
@@ -748,10 +751,8 @@ public class GUIs {
 		btnCancel.setBounds(717, 250, 155, 50);
 		frame.getContentPane().add(btnCancel);
 
-		
 		// Menu buttons
-		
-		
+
 		btnAddNewPerson = new JButton("Add Contacts");
 		btnAddNewPerson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -762,7 +763,7 @@ public class GUIs {
 		btnAddNewPerson.setForeground(new Color(0, 128, 0));
 		btnAddNewPerson.setBounds(50, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnAddNewPerson);
-	
+
 		btnPrintList = new JButton("Print List");
 		btnPrintList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -773,20 +774,16 @@ public class GUIs {
 		btnPrintList.setForeground(new Color(0, 128, 0));
 		btnPrintList.setBounds(250, MENU_FROM_TOP, 155, 50);
 		frame.getContentPane().add(btnPrintList);
-		
-/*		
-		btnRetrievePerson = new JButton("Retrieve Contact");
-		btnRetrievePerson.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Cancel button action here
-			}
-		});
-		btnRetrievePerson.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnRetrievePerson.setForeground(new Color(0, 128, 0));
-		btnRetrievePerson.setBounds(450, MENU_FROM_TOP, 155, 50);
-		frame.getContentPane().add(btnRetrievePerson);
-	
-*/		btnExit = new JButton("Exit");
+
+		/*
+		 * btnRetrievePerson = new JButton("Retrieve Contact");
+		 * btnRetrievePerson.addActionListener(new ActionListener() { public
+		 * void actionPerformed(ActionEvent e) { // Cancel button action here }
+		 * }); btnRetrievePerson.setFont(new Font("Lucida Grande", Font.PLAIN,
+		 * 16)); btnRetrievePerson.setForeground(new Color(0, 128, 0));
+		 * btnRetrievePerson.setBounds(450, MENU_FROM_TOP, 155, 50);
+		 * frame.getContentPane().add(btnRetrievePerson);
+		 */btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Save button action here
@@ -798,7 +795,6 @@ public class GUIs {
 		frame.getContentPane().add(btnExit);
 
 	}
-	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -962,7 +958,7 @@ public class GUIs {
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNotes.setBounds(618, 200, 61, 16);
 		frame.getContentPane().add(lblNotes);
-		
+
 		JButton btnPrintToConsole = new JButton("Print to Console");
 		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		btnPrintToConsole.setBounds(615, 398, 322, 50);

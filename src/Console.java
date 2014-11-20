@@ -15,8 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingWorker;
 
 /**
- * Defines a reusable class Console. One object of class Console contains an external graphical Java console.
- *
+ * Defines a reusable class Console. One object of class Console contains an
+ * external graphical Java console.
+ * 
  */
 @SuppressWarnings("serial")
 public class Console extends JFrame implements KeyListener {
@@ -31,6 +32,7 @@ public class Console extends JFrame implements KeyListener {
 
 	/**
 	 * This method constructs a new object of class Console.
+	 * 
 	 * @param title
 	 */
 	public Console(String title) {
@@ -86,9 +88,10 @@ public class Console extends JFrame implements KeyListener {
 		}).execute();
 
 	}
-	
+
 	/**
-	 * This method records user input from the keyboard and prints it in the Console JTextField prompt.
+	 * This method records user input from the keyboard and prints it in the
+	 * Console JTextField prompt.
 	 */
 	public void execute() {
 		String text = prompt.getText();
@@ -96,9 +99,10 @@ public class Console extends JFrame implements KeyListener {
 		System.out.println(text);
 		inWriter.print(text.trim().replaceAll("\r\n", ""));
 	}
-	
+
 	/**
-	 * This method executes the current line in the Console prompt when the user presses the enter key.
+	 * This method executes the current line in the Console prompt when the user
+	 * presses the enter key.
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -107,18 +111,19 @@ public class Console extends JFrame implements KeyListener {
 	}
 
 	/**
-	 * This method executes the current line in the Console prompt when the user releases the enter key.
-	 * This method exists for cross platform redundancy.
+	 * This method executes the current line in the Console prompt when the user
+	 * releases the enter key. This method exists for cross platform redundancy.
 	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER)
 			execute();
 	}
-	
+
 	/**
-	 * This method executes the current line in the Console prompt when the user presses then releases the enter key.
-	 * This method exists for cross platform redundancy.
+	 * This method executes the current line in the Console prompt when the user
+	 * presses then releases the enter key. This method exists for cross
+	 * platform redundancy.
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -127,7 +132,9 @@ public class Console extends JFrame implements KeyListener {
 	}
 
 	/**
-	 * This method is called from the original application to initialize the Console.
+	 * This method is called from the original application to initialize the
+	 * Console.
+	 * 
 	 * @param title
 	 */
 	public static void setConsole(final String title) {

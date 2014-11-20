@@ -216,71 +216,91 @@ public class GUI {
 		});
 		btnToggleConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		frame.getContentPane().add(btnToggleConsole);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		scrollPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
+				null, null, null));
 		scrollPane.setBounds(10, 92, 216, 340);
 		frame.getContentPane().add(scrollPane);
-		
-				list = new JList();
-				scrollPane.setViewportView(list);
-				list.setModel(new AbstractListModel() {
-					String[] values = new String[] {"First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last", "First MI Last"};
-					public int getSize() {
-						return values.length;
-					}
-					public Object getElementAt(int index) {
-						return values[index];
-					}
-				});
-				list.setBorder(null);
-				
-				scrollPane_1 = new JScrollPane();
-				scrollPane_1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-				scrollPane_1.setBounds(325, 198, 369, 132);
-				frame.getContentPane().add(scrollPane_1);
-				
-						txtpnNotes = new JTextPane();
-						scrollPane_1.setViewportView(txtpnNotes);
-						txtpnNotes
-								.setText("NotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes");
-						txtpnNotes.setBorder(null);
-						
-						scrollPane_2 = new JScrollPane();
-						scrollPane_2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-						scrollPane_2.setBounds(325, 132, 369, 54);
-						frame.getContentPane().add(scrollPane_2);
-						
-								JTextPane textpnAddress = new JTextPane();
-								scrollPane_2.setViewportView(textpnAddress);
-								textpnAddress.setBorder(null);
-								textpnAddress
-										.setText("12345 El Monte Road\nLos Altos Hills, CA 94022\nUnited States");
-								
-								separator = new JSeparator();
-								separator.setOrientation(SwingConstants.VERTICAL);
-								separator.setBounds(234, 0, 12, 477);
-								frame.getContentPane().add(separator);
-								
-								JButton btnExport = new JButton("Export");
-								btnExport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-								btnExport.setBounds(554, 404, 140, 50);
-								frame.getContentPane().add(btnExport);
-								
-								JButton btnImport = new JButton("Import");
-								btnImport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-								btnImport.setBounds(554, 342, 140, 50);
-								frame.getContentPane().add(btnImport);
+
+		list = new JList();
+		scrollPane.setViewportView(list);
+		list.setModel(new AbstractListModel() {
+			String[] values = new String[] { "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last", "First MI Last", "First MI Last",
+					"First MI Last" };
+
+			public int getSize() {
+				return values.length;
+			}
+
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		list.setBorder(null);
+
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
+				null, null, null));
+		scrollPane_1.setBounds(325, 198, 369, 132);
+		frame.getContentPane().add(scrollPane_1);
+
+		txtpnNotes = new JTextPane();
+		scrollPane_1.setViewportView(txtpnNotes);
+		txtpnNotes
+				.setText("NotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes");
+		txtpnNotes.setBorder(null);
+
+		scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
+				null, null, null));
+		scrollPane_2.setBounds(325, 132, 369, 54);
+		frame.getContentPane().add(scrollPane_2);
+
+		JTextPane textpnAddress = new JTextPane();
+		scrollPane_2.setViewportView(textpnAddress);
+		textpnAddress.setBorder(null);
+		textpnAddress
+				.setText("12345 El Monte Road\nLos Altos Hills, CA 94022\nUnited States");
+
+		separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(234, 0, 12, 477);
+		frame.getContentPane().add(separator);
+
+		JButton btnExport = new JButton("Export");
+		btnExport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnExport.setBounds(554, 404, 140, 50);
+		frame.getContentPane().add(btnExport);
+
+		JButton btnImport = new JButton("Import");
+		btnImport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnImport.setBounds(554, 342, 140, 50);
+		frame.getContentPane().add(btnImport);
 
 	}
 
 	class WindowEventHandler extends WindowAdapter {
-		
+
 		/**
 		 * This method performs an action when the GUI window is closed.
 		 */
 		public void windowClosing(WindowEvent evt) {
-			//Close action goes here
+			// Close action goes here
 			System.exit(0);
 
 		}
