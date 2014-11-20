@@ -33,7 +33,7 @@ import javax.swing.border.MatteBorder;
  */
 public class GUI {
 
-	public JFrame frame;
+	public JFrame frame; //How do I make you private?
 	private JTextField txtSearch;
 	private JTextField txtFirstName;
 	private JTextField textEmail;
@@ -57,7 +57,8 @@ public class GUI {
 	private JTextField txtCa;
 	private JTextField txtUnitedStates;
 	private JTextField textField;
-	private Person[] guiArray;
+	private Person[] guiArray; //This is the array displayed in the JList
+	private Person displayPerson; //This is the person that is displayed in the GUI
 
 	/**
 	 * This method constructs the GUI.
@@ -165,7 +166,7 @@ public class GUI {
 				null, null, null));
 		txtFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		txtFirstName.setHorizontalAlignment(SwingConstants.CENTER);
-		txtFirstName.setText("First");
+		txtFirstName.setText("First"); // First name getter here.
 		frame.getContentPane().add(txtFirstName);
 		txtFirstName.setColumns(10);
 

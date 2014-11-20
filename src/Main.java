@@ -1,8 +1,6 @@
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
-import javax.swing.ListModel;
-
 /**
  * This class controls the operation of the contact list program. It has methods
  * which initialize the GUI and creates a new contact list or opens an existing
