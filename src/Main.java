@@ -39,10 +39,10 @@ public class Main {
 	 */
 	@SuppressWarnings("unused")
 	private static void openList() {
-		if (false) {
-			// Open the new existing contact list and store it in list
-		} else {
-			list = new ContactList(10);
+		list = new ContactList(10);
+		if (true) { // if true then 
+			// Will pass list to disk as a parameter
+			// Disk will then populate list with the array stored on disk
 		}
 	}
 
@@ -60,7 +60,16 @@ public class Main {
 		addPerson();
 		return (list.getList());
 	}
+	
+	/**
+	 * SearchForRelay
+	 */
 
+	/**
+	 * SortByRelay
+	 */
+	
+	
 	/**
 	 * This method instructs the UI to tell the user that there is no search
 	 * match.

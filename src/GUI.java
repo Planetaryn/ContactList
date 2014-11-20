@@ -82,7 +82,7 @@ public class GUI {
 	 * 
 	 * -NoahNote: This method will be passed one of many arrays from the Main, depending on if the user is searching/sorting.
 	 */
-	private void makeList() {
+	private void makeList() { // Pass contactList as a parameter instead of creating guiList (may not work)
 		ArrayList<Person> guiList = new ArrayList<Person>();
 		guiList.addAll(Main.getContactList());
 		guiArray = new Person[(guiList.size())];

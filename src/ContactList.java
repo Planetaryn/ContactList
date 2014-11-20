@@ -43,15 +43,16 @@ public class ContactList {
 	 * @param newSearchField
 	 * @return
 	 */
-	public ArrayList<Person> searchByField(String newSearchField,
+	public ContactList searchForField(String newSearchField,
 			String newSearchValue) {
 		String searchField;
 		String searchValue;
+		int numberMatches = 0;
 		System.out.println("Method ContactList.searchByField called");
 		// Call to method to extract field value and compare to searchValue
 		// Store array of objects that match the search
 		// Return that array
-		ArrayList<Person> matches = new ArrayList<Person>();
+		ContactList matches = new ContactList(numberMatches);
 		return matches;
 	}
 
