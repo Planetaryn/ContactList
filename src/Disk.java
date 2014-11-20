@@ -7,6 +7,7 @@
  * @author Shmuel Shaffer
  * This is a version 2 which includes modifications based on feedback we received in the class.
  * Version 3: changed the functionality of the contractor to modify the private fileExists flag
+ * formated V3:
  */
 import java.io.*;
 import java.util.*;
@@ -25,7 +26,7 @@ public class Disk {
 	}
 
 	/**
-	 * The writeToDisk method gets the ContactList Object as an input parameter 
+	 * The writeToDisk method gets the ContactList Object as an input parameter
 	 * and overrides the existing directory file with a new directory file. The
 	 * method returns true if successful, and false if an error occurs.
 	 */
