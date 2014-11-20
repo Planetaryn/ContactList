@@ -1,18 +1,20 @@
 /**
  * Define a reusable class Person. One object of class Person contains the
  * persons visible email, normalized email, visible phone number, normalized
- * phone number, first name, last name, & notes.
+ * phone number, first name, last name and notes.
  * 
- * @author kellylam
+ * @author Kelly Lam (version 1)
+ * Version 2: Irma added variables and methods to handle first name and last name
  */
+
 public class Person {
 	private String vizEmail;
-	private String normalizedEmail;
 	private String vizPhoneNumber;
 	private String normalizedPhoneNumber;
 	private String firstName;
 	private String lastName;
 	private String notes;
+	private StreetAddress address;
 
 	/**
 	 * This method creates a new object of class StreetAddress when a new object
@@ -23,21 +25,13 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of vizEmail to the value of the parameter newVizEmail
+	 * Sets the value of vizEmail to the value of the parameter newVizEmail 
+	 * which format will be changed later
 	 * 
 	 * @param newVizEmail
 	 */
 	public void setVizEmail(String newVizEmail) {
 		System.out.println("Method Person.setVizEmail called");
-	}
-
-	/**
-	 * Sets the value of normalizedEmail to the value of the parameter newNormalizedEmail
-	 * 
-	 * @param newNormalizedEmail
-	 */
-	public void setNormalizedEmail(String newNormalizedEmail) {
-		System.out.println("Method Person.setNormalizedEmail called");
 	}
 
 	/**
@@ -95,15 +89,6 @@ public class Person {
 		return vizEmail;
 	}
 
-	/**
-	 * Returns the value of normalizedEmail
-	 * 
-	 * @return
-	 */
-	public String getNormalizedEmail() {
-		System.out.println("Method Person.getNormalizedEmail called");
-		return normalizedEmail;
-	}
 
 	/**
 	 * Returns the value of vizPhoneNumber
@@ -181,7 +166,7 @@ public class Person {
 
 	/**
 	 * Returns a string containing a persons first name, last name, email
-	 * address, phone number, address, & notes.
+	 * address, phone number, address and notes.
 	 */
 	public String toString() {
 		System.out.println("Method Person.toString called");
