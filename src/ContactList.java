@@ -20,9 +20,25 @@ public class ContactList {
 	}
 
 	/**
+	 * Adds a Person to the contactList
+	 */
+	public void addPerson(Person newPerson) {
+		contactList.add(newPerson);
+	}
+
+	/**
+	 * Returns the ArrayList contactList
+	 * 
+	 * @return
+	 */
+	public ArrayList<Person> getList() {
+		return contactList;
+	}
+
+	/**
 	 * Sets the value of searchField to the value of the parameter
 	 * newSearchField, and returns objects in the contact list that match the
-	 * search
+	 * search. Has logic that will tell the main there is not search match, if there is not search match.
 	 * 
 	 * @param newSearchField
 	 * @return
@@ -51,12 +67,4 @@ public class ContactList {
 		System.out.println("Method ContactList.sortByField called");
 
 	}
-
-	/**
-	 * Returns true if the search has no matches.
-	 */
-	public boolean noSearchMatch() {
-		return true;
-	}
-
 }

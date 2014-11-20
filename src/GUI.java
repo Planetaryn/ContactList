@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
@@ -16,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.ListModel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
@@ -40,7 +42,6 @@ public class GUI {
 	private JButton btnSave;
 	private JButton btnCancel;
 	private JTextField textLastName;
-	private JTextField textMiddleInitial;
 	private JTextPane txtpnNotes;
 	@SuppressWarnings("rawtypes")
 	private JList list;
@@ -48,8 +49,6 @@ public class GUI {
 	private JComboBox comboSortBy;
 	private JLabel lblSortBy;
 	private JLabel lblSearchBy;
-	private JButton btnPrintToConsole;
-	private JButton btnOpenConsole;
 	private JScrollPane scrollPane_1;
 	private JSeparator separator;
 	private JTextField txtHouseNumber;
@@ -58,6 +57,7 @@ public class GUI {
 	private JTextField txtCa;
 	private JTextField txtUnitedStates;
 	private JTextField textField;
+	private Person[] guiArray;
 
 	/**
 	 * This method constructs the GUI.
@@ -66,6 +66,35 @@ public class GUI {
 		initialize();
 	}
 
+	class WindowEventHandler extends WindowAdapter {
+		/**
+		 * This method performs an action when the GUI window is closed.
+		 */
+		public void windowClosing(WindowEvent evt) {
+			// Close action goes here
+			System.exit(0);
+		}
+	}
+
+	/**
+	 * This list constructs the array guiArray from the arrayList contactList. 
+	 * 
+	 * -NoahNote: This method will be passed one of many arrays from the Main, depending on if the user is searching/sorting.
+	 */
+	private void makeList() {
+		ArrayList<Person> guiList = new ArrayList<Person>();
+		guiList.addAll(Main.getContactList());
+		guiArray = new Person[(guiList.size())];
+		guiArray = guiList.toArray(guiArray);
+	}
+
+	/**
+	 * This method notifies the user that no match was found for their search.
+	 */
+	public void notifyNoSearchMatch(){
+		
+	}
+	
 	/**
 	 * This method initializes the content of the GUI frame
 	 */
@@ -87,6 +116,9 @@ public class GUI {
 		frame.getContentPane().add(txtSearch);
 		txtSearch.setColumns(10);
 
+		/**
+		 * Search Button Method
+		 */
 		JButton btnSearch = new JButton("Search");
 		btnSearch.setBounds(6, 52, 87, 28);
 		btnSearch.addActionListener(new ActionListener() {
@@ -101,6 +133,9 @@ public class GUI {
 		lblSearchBy.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblSearchBy);
 
+		/**
+		 * Search by combo box
+		 */
 		JComboBox comboSearchBy = new JComboBox();
 		comboSearchBy.setBounds(108, 53, 118, 27);
 		comboSearchBy.setModel(new DefaultComboBoxModel(new String[] {
@@ -112,14 +147,20 @@ public class GUI {
 		lblSortBy.setHorizontalAlignment(SwingConstants.LEFT);
 		frame.getContentPane().add(lblSortBy);
 
+		/**
+		 * Sort by combo box
+		 */
 		comboSortBy = new JComboBox();
 		comboSortBy.setBounds(62, 444, 164, 27);
 		comboSortBy.setModel(new DefaultComboBoxModel(new String[] {
 				"First Name", "Last Name" }));
 		frame.getContentPane().add(comboSortBy);
 
+		/**
+		 * First Name text field
+		 */
 		txtFirstName = new JTextField();
-		txtFirstName.setBounds(252, 16, 200, 28);
+		txtFirstName.setBounds(252, 16, 216, 28);
 		txtFirstName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		txtFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -128,18 +169,11 @@ public class GUI {
 		frame.getContentPane().add(txtFirstName);
 		txtFirstName.setColumns(10);
 
-		textMiddleInitial = new JTextField();
-		textMiddleInitial.setBounds(451, 16, 47, 28);
-		textMiddleInitial.setBorder(new SoftBevelBorder(BevelBorder.LOWERED,
-				null, null, null, null));
-		textMiddleInitial.setText("M.I.");
-		textMiddleInitial.setHorizontalAlignment(SwingConstants.CENTER);
-		textMiddleInitial.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		textMiddleInitial.setColumns(10);
-		frame.getContentPane().add(textMiddleInitial);
-
+		/**
+		 * Last name text field
+		 */
 		textLastName = new JTextField();
-		textLastName.setBounds(497, 16, 197, 28);
+		textLastName.setBounds(469, 16, 225, 28);
 		textLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textLastName.setText("Last");
@@ -153,6 +187,9 @@ public class GUI {
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblEmail);
 
+		/**
+		 * Email text field
+		 */
 		textEmail = new JTextField();
 		textEmail.setBounds(325, 52, 369, 28);
 		textEmail.setText("Foothill@fhda.edu");
@@ -167,6 +204,9 @@ public class GUI {
 		lblPhone.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblPhone);
 
+		/**
+		 * Phone number text field
+		 */
 		textPhone = new JTextField();
 		textPhone.setBounds(325, 92, 369, 28);
 		textPhone.setText("555-867-5039");
@@ -181,25 +221,32 @@ public class GUI {
 		lblAddress.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblAddress);
 
-		btnSave = new JButton("Save");
-		btnSave.setBounds(252, 342, 140, 50);
+		/**
+		 * Save Button
+		 */
+		btnSave = new JButton("<html><center>Save<br />Person<center></html>");
+		btnSave.setBounds(325, 342, 173, 122);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Save button action here
 			}
 		});
-		btnSave.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		btnSave.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
 		btnSave.setForeground(new Color(0, 128, 0));
 		frame.getContentPane().add(btnSave);
 
-		btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(252, 404, 140, 50);
+		/**
+		 * Cancel Button
+		 */
+		btnCancel = new JButton(
+				"<html><center>Discard<br />Changes<center></html>");
+		btnCancel.setBounds(521, 342, 173, 122);
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Cancel button action here
 			}
 		});
-		btnCancel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		btnCancel.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
 		btnCancel.setForeground(new Color(255, 0, 0));
 		frame.getContentPane().add(btnCancel);
 
@@ -208,60 +255,40 @@ public class GUI {
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblNotes);
 
-		btnPrintToConsole = new JButton("Print To Console");
-		btnPrintToConsole.setBounds(403, 404, 140, 50);
-		btnPrintToConsole.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("test");
-			}
-		});
-		btnPrintToConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		frame.getContentPane().add(btnPrintToConsole);
-
-		btnOpenConsole = new JButton("Open Console");
-		btnOpenConsole.setBounds(403, 342, 140, 50);
-		btnOpenConsole.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				@SuppressWarnings("unused")
-				Console console = new Console("Console");
-			}
-		});
-		btnOpenConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		frame.getContentPane().add(btnOpenConsole);
-
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		scrollPane.setBounds(10, 92, 216, 340);
 		frame.getContentPane().add(scrollPane);
 
-		list = new JList();
+		/**
+		 * This method(?) calls the method to create the array used for display. It then displays that array in a JList.
+		 * It has submethods(?) to return a selected element in the array, return the size of the array.
+		 * 
+		 * -NoahNote: The guiArray will be rewritten/changed when the user searches or sorts the list. If they search, the guiArray will contain only
+		 * the names that match the search. If they sort, it will display the names given by the sorting order. These methods will be written in 
+		 * class ContactList, and relayed to class GUI through the main.
+		 */
+		makeList();
+		list = new JList(guiArray);
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] { "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last", "First MI Last", "First MI Last",
-					"First MI Last" };
-
+			
+			/**
+			 * This method returns the length of the guiArray
+			 */
 			public int getSize() {
-				return values.length;
+				return guiArray.length;
 			}
 
+			/**
+			 * This method returns the array index in guiArray of the currently selected name.
+			 * The array index in guiArray should match the array index in contactList.
+			 */
 			public Object getElementAt(int index) {
-				return values[index];
+				return guiArray[index];
 			}
+			
 		});
 		list.setBorder(null);
 
@@ -282,77 +309,59 @@ public class GUI {
 		separator.setBounds(234, 0, 12, 477);
 		frame.getContentPane().add(separator);
 
-		JButton btnExport = new JButton("Export");
-		btnExport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnExport.setBounds(554, 404, 140, 50);
-		frame.getContentPane().add(btnExport);
-
-		JButton btnImport = new JButton("Import");
-		btnImport.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnImport.setBounds(554, 342, 140, 50);
-		frame.getContentPane().add(btnImport);
-		
 		JPanel panelAddress = new JPanel();
-		panelAddress.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panelAddress.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
+				null, null, null));
 		panelAddress.setBackground(Color.WHITE);
 		panelAddress.setBounds(325, 132, 369, 57);
 		frame.getContentPane().add(panelAddress);
 		panelAddress.setLayout(null);
-		
+
 		txtHouseNumber = new JTextField();
 		txtHouseNumber.setText("12345");
 		txtHouseNumber.setBounds(6, 6, 70, 16);
-		txtHouseNumber.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtHouseNumber.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(
+				0, 0, 0)));
 		panelAddress.add(txtHouseNumber);
 		txtHouseNumber.setColumns(10);
-		
+
 		txtElMonteRoad = new JTextField();
 		txtElMonteRoad.setText("El Monte Road");
 		txtElMonteRoad.setColumns(10);
-		txtElMonteRoad.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtElMonteRoad.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(
+				0, 0, 0)));
 		txtElMonteRoad.setBounds(75, 6, 288, 16);
 		panelAddress.add(txtElMonteRoad);
-		
+
 		txtLosAltosHills = new JTextField();
 		txtLosAltosHills.setText("Los Altos Hills");
 		txtLosAltosHills.setColumns(10);
-		txtLosAltosHills.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtLosAltosHills.setBorder(new MatteBorder(1, 1, 1, 1,
+				(Color) new Color(0, 0, 0)));
 		txtLosAltosHills.setBounds(6, 21, 122, 16);
 		panelAddress.add(txtLosAltosHills);
-		
+
 		txtCa = new JTextField();
 		txtCa.setText("CA");
 		txtCa.setColumns(10);
 		txtCa.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		txtCa.setBounds(127, 21, 24, 16);
 		panelAddress.add(txtCa);
-		
+
 		txtUnitedStates = new JTextField();
 		txtUnitedStates.setText("United States");
 		txtUnitedStates.setColumns(10);
-		txtUnitedStates.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtUnitedStates.setBorder(new MatteBorder(1, 1, 1, 1,
+				(Color) new Color(0, 0, 0)));
 		txtUnitedStates.setBounds(6, 36, 357, 16);
 		panelAddress.add(txtUnitedStates);
-		
+
 		textField = new JTextField();
 		textField.setText("94022");
 		textField.setColumns(10);
-		textField.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		textField.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0,
+				0)));
 		textField.setBounds(150, 21, 213, 16);
 		panelAddress.add(textField);
-
-	}
-
-	class WindowEventHandler extends WindowAdapter {
-
-		/**
-		 * This method performs an action when the GUI window is closed.
-		 */
-		public void windowClosing(WindowEvent evt) {
-			// Close action goes here
-			System.exit(0);
-
-		}
-
 	}
 }

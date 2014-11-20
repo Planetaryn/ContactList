@@ -6,10 +6,8 @@
  * @author kellylam
  */
 public class Person {
-	private String vizEmail;
-	private String normalizedEmail;
-	private String vizPhoneNumber;
-	private String normalizedPhoneNumber;
+	private String email;
+	private String phoneNumber;
 	private String firstName;
 	private String lastName;
 	private String notes;
@@ -20,43 +18,31 @@ public class Person {
 	 * of class Person is constructed
 	 */
 	public Person() {
+		setFirstName("");
+		setLastName("");
+		setNotes("");
+		setEmail("");
+		setPhoneNumber("");
 		System.out.println("New object of class Person constructed");
 	}
 
 	/**
-	 * Sets the value of vizEmail to the value of the parameter newVizEmail
+	 * Sets the value of email to the value of the parameter newVizEmail
 	 * 
-	 * @param newVizEmail
+	 * @param newEmail
 	 */
-	public void setVizEmail(String newVizEmail) {
-		System.out.println("Method Person.setVizEmail called");
+	public void setEmail(String newEmail) {
+		System.out.println("Method Person.setEmail called");
 	}
 
 	/**
-	 * Sets the value of normalizedEmail to the value of the parameter newNormalizedEmail
+	 * Sets the value of phoneNumber to the value of the parameter
+	 * newPhoneNumber
 	 * 
-	 * @param newNormalizedEmail
+	 * @param newPhoneNumber
 	 */
-	public void setNormalizedEmail(String newNormalizedEmail) {
-		System.out.println("Method Person.setNormalizedEmail called");
-	}
-
-	/**
-	 * Sets the value of vizPhoneNumber to the value of the parameter newVizPhoneNumber
-	 * 
-	 * @param newVizPhoneNumber
-	 */
-	public void setVizPhoneNumber(String newVizPhoneNumber) {
+	public void setPhoneNumber(String newPhoneNumber) {
 		System.out.println("Method Person.setPhoneNumber called");
-	}
-
-	/**
-	 * Sets the value of normalizedPhoneNumber to the value of the parameter newNormalizedPhoneNumber
-	 * 
-	 * @param newNormalizedPhoneNumber
-	 */
-	public void setNormalizedPhoneNumber(String newNormalizedPhoneNumber) {
-		System.out.println("Method Person.setNormalizedPhoneNumber called");
 	}
 
 	/**
@@ -87,43 +73,23 @@ public class Person {
 	}
 
 	/**
-	 * Returns the value of vizEmail
+	 * Returns the value of email
 	 * 
 	 * @return
 	 */
-	public String getVizEmail() {
-		System.out.println("Method Person.getVizEmail called");
-		return vizEmail;
+	public String getEmail() {
+		System.out.println("Method Person.getEmail called");
+		return email;
 	}
 
 	/**
-	 * Returns the value of normalizedEmail
+	 * Returns the value of phoneNumber
 	 * 
 	 * @return
 	 */
-	public String getNormalizedEmail() {
-		System.out.println("Method Person.getNormalizedEmail called");
-		return normalizedEmail;
-	}
-
-	/**
-	 * Returns the value of vizPhoneNumber
-	 * 
-	 * @return
-	 */
-	public String getVizPhoneNumber() {
-		System.out.println("Method Person.getVizPhoneNumber called");
-		return vizPhoneNumber;
-	}
-
-	/**
-	 * Returns the value of normalizedPhoneNumber
-	 * 
-	 * @return
-	 */
-	public String getNormalizedPhoneNumber() {
-		System.out.println("Method Person.getNormalizedPhoneNumber called");
-		return normalizedPhoneNumber;
+	public String getPhoneNumber() {
+		System.out.println("Method Person.getPhoneNumber called");
+		return phoneNumber;
 	}
 
 	/**
