@@ -21,6 +21,8 @@ public class ContactList {
 
 	/**
 	 * Adds a Person to the contactList
+	 * 
+	 * @param newPerson
 	 */
 	public void addPerson(Person newPerson) {
 		contactList.add(newPerson);
@@ -36,17 +38,13 @@ public class ContactList {
 	}
 
 	/**
-	 * Sets the value of searchField to the value of the parameter
-	 * newSearchField, and returns objects in the contact list that match the
-	 * search. Has logic that will tell the main there is not search match, if there is not search match.
+	 * Returns the objects in the contact list that match the search.
 	 * 
-	 * @param newSearchField
+	 * @param searchField, searchValue
 	 * @return
 	 */
-	public ContactList searchForField(String newSearchField,
-			String newSearchValue) {
-		String searchField;
-		String searchValue;
+	public ContactList searchForField(String searchField,
+			String searchValue) {
 		int numberMatches = 0;
 		System.out.println("Method ContactList.searchByField called");
 		// Call to method to extract field value and compare to searchValue
@@ -55,16 +53,15 @@ public class ContactList {
 		ContactList matches = new ContactList(numberMatches);
 		return matches;
 	}
-
+	
 	/**
 	 * Sets the value of sortField to the value of the parameter newSortField,
 	 * and sorts the ContactList by sortField
 	 * 
-	 * @param newSortField
+	 * @param SortField
 	 * @return
 	 */
-	public void sortByField(String newSortField) {
-		String sortField;
+	public void sortByField(String SortField) {
 		System.out.println("Method ContactList.sortByField called");
 
 	}
