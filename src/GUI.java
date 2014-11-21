@@ -281,8 +281,6 @@ public class GUI {
 
 		txtpnNotes = new JTextPane();
 		scrollPane_1.setViewportView(txtpnNotes);
-		txtpnNotes
-				.setText("NotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes");
 		txtpnNotes.setBorder(null);
 
 		separator = new JSeparator();
