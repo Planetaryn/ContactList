@@ -58,8 +58,8 @@ public class Main {
 	 * the user wants a sorted list or search results
 	 */
 	public static ArrayList getContactList() {
-		// openList();
-		// addPerson();
+		openList(); //required for compilation
+	   // addPerson();
 		return (list.getList());
 	}
 
