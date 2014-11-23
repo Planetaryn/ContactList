@@ -10,6 +10,8 @@
  * formated 
  * V4: Added a getDiskFileObject method
  * V5: Added @param to the java doc description
+ * V6: Corrected  typos per input from Kelly: “SuccessfulyWrittenToDisk” and “SuccessfulyReadFromDisk”  
+ *     changed to “SuccessfullyWrittenToDisk” and “SuccessfullyReadFromDisk”
  * 
  */
 import java.io.*;
@@ -39,9 +41,9 @@ public class Disk {
 	 *  @return - Returns true if write operation was successful and false if it failed.
 	 */
 	public boolean writeToDisk(ContactList directoryOfContacts) {
-		boolean successfulyWrittenToDisk = true;
+		boolean successfullyWrittenToDisk = true;
 		System.out.println("Method writeToDisk called");
-		return successfulyWrittenToDisk;
+		return successfullyWrittenToDisk;
 	}
 
 	/**
@@ -54,9 +56,9 @@ public class Disk {
 	 */
 
 	public boolean readFromDisk() {
-		boolean successfulyreadFromDisk = true;
+		boolean successfullyreadFromDisk = true;
 		System.out.println("Method readFromDisk called");
-		return successfulyreadFromDisk;
+		return successfullyreadFromDisk;
 	}
 	
 	/**
