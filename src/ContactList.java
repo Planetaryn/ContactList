@@ -10,11 +10,9 @@ public class ContactList {
 
 	/**
 	 * Constructs a new object of class ContactList of length contactListLength
-	 * 
-	 * @param contactListLength
 	 */
-	public ContactList(int contactListLength) {
-		contactList = new ArrayList<Person>(contactListLength);
+	public ContactList() {
+		contactList = new ArrayList<Person>();
 		System.out
 				.println("An object of class ContactList has been constructed");
 	}
@@ -37,7 +35,7 @@ public class ContactList {
 
 	/**
 	 * Sets the value of searchField to the value of the parameter
-	 * newSearchField, and returns objects in the contact list that match the
+	 * newSearchField, and returns an array list containing the objects in the contact list that match the
 	 * search. Has logic that will tell the main there is not search match, if there is not search match.
 	 * 
 	 * @param newSearchField
@@ -47,12 +45,11 @@ public class ContactList {
 			String newSearchValue) {
 		String searchField;
 		String searchValue;
-		int numberMatches = 0;
 		System.out.println("Method ContactList.searchByField called");
 		// Call to method to extract field value and compare to searchValue
 		// Store array of objects that match the search
 		// Return that array
-		ContactList matches = new ContactList(numberMatches);
+		ContactList matches = new ContactList();
 		return matches;
 	}
 
