@@ -39,7 +39,6 @@ public class GUI {
 	private JTextField textEmail;
 	private JLabel lblPhone;
 	private JTextField textPhone;
-	private JButton btnSave;
 	private JButton btnCancel;
 	private JTextField textLastName;
 	private JTextPane txtpnNotes;
@@ -82,7 +81,7 @@ public class GUI {
 	 * 
 	 * -NoahNote: This method will be passed one of many arrays from the Main, depending on if the user is searching/sorting.
 	 */
-	private void makeList() { // Pass contactList as a parameter instead of creating guiList (may not work)
+	private void makeList() {
 		ArrayList<Person> guiList = new ArrayList<Person>();
 		guiList.addAll(Main.getContactList());
 		guiArray = new Person[(guiList.size())];
@@ -103,7 +102,7 @@ public class GUI {
 	private void initialize() {
 
 		frame = new JFrame();
-		frame.setBounds(100, 100, 700, 499);
+		frame.setBounds(100, 100, 576, 443);
 		frame.addWindowListener(new WindowEventHandler());
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -112,7 +111,7 @@ public class GUI {
 		txtSearch.setBounds(10, 16, 216, 28);
 		txtSearch.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		txtSearch.setHorizontalAlignment(SwingConstants.CENTER);
+		txtSearch.setHorizontalAlignment(SwingConstants.LEFT);
 		txtSearch.setText("Search");
 		frame.getContentPane().add(txtSearch);
 		txtSearch.setColumns(10);
@@ -121,6 +120,7 @@ public class GUI {
 		 * Search Button Method
 		 */
 		JButton btnSearch = new JButton("Search");
+		btnSearch.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnSearch.setBounds(6, 52, 87, 28);
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -129,7 +129,8 @@ public class GUI {
 		});
 		frame.getContentPane().add(btnSearch);
 
-		lblSearchBy = new JLabel("by:");
+		lblSearchBy = new JLabel("for");
+		lblSearchBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		lblSearchBy.setBounds(89, 57, 19, 16);
 		lblSearchBy.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblSearchBy);
@@ -138,13 +139,14 @@ public class GUI {
 		 * Search by combo box
 		 */
 		JComboBox comboSearchBy = new JComboBox();
+		comboSearchBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		comboSearchBy.setBounds(108, 53, 118, 27);
 		comboSearchBy.setModel(new DefaultComboBoxModel(new String[] {
 				"Last Name", "Zip Code" }));
 		frame.getContentPane().add(comboSearchBy);
 
 		lblSortBy = new JLabel("Sort by:");
-		lblSortBy.setBounds(10, 448, 61, 16);
+		lblSortBy.setBounds(10, 389, 61, 16);
 		lblSortBy.setHorizontalAlignment(SwingConstants.LEFT);
 		frame.getContentPane().add(lblSortBy);
 
@@ -152,7 +154,8 @@ public class GUI {
 		 * Sort by combo box
 		 */
 		comboSortBy = new JComboBox();
-		comboSortBy.setBounds(62, 444, 164, 27);
+		comboSortBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		comboSortBy.setBounds(62, 385, 164, 27);
 		comboSortBy.setModel(new DefaultComboBoxModel(new String[] {
 				"First Name", "Last Name" }));
 		frame.getContentPane().add(comboSortBy);
@@ -161,11 +164,11 @@ public class GUI {
 		 * First Name text field
 		 */
 		txtFirstName = new JTextField();
-		txtFirstName.setBounds(252, 16, 216, 28);
+		txtFirstName.setBounds(313, 16, 250, 28);
 		txtFirstName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		txtFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		txtFirstName.setHorizontalAlignment(SwingConstants.CENTER);
+		txtFirstName.setHorizontalAlignment(SwingConstants.LEFT);
 		txtFirstName.setText("First"); // First name getter here.
 		frame.getContentPane().add(txtFirstName);
 		txtFirstName.setColumns(10);
@@ -174,17 +177,17 @@ public class GUI {
 		 * Last name text field
 		 */
 		textLastName = new JTextField();
-		textLastName.setBounds(469, 16, 225, 28);
+		textLastName.setBounds(313, 56, 250, 28);
 		textLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		textLastName.setText("Last");
-		textLastName.setHorizontalAlignment(SwingConstants.CENTER);
+		textLastName.setHorizontalAlignment(SwingConstants.LEFT);
 		textLastName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		textLastName.setColumns(10);
 		frame.getContentPane().add(textLastName);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(252, 58, 61, 16);
+		lblEmail.setBounds(252, 102, 57, 16);
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblEmail);
 
@@ -192,7 +195,7 @@ public class GUI {
 		 * Email text field
 		 */
 		textEmail = new JTextField();
-		textEmail.setBounds(325, 52, 369, 28);
+		textEmail.setBounds(313, 96, 250, 28);
 		textEmail.setText("Foothill@fhda.edu");
 		textEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
@@ -201,7 +204,7 @@ public class GUI {
 		textEmail.setColumns(10);
 
 		lblPhone = new JLabel("Phone:");
-		lblPhone.setBounds(252, 98, 61, 16);
+		lblPhone.setBounds(252, 142, 57, 16);
 		lblPhone.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblPhone);
 
@@ -209,7 +212,7 @@ public class GUI {
 		 * Phone number text field
 		 */
 		textPhone = new JTextField();
-		textPhone.setBounds(325, 92, 369, 28);
+		textPhone.setBounds(313, 136, 250, 28);
 		textPhone.setText("555-867-5039");
 		textPhone.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
@@ -218,48 +221,34 @@ public class GUI {
 		frame.getContentPane().add(textPhone);
 
 		JLabel lblAddress = new JLabel("Address:");
-		lblAddress.setBounds(252, 134, 61, 16);
+		lblAddress.setBounds(252, 180, 57, 16);
 		lblAddress.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblAddress);
-
-		/**
-		 * Save Button
-		 */
-		btnSave = new JButton("<html><center>Save<br />Person<center></html>");
-		btnSave.setBounds(325, 342, 173, 122);
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Save button action here
-			}
-		});
-		btnSave.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
-		btnSave.setForeground(new Color(0, 128, 0));
-		frame.getContentPane().add(btnSave);
 
 		/**
 		 * Cancel Button
 		 */
 		btnCancel = new JButton(
-				"<html><center>Discard<br />Changes<center></html>");
-		btnCancel.setBounds(521, 342, 173, 122);
+				"Discard Changes");
+		btnCancel.setBounds(436, 384, 127, 28);
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Cancel button action here
 			}
 		});
-		btnCancel.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
-		btnCancel.setForeground(new Color(255, 0, 0));
+		btnCancel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnCancel.setForeground(Color.BLACK);
 		frame.getContentPane().add(btnCancel);
 
 		JLabel lblNotes = new JLabel("Notes:");
-		lblNotes.setBounds(252, 200, 61, 16);
+		lblNotes.setBounds(252, 250, 57, 16);
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblNotes);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		scrollPane.setBounds(10, 92, 216, 340);
+		scrollPane.setBounds(10, 92, 216, 285);
 		frame.getContentPane().add(scrollPane);
 
 		/**
@@ -287,13 +276,11 @@ public class GUI {
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		scrollPane_1.setBounds(325, 200, 369, 130);
+		scrollPane_1.setBounds(313, 244, 250, 133);
 		frame.getContentPane().add(scrollPane_1);
 
 		txtpnNotes = new JTextPane();
 		scrollPane_1.setViewportView(txtpnNotes);
-		txtpnNotes
-				.setText("NotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes\nNotesNotesNotesNotesNotesNotes");
 		txtpnNotes.setBorder(null);
 
 		separator = new JSeparator();
@@ -305,7 +292,7 @@ public class GUI {
 		panelAddress.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		panelAddress.setBackground(Color.WHITE);
-		panelAddress.setBounds(325, 132, 369, 57);
+		panelAddress.setBounds(313, 176, 250, 57);
 		frame.getContentPane().add(panelAddress);
 		panelAddress.setLayout(null);
 
@@ -322,7 +309,7 @@ public class GUI {
 		txtElMonteRoad.setColumns(10);
 		txtElMonteRoad.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(
 				0, 0, 0)));
-		txtElMonteRoad.setBounds(75, 6, 288, 16);
+		txtElMonteRoad.setBounds(75, 6, 169, 16);
 		panelAddress.add(txtElMonteRoad);
 
 		txtLosAltosHills = new JTextField();
@@ -345,7 +332,7 @@ public class GUI {
 		txtUnitedStates.setColumns(10);
 		txtUnitedStates.setBorder(new MatteBorder(1, 1, 1, 1,
 				(Color) new Color(0, 0, 0)));
-		txtUnitedStates.setBounds(6, 36, 357, 16);
+		txtUnitedStates.setBounds(6, 36, 238, 16);
 		panelAddress.add(txtUnitedStates);
 
 		textField = new JTextField();
@@ -353,7 +340,23 @@ public class GUI {
 		textField.setColumns(10);
 		textField.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0,
 				0)));
-		textField.setBounds(150, 21, 213, 16);
+		textField.setBounds(150, 21, 94, 16);
 		panelAddress.add(textField);
+		
+		JLabel lblFirst = new JLabel("First:");
+		lblFirst.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblFirst.setBounds(252, 22, 57, 16);
+		frame.getContentPane().add(lblFirst);
+		
+		JLabel lblLastName = new JLabel("Last:");
+		lblLastName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLastName.setBounds(252, 64, 57, 16);
+		frame.getContentPane().add(lblLastName);
+		
+		JButton btnNewContact = new JButton("New Contact");
+		btnNewContact.setForeground(Color.BLACK);
+		btnNewContact.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnNewContact.setBounds(313, 384, 127, 28);
+		frame.getContentPane().add(btnNewContact);
 	}
 }

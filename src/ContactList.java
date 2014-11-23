@@ -9,7 +9,9 @@ public class ContactList {
 	private ArrayList<Person> contactList;
 
 	/**
-	 * Constructs a new object of class ContactList of length contactListLength
+	 * Constructs a new object of class ContactList.
+	 * 
+	 * @param contactListLength
 	 */
 	public ContactList() {
 		contactList = new ArrayList<Person>();
@@ -19,6 +21,8 @@ public class ContactList {
 
 	/**
 	 * Adds a Person to the contactList
+	 * 
+	 * @param newPerson
 	 */
 	public void addPerson(Person newPerson) {
 		contactList.add(newPerson);
@@ -34,17 +38,13 @@ public class ContactList {
 	}
 
 	/**
-	 * Sets the value of searchField to the value of the parameter
-	 * newSearchField, and returns an array list containing the objects in the contact list that match the
-	 * search. Has logic that will tell the main there is not search match, if there is not search match.
+	 * Returns the objects in the contact list that match the search.
 	 * 
-	 * @param newSearchField
+	 * @param searchField, searchValue
 	 * @return
 	 */
-	public ContactList searchForField(String newSearchField,
-			String newSearchValue) {
-		String searchField;
-		String searchValue;
+	public ContactList searchForField(String searchField,
+			String searchValue) {
 		System.out.println("Method ContactList.searchByField called");
 		// Call to method to extract field value and compare to searchValue
 		// Store array of objects that match the search
@@ -52,16 +52,15 @@ public class ContactList {
 		ContactList matches = new ContactList();
 		return matches;
 	}
-
+	
 	/**
 	 * Sets the value of sortField to the value of the parameter newSortField,
 	 * and sorts the ContactList by sortField
 	 * 
-	 * @param newSortField
+	 * @param SortField
 	 * @return
 	 */
-	public void sortByField(String newSortField) {
-		String sortField;
+	public void sortByField(String SortField) {
 		System.out.println("Method ContactList.sortByField called");
 
 	}
