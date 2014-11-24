@@ -1,8 +1,8 @@
 import java.util.*;
 
 /**
- * Define a reusable class ContactList. It allows the user to select the view they want
- * to do search/sort and returns these results in array list
+ * Define a reusable class ContactList. One object of class ContactList contains
+ * up to 100 Person objects.
  */
 public class ContactList {
 	private final int LIST_MAX_LENGTH = 100;
@@ -38,14 +38,14 @@ public class ContactList {
 	}
 
 	/**
-	 * Returns the objects in the contact list that match the search in a new 
+	 * Returns the objects in the contact list that match the search in a new
 	 * ContactList object.
 	 * 
-	 * @param searchField, searchValue
+	 * @param searchField
+	 *            , searchValue
 	 * @return
 	 */
-	public ContactList searchForField(String searchField,
-			String searchValue) {
+	public ContactList searchForField(String searchField, String searchValue) {
 		System.out.println("Method ContactList.searchByField called");
 		// Extract field value and compare to searchValue
 		// Store array of objects that match the search
@@ -53,10 +53,10 @@ public class ContactList {
 		ContactList matches = new ContactList();
 		return matches;
 	}
-	
+
 	/**
-	 * Sets the value of sortField to the value of the parameter newSortField,
-	 * and sorts the ContactList by sortField
+	 * This method sorts the ContactList by the field specified by the parameter
+	 * sortField.
 	 * 
 	 * @param SortField
 	 * @return

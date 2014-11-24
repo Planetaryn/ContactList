@@ -103,8 +103,8 @@ public class Main {
 	}
 
 	/**
-	 * This method updates all fields in the specified Person object and it's StreetAddress
-	 * object.
+	 * This method updates all fields in the specified Person object and it's
+	 * StreetAddress object.
 	 * 
 	 * @param firstName
 	 * @param lastName
@@ -118,9 +118,10 @@ public class Main {
 	 * @param state
 	 * @param country
 	 */
-	public static void updatePerson(Person person, String firstName, String lastName,
-			String email, String phoneNumber, String notes, String houseNumber,
-			String street, String zip, String city, String state, String country) {
+	public static void updatePerson(Person person, String firstName,
+			String lastName, String email, String phoneNumber, String notes,
+			String houseNumber, String street, String zip, String city,
+			String state, String country) {
 
 	}
 
@@ -224,3 +225,9 @@ public class Main {
 	}
 
 }
+
+
+/* -------Paste of run from console-------
+An object of class ContactList has been constructed
+Program has compiled and is running
+*/

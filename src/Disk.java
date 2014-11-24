@@ -12,6 +12,7 @@
  * V5: Added @param to the java doc description
  * V6: Corrected  typos per input from Kelly: “SuccessfulyWrittenToDisk” and “SuccessfulyReadFromDisk”  
  *     changed to “SuccessfullyWrittenToDisk” and “SuccessfullyReadFromDisk”
+ * v7: Made the constructor public per input from Noah.    
  * 
  */
 import java.io.*;
@@ -38,9 +39,9 @@ public class Disk {
 	 * and overrides the existing directory file with a new directory file. The
 	 * method returns true if successful, and false if an error occurs.
 	 * 
-	 * @param directoryOfContacts: ContactList object containing the directory
+	 * @param - directoryOfContacts: ContactList object containing the directory
 	 *        object
-	 * @return Returns true if write operation was successful and false if it
+	 * @return - Returns true if write operation was successful and false if it
 	 *         failed.
 	 */
 	public boolean writeToDisk(ContactList directoryOfContacts) {
@@ -55,7 +56,7 @@ public class Disk {
 	 * succeeds the method returns true and populates the private class variable
 	 * ContactList object with the directory object from the disk file.
 	 * 
-	 * @return Returns true if read is successful and false if operation
+	 * @return - Returns true if read is successful and false if operation
 	 *         failed.
 	 */
 

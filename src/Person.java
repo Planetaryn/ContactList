@@ -1,6 +1,7 @@
 /**
  * Define a reusable class Person. One object of class Person contains the
- * person’s email, phone number, first name, last name, notes, & their StreetAddress object.
+ * person’s email, phone number, first name, last name, notes, & their
+ * StreetAddress object.
  * 
  * @author kellylam
  */
@@ -13,15 +14,12 @@ public class Person {
 	private StreetAddress address;
 
 	/**
-	 * This method creates a new object of class StreetAddress when a new object
-	 * of class Person is constructed
+	 * Constructor for class Person. Creates a new object of class
+	 * StreetAddress, and fills all fields with blank strings when a new object
+	 * of class Person is created.
 	 */
 	public Person() {
-		setFirstName("");
-		setLastName("");
-		setNotes("");
-		setEmail("");
-		setPhoneNumber("");
+
 		System.out.println("New object of class Person constructed");
 	}
 

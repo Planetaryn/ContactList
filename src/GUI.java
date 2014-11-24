@@ -36,10 +36,11 @@ public class GUI {
 
 	class WindowEventHandler extends WindowAdapter {
 		/**
-		 * This method performs an action when the GUI window is closed.
+		 * This method instructs the Main to save the list to the disk when the
+		 * GUI window is closed.
 		 */
 		public void windowClosing(WindowEvent evt) {
-			// Close action goes here (save list)
+
 			System.exit(0);
 		}
 	}
@@ -293,7 +294,7 @@ public class GUI {
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
 			String[] values = new String[] { "Noah Goldsmith", "Homer Simpson" };
-			
+
 			/**
 			 * This method returns the index of the element of the guiArray that
 			 * is currently selected in the JList list.
@@ -303,8 +304,8 @@ public class GUI {
 			}
 
 			/**
-			 * This method returns the length of the array values
-			 * This is required for JList functionality.
+			 * This method returns the length of the array values This is
+			 * required for JList functionality.
 			 */
 			public int getSize() {
 				return values.length;
@@ -429,17 +430,16 @@ public class GUI {
 	}
 
 	/**
-	 * This method fills the data fields in the GUI with the data extracted from the selected Person object.
+	 * This method fills the data fields in the GUI with the data extracted from
+	 * the selected Person object.
 	 */
-	private void fillData(Person person){
-		
+	private void fillData(Person person) {
 	}
-	
+
 	/**
 	 * This method notifies the user that no match was found for their search.
 	 * 
 	 */
 	public void notifyNoSearchMatch() {
-
 	}
 }
