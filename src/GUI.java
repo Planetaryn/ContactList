@@ -13,17 +13,18 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.ListModel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  * Defines a reusable class GUI. One object of class GUI contains the graphical
@@ -32,40 +33,6 @@ import javax.swing.border.MatteBorder;
  * @author noahgoldsmith
  */
 public class GUI {
-
-	public JFrame frame; // How do I make you private?
-	private JTextField txtSearch;
-	private JTextField txtFirstName;
-	private JTextField textEmail;
-	private JLabel lblPhone;
-	private JTextField textPhone;
-	private JButton btnCancel;
-	private JTextField textLastName;
-	private JTextPane txtpnNotes;
-	@SuppressWarnings("rawtypes")
-	private JList list;
-	@SuppressWarnings("rawtypes")
-	private JComboBox comboSortBy;
-	private JLabel lblSortBy;
-	private JLabel lblSearchBy;
-	private JScrollPane scrollPane_1;
-	private JSeparator separator;
-	private JTextField txtHouseNumber;
-	private JTextField txtElMonteRoad;
-	private JTextField txtLosAltosHills;
-	private JTextField txtCa;
-	private JTextField txtUnitedStates;
-	private JTextField textField;
-	private Person[] guiArray; // This is the array displayed in the JList
-	private Person displayPerson; // This is the person that is displayed in the
-									// GUI
-
-	/**
-	 * This method constructs the GUI.
-	 */
-	public GUI() {
-		initialize();
-	}
 
 	class WindowEventHandler extends WindowAdapter {
 		/**
@@ -77,32 +44,92 @@ public class GUI {
 		}
 	}
 
+	private JButton btnCancel;
+	private JComboBox<String> comboSearchBy;
+	private JComboBox<String> comboSortBy;
+	@SuppressWarnings("unused")
+	private Person displayPerson; // This is the person that is displayed in the
+									// GUI
+	public JFrame frame; // How do I make you private?
+	private Person[] guiArray; // This is the array displayed in the JList
+	private JLabel lblPhone;
+	private JLabel lblSearchBy;
+	private JLabel lblSortBy;
+	private JList<Person> list;
+	private JScrollPane scrollPane_1;
+	private String searchField;
+	private String sortField;
+	private JSeparator separator;
+	private JTextPane txtpnNotes;
+	private JTextField txtEmail;
+	private JTextField txtLastName;
+	private JTextField txtPhone;
+	private JTextField txtCity;
+	private JTextField txtCountry;
+	private JTextField txtFirstName;
+	private JTextField txtHouseNumber;
+	private JTextField txtSearch;
+	private JTextField txtState;
+	private JTextField txtStreet;
+	private JTextField txtZip;
+
 	/**
-	 * This method constructs the array guiArray from the array list
-	 * contactList. This is necessary for a JList to display an array list.
-	 * 
-	 * -NoahNote: This method will be passed one of many arrays from the Main,
-	 * depending on if the user is searching/sorting.
+	 * This method constructs the GUI.
 	 */
-	private void makeList() {
-		ArrayList<Person> guiList = new ArrayList<Person>();
-		guiList.addAll(Main.getContactList());
-		guiArray = new Person[(guiList.size())];
-		guiArray = guiList.toArray(guiArray);
+	public GUI() {
+		initialize();
 	}
 
 	/**
-	 * This method notifies the user that no match was found for their search.
-	 * 
+	 * This method returns the value of the variable sortField
 	 */
-	public void notifyNoSearchMatch() {
-
+	public String getSortField() {
+		return sortField;
 	}
+
+	/**
+	 * This establishes a new document listener & the actions that will be
+	 * performed when it is triggered
+	 */
+	DocumentListener listener = new DocumentListener() {
+
+		/**
+		 * This method updates a Person Object when a character is removed from
+		 * a text field.
+		 */
+		public void removeUpdate(DocumentEvent e) {
+			updateAll(e);
+		}
+
+		/**
+		 * This method updates a Person Object when a character is added to a
+		 * text field.
+		 */
+		public void insertUpdate(DocumentEvent e) {
+			updateAll(e);
+		}
+
+		/**
+		 * This method updates a Person Object when a character is changed in a
+		 * text field.
+		 */
+		public void changedUpdate(DocumentEvent e) {
+			updateAll(e);
+		}
+
+		/**
+		 * This method instructs the Main to update a specified Person object.
+		 * 
+		 * @param e
+		 */
+		private void updateAll(DocumentEvent e) {
+		}
+	};
 
 	/**
 	 * This method initializes the content of the GUI frame
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked", "serial" })
+	@SuppressWarnings({ "rawtypes", "serial", "unchecked" })
 	private void initialize() {
 
 		frame = new JFrame();
@@ -117,18 +144,19 @@ public class GUI {
 				null, null, null));
 		txtSearch.setHorizontalAlignment(SwingConstants.LEFT);
 		txtSearch.setText("Search");
-		frame.getContentPane().add(txtSearch);
 		txtSearch.setColumns(10);
+		frame.getContentPane().add(txtSearch);
 
 		JButton btnSearch = new JButton("Search");
 		btnSearch.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnSearch.setBounds(6, 52, 87, 28);
 		btnSearch.addActionListener(new ActionListener() {
 			/**
-			 * This method performs an action when the search button is pressed
+			 * This method instructs the main to search for the text in the
+			 * txtSearch field in the field specified by the variable
+			 * searchField.
 			 */
 			public void actionPerformed(ActionEvent e) {
-				// Search button action here
 			}
 		});
 		frame.getContentPane().add(btnSearch);
@@ -139,14 +167,19 @@ public class GUI {
 		lblSearchBy.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblSearchBy);
 
-		/**
-		 * Search by combo box
-		 */
-		JComboBox comboSearchBy = new JComboBox();
+		comboSearchBy = new JComboBox<String>();
 		comboSearchBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		comboSearchBy.setBounds(108, 53, 118, 27);
-		comboSearchBy.setModel(new DefaultComboBoxModel(new String[] {
+		comboSearchBy.setModel(new DefaultComboBoxModel<String>(new String[] {
 				"Last Name", "Zip Code" }));
+		/**
+		 * This method sets the variable searchField to the value displayed in
+		 * the JComboBox comboSearchBy
+		 */
+		comboSearchBy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		frame.getContentPane().add(comboSearchBy);
 
 		lblSortBy = new JLabel("Sort by:");
@@ -154,19 +187,22 @@ public class GUI {
 		lblSortBy.setHorizontalAlignment(SwingConstants.LEFT);
 		frame.getContentPane().add(lblSortBy);
 
-		/**
-		 * Sort by combo box
-		 */
-		comboSortBy = new JComboBox();
+		comboSortBy = new JComboBox<String>();
 		comboSortBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		comboSortBy.setBounds(62, 385, 164, 27);
-		comboSortBy.setModel(new DefaultComboBoxModel(new String[] {
+		comboSortBy.setModel(new DefaultComboBoxModel<String>(new String[] {
 				"First Name", "Last Name" }));
+		/**
+		 * This method sets the variable sortField to the value displayed in the
+		 * JComboBox comboSortBy.
+		 */
+		comboSortBy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+
 		frame.getContentPane().add(comboSortBy);
 
-		/**
-		 * First Name text field
-		 */
 		txtFirstName = new JTextField();
 		txtFirstName.setBounds(313, 16, 250, 28);
 		txtFirstName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
@@ -174,55 +210,50 @@ public class GUI {
 		txtFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		txtFirstName.setHorizontalAlignment(SwingConstants.LEFT);
 		txtFirstName.setText("First"); // First name getter here.
-		frame.getContentPane().add(txtFirstName);
+		txtFirstName.getDocument().addDocumentListener(listener);
 		txtFirstName.setColumns(10);
+		frame.getContentPane().add(txtFirstName);
 
-		/**
-		 * Last name text field
-		 */
-		textLastName = new JTextField();
-		textLastName.setBounds(313, 56, 250, 28);
-		textLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
+		txtLastName = new JTextField();
+		txtLastName.setBounds(313, 56, 250, 28);
+		txtLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		textLastName.setText("Last");
-		textLastName.setHorizontalAlignment(SwingConstants.LEFT);
-		textLastName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		textLastName.setColumns(10);
-		frame.getContentPane().add(textLastName);
+		txtLastName.setText("Last");
+		txtLastName.setHorizontalAlignment(SwingConstants.LEFT);
+		txtLastName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		txtLastName.setColumns(10);
+		txtLastName.getDocument().addDocumentListener(listener);
+		frame.getContentPane().add(txtLastName);
 
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setBounds(252, 102, 57, 16);
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblEmail);
 
-		/**
-		 * Email text field
-		 */
-		textEmail = new JTextField();
-		textEmail.setBounds(313, 96, 250, 28);
-		textEmail.setText("Foothill@fhda.edu");
-		textEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
-		textEmail.setBackground(Color.WHITE);
-		frame.getContentPane().add(textEmail);
-		textEmail.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(313, 96, 250, 28);
+		txtEmail.setText("Foothill@fhda.edu");
+		txtEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
+				null, null));
+		txtEmail.setBackground(Color.WHITE);
+		txtEmail.setColumns(10);
+		txtEmail.getDocument().addDocumentListener(listener);
+		frame.getContentPane().add(txtEmail);
 
 		lblPhone = new JLabel("Phone:");
 		lblPhone.setBounds(252, 142, 57, 16);
 		lblPhone.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblPhone);
 
-		/**
-		 * Phone number text field
-		 */
-		textPhone = new JTextField();
-		textPhone.setBounds(313, 136, 250, 28);
-		textPhone.setText("555-867-5039");
-		textPhone.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
-				null, null, null));
-		textPhone.setColumns(10);
-		textPhone.setBackground(Color.WHITE);
-		frame.getContentPane().add(textPhone);
+		txtPhone = new JTextField();
+		txtPhone.setBounds(313, 136, 250, 28);
+		txtPhone.setText("555-867-5039");
+		txtPhone.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
+				null, null));
+		txtPhone.setColumns(10);
+		txtPhone.setBackground(Color.WHITE);
+		txtPhone.getDocument().addDocumentListener(listener);
+		frame.getContentPane().add(txtPhone);
 
 		JLabel lblAddress = new JLabel("Address:");
 		lblAddress.setBounds(252, 180, 57, 16);
@@ -233,11 +264,13 @@ public class GUI {
 		btnCancel.setBounds(436, 384, 127, 28);
 		btnCancel.addActionListener(new ActionListener() {
 			/**
-			 * This method performs an action when the discard changes button is
-			 * pressed
+			 * This method instructs the main to discard the changes made by the
+			 * user to the current Person object, and revert to the last version
+			 * of that Person object.
+			 * 
+			 * (This is a nice to have)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				// Cancel button action here
 			}
 		});
 		btnCancel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
@@ -256,21 +289,25 @@ public class GUI {
 		frame.getContentPane().add(scrollPane);
 
 		makeList();
-		list = new JList(guiArray);
+		list = new JList<Person>(guiArray);
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
 			String[] values = new String[] { "Noah Goldsmith", "Homer Simpson" };
+			
+			/**
+			 * This method returns the index of the element of the guiArray that
+			 * is currently selected in the JList list.
+			 */
+			public Object getElementAt(int index) {
+				return values[index];
+			}
 
 			/**
-			 * This method returns the index of the element of the array that is
-			 * currently selected.
+			 * This method returns the length of the array values
+			 * This is required for JList functionality.
 			 */
 			public int getSize() {
 				return values.length;
-			}
-
-			public Object getElementAt(int index) {
-				return values[index];
 			}
 		});
 		list.setBorder(null);
@@ -303,47 +340,53 @@ public class GUI {
 		txtHouseNumber.setBounds(6, 6, 70, 16);
 		txtHouseNumber.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(
 				0, 0, 0)));
-		panelAddress.add(txtHouseNumber);
 		txtHouseNumber.setColumns(10);
+		txtHouseNumber.getDocument().addDocumentListener(listener);
+		panelAddress.add(txtHouseNumber);
 
-		txtElMonteRoad = new JTextField();
-		txtElMonteRoad.setText("El Monte Road");
-		txtElMonteRoad.setColumns(10);
-		txtElMonteRoad.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(
-				0, 0, 0)));
-		txtElMonteRoad.setBounds(75, 6, 169, 16);
-		panelAddress.add(txtElMonteRoad);
-
-		txtLosAltosHills = new JTextField();
-		txtLosAltosHills.setText("Los Altos Hills");
-		txtLosAltosHills.setColumns(10);
-		txtLosAltosHills.setBorder(new MatteBorder(1, 1, 1, 1,
-				(Color) new Color(0, 0, 0)));
-		txtLosAltosHills.setBounds(6, 21, 122, 16);
-		panelAddress.add(txtLosAltosHills);
-
-		txtCa = new JTextField();
-		txtCa.setText("CA");
-		txtCa.setColumns(10);
-		txtCa.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		txtCa.setBounds(127, 21, 24, 16);
-		panelAddress.add(txtCa);
-
-		txtUnitedStates = new JTextField();
-		txtUnitedStates.setText("United States");
-		txtUnitedStates.setColumns(10);
-		txtUnitedStates.setBorder(new MatteBorder(1, 1, 1, 1,
-				(Color) new Color(0, 0, 0)));
-		txtUnitedStates.setBounds(6, 36, 238, 16);
-		panelAddress.add(txtUnitedStates);
-
-		textField = new JTextField();
-		textField.setText("94022");
-		textField.setColumns(10);
-		textField.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0,
+		txtStreet = new JTextField();
+		txtStreet.setText("El Monte Road");
+		txtStreet.setColumns(10);
+		txtStreet.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0,
 				0)));
-		textField.setBounds(150, 21, 94, 16);
-		panelAddress.add(textField);
+		txtStreet.setBounds(75, 6, 169, 16);
+		txtStreet.getDocument().addDocumentListener(listener);
+		panelAddress.add(txtStreet);
+
+		txtCity = new JTextField();
+		txtCity.setText("Los Altos Hills");
+		txtCity.setColumns(10);
+		txtCity.setBorder(new MatteBorder(1, 1, 1, 1,
+				(Color) new Color(0, 0, 0)));
+		txtCity.setBounds(6, 21, 122, 16);
+		txtCity.getDocument().addDocumentListener(listener);
+		panelAddress.add(txtCity);
+
+		txtState = new JTextField();
+		txtState.setText("CA");
+		txtState.setColumns(10);
+		txtState.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0,
+				0)));
+		txtState.setBounds(127, 21, 24, 16);
+		txtState.getDocument().addDocumentListener(listener);
+		panelAddress.add(txtState);
+
+		txtCountry = new JTextField();
+		txtCountry.setText("United States");
+		txtCountry.setColumns(10);
+		txtCountry.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0,
+				0, 0)));
+		txtCountry.setBounds(6, 36, 238, 16);
+		txtCountry.getDocument().addDocumentListener(listener);
+		panelAddress.add(txtCountry);
+
+		txtZip = new JTextField();
+		txtZip.setText("94022");
+		txtZip.setColumns(10);
+		txtZip.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		txtZip.setBounds(150, 21, 94, 16);
+		txtZip.getDocument().addDocumentListener(listener);
+		panelAddress.add(txtZip);
 
 		JLabel lblFirst = new JLabel("First:");
 		lblFirst.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -356,9 +399,47 @@ public class GUI {
 		frame.getContentPane().add(lblLastName);
 
 		JButton btnNewContact = new JButton("New Contact");
+		btnNewContact.addActionListener(new ActionListener() {
+			/**
+			 * This Method instructs the main to create a new "blank" Person
+			 * object and add it to the contactList when the New Contact button
+			 * is pressed.
+			 */
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewContact.setForeground(Color.BLACK);
 		btnNewContact.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnNewContact.setBounds(313, 384, 127, 28);
 		frame.getContentPane().add(btnNewContact);
+	}
+
+	/**
+	 * This method constructs the array guiArray from the array list
+	 * contactList. This is necessary for a JList to display an array list.
+	 * 
+	 * -NoahNote: This method will be passed one of many arrays from the Main,
+	 * depending on if the user is searching/sorting.
+	 */
+	private void makeList() {
+		ArrayList<Person> guiList = new ArrayList<Person>();
+		guiList.addAll(Main.getContactList());
+		guiArray = new Person[(guiList.size())];
+		guiArray = guiList.toArray(guiArray);
+	}
+
+	/**
+	 * This method fills the data fields in the GUI with the data extracted from the selected Person object.
+	 */
+	private void fillData(Person person){
+		
+	}
+	
+	/**
+	 * This method notifies the user that no match was found for their search.
+	 * 
+	 */
+	public void notifyNoSearchMatch() {
+
 	}
 }

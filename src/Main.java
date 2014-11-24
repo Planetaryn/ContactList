@@ -12,6 +12,7 @@ public class Main {
 
 	private static ContactList list;
 	private static Person person;
+	private static GUI window;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -21,7 +22,7 @@ public class Main {
 			 */
 			public void run() {
 				try {
-					GUI window = new GUI();
+					window = new GUI();
 					window.frame.setVisible(true);
 					System.out.println("Program has compiled and is running");
 				} catch (Exception e) {
@@ -43,7 +44,8 @@ public class Main {
 		// Will pass list to disk as a parameter
 		// Disk will then populate list with the array stored on disk
 		// A new list opens up with a blank person object already created
-		// An existing list opens up with the first person in that list displayed
+		// An existing list opens up with the first person in that list
+		// displayed
 	}
 
 	/**
@@ -58,89 +60,73 @@ public class Main {
 	 * the user wants a sorted list or search results
 	 */
 	public static ArrayList getContactList() {
-		openList(); //required for compilation
-	   // addPerson();
+		openList(); // required for compilation
+		// addPerson();
 		return (list.getList());
 	}
 
 	/**
-	 * This method searches the list for the values specified in the GUI, then
+	 * This method searches the list for the values specified b the GUI, then
 	 * returns a new ContactList containing the results. If no match is found,
 	 * this method will call noSearchMatch.
 	 * 
-	 * @param searchField, searchValue
+	 * @param searchField
+	 *            , searchValue
 	 */
-	public ContactList searchList(String searchField, String searchValue) {
+	public static ContactList searchList(String searchField, String searchValue) {
 		ContactList matches = new ContactList();
 		return matches;
 	}
 
 	/**
-	 * This method sorts the list by the field specified in the GUI.
-	 */
-	public void sortList(String sortField) {
-
-	}
-
-	/**
-	 * This method instructs the GUI to tell the user that there is no one with 
+	 * This method instructs the GUI to tell the user that there is no one with
 	 * the entered (last name/email) in the contact list.
 	 */
-	private void noSearchMatch() {
+	public static void noSearchMatch() {
 
 	}
 
+	/**
+	 * This method sorts the list by the field specified in the GUI.
+	 */
+	@SuppressWarnings("unused")
+	private void sortList(String sortField) {
+
+	}
 
 	/**
-	 * This method sets up a new person and adds it to the list
+	 * This method sets up a new person and adds it to the list.
 	 */
-	private static void addPerson() {
+	public static void addPerson() {
 		person = new Person();
 		list.addPerson(person);
 	}
 
 	/**
-	 * This method acts as a relay for Person.setEmail
-	 * @param relayedEmail
+	 * This method updates all fields in the specified Person object and it's StreetAddress
+	 * object.
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param phoneNumber
+	 * @param notes
+	 * @param houseNumber
+	 * @param street
+	 * @param zip
+	 * @param city
+	 * @param state
+	 * @param country
 	 */
-	public void relaySEmail(String relayedEmail) {
-		// person.setEmail(relayedEmail); Is what will go here
-	}
-
-	/**
-	 * This method acts as a relay for Person.setPhoneNumber
-	 * @param relayedPhoneNumber
-	 */
-	public void relaySPhoneNumber(String relayedPhoneNumber) {
-
-	}
-
-	/**
-	 * This method acts as a relay for Person.setFirstName
-	 * @param relayedFirstName
-	 */
-	public void relaySFirstName(String relayedFirstName) {
-
-	}
-
-	/**
-	 * This method acts as a relay for Person.setLastName
-	 * @param relayedLastName
-	 */
-	public void relaySLastName(String relayedLastName) {
-
-	}
-
-	/**
-	 * This method acts as a relay for Person.setNotes
-	 * @param relayedNotes
-	 */
-	public void relaySNotes(String relayedNotes) {
+	public static void updatePerson(Person person, String firstName, String lastName,
+			String email, String phoneNumber, String notes, String houseNumber,
+			String street, String zip, String city, String state, String country) {
 
 	}
 
 	/**
 	 * This method acts as a relay for Person.getEmail
+	 * 
 	 * @param relayedEmail
 	 */
 	public String relayGEmail(String relayedEmail) {
@@ -149,6 +135,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for Person.getPhoneNumber
+	 * 
 	 * @param relayedPhoneNumber
 	 */
 	public String relayGPhoneNumber(String relayedPhoneNumber) {
@@ -157,6 +144,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for Person.getFirstName
+	 * 
 	 * @param relayedFirstName
 	 */
 	public String relayGFirstName(String relayedFirstName) {
@@ -165,6 +153,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for Person.getLastName
+	 * 
 	 * @param relayedLastName
 	 */
 	public String relayGLastName(String relayedLastName) {
@@ -173,6 +162,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for Person.getNotes
+	 * 
 	 * @param relayedNotes
 	 */
 	public String relayGNotes(String relayedNotes) {
@@ -180,55 +170,8 @@ public class Main {
 	}
 
 	/**
-	 * This method acts as a relay for StreetAddress.setHouseNumber
-	 * @param relayedHouseNumber
-	 */
-	public void relaySHouseNumber(String relayedHouseNumber) {
-
-	}
-
-	/**
-	 * This method acts as a relay for StreetAddress.setStreet
-	 * @param relayedStreet
-	 */
-	public void relaySStreet(String relayedStreet) {
-
-	}
-
-	/**
-	 * This method acts as a relay for StreetAddress.setZip
-	 * @param relayedZip
-	 */
-	public void relaySZip(String relayedZip) {
-
-	}
-
-	/**
-	 * This method acts as a relay for StreetAddress.setCity
-	 * @param relayedCity
-	 */
-	public void relaySCity(String relayedCity) {
-
-	}
-
-	/**
-	 * This method acts as a relay for StreetAddress.setState
-	 * @param relayedState
-	 */
-	public void relaySState(String relayedState) {
-
-	}
-
-	/**
-	 * This method acts as a relay for StreetAddress.setCountry
-	 * @param relayedCountry
-	 */
-	public void relaySCountry(String relayedCountry) {
-
-	}
-
-	/**
 	 * This method acts as a relay for StreetAddress.getHouseNumber
+	 * 
 	 * @param relayedHouseNumber
 	 */
 	public String relayGHouseNumber(String relayedHouseNumber) {
@@ -237,6 +180,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for StreetAddress.getStreet
+	 * 
 	 * @param relayedStreet
 	 */
 	public String relayGStreet(String relayedStreet) {
@@ -245,6 +189,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for StreetAddress.getZip
+	 * 
 	 * @param relayedZip
 	 */
 	public String relayGZip(String relayedZip) {
@@ -253,6 +198,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for StreetAddress.getCity
+	 * 
 	 * @param relayedCity
 	 */
 	public String relayGCity(String relayedCity) {
@@ -261,6 +207,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for StreetAddress.getState
+	 * 
 	 * @param relayedState
 	 */
 	public String relayGState(String relayedState) {
@@ -269,6 +216,7 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for StreetAddress.getCountry
+	 * 
 	 * @param relayedCountry
 	 */
 	public String relayGCountry(String relayedCountry) {
