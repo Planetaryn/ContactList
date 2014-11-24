@@ -71,7 +71,6 @@ public class Main {
 	 * @param searchField, searchValue
 	 */
 	public ContactList searchList(String searchField, String searchValue) {
-		int numMatches = 0;
 		ContactList matches = new ContactList();
 		return matches;
 	}
@@ -97,7 +96,6 @@ public class Main {
 	 */
 	private static void addPerson() {
 		person = new Person();
-		person.setFirstName("paul");
 		list.addPerson(person);
 	}
 
@@ -106,7 +104,7 @@ public class Main {
 	 * @param relayedEmail
 	 */
 	public void relaySEmail(String relayedEmail) {
-		person.setEmail(relayedEmail);
+		// person.setEmail(relayedEmail); Is what will go here
 	}
 
 	/**

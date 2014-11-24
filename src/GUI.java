@@ -71,13 +71,13 @@ public class GUI {
 		 * This method performs an action when the GUI window is closed.
 		 */
 		public void windowClosing(WindowEvent evt) {
-			// Close action goes here
+			// Close action goes here (save list)
 			System.exit(0);
 		}
 	}
 
 	/**
-	 * This list constructs the array guiArray from the arrayList contactList. 
+	 * This method constructs the array guiArray from the arrayList contactList. 
 	 * 
 	 * -NoahNote: This method will be passed one of many arrays from the Main, depending on if the user is searching/sorting.
 	 */

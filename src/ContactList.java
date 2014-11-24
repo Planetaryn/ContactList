@@ -38,7 +38,8 @@ public class ContactList {
 	}
 
 	/**
-	 * Returns the objects in the contact list that match the search.
+	 * Returns the objects in the contact list that match the search in a new 
+	 * ContactList object.
 	 * 
 	 * @param searchField, searchValue
 	 * @return
