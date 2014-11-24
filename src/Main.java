@@ -83,8 +83,8 @@ public class Main {
 	}
 
 	/**
-	 * This method instructs the UI to tell the user that there is no search
-	 * match.
+	 * This method instructs the GUI to tell the user that there is no one with 
+	 * the entered (last name/email) in the contact list.
 	 */
 	private void noSearchMatch() {
 
@@ -167,7 +167,7 @@ public class Main {
 	 * This method acts as a relay for Person.getLastName
 	 * @param relayedLastName
 	 */
-	public String relayLastName(String relayedLastName) {
+	public String relayGLastName(String relayedLastName) {
 		return relayedLastName;
 	}
 
@@ -175,7 +175,7 @@ public class Main {
 	 * This method acts as a relay for Person.getNotes
 	 * @param relayedNotes
 	 */
-	public String relayNotes(String relayedNotes) {
+	public String relayGNotes(String relayedNotes) {
 		return relayedNotes;
 	}
 

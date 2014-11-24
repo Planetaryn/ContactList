@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Define a reusable class List. It allows the user to select the view they want
+ * Define a reusable class ContactList. It allows the user to select the view they want
  * to do search/sort and returns these results in array list
  */
 public class ContactList {
@@ -47,7 +47,7 @@ public class ContactList {
 	public ContactList searchForField(String searchField,
 			String searchValue) {
 		System.out.println("Method ContactList.searchByField called");
-		// Call to method to extract field value and compare to searchValue
+		// Extract field value and compare to searchValue
 		// Store array of objects that match the search
 		// Return that array
 		ContactList matches = new ContactList();
