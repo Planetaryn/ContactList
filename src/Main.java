@@ -39,7 +39,7 @@ public class Main {
 	 * new list empty.
 	 */
 	private static void openList() {
-		list = new ContactList(10);
+		list = new ContactList();
 		// Will pass list to disk as a parameter
 		// Disk will then populate list with the array stored on disk
 		// A new list opens up with a blank person object already created
@@ -71,8 +71,7 @@ public class Main {
 	 * @param searchField, searchValue
 	 */
 	public ContactList searchList(String searchField, String searchValue) {
-		int numMatches = 0;
-		ContactList matches = new ContactList(numMatches);
+		ContactList matches = new ContactList();
 		return matches;
 	}
 
@@ -84,8 +83,8 @@ public class Main {
 	}
 
 	/**
-	 * This method instructs the UI to tell the user that there is no search
-	 * match.
+	 * This method instructs the GUI to tell the user that there is no one with 
+	 * the entered (last name/email) in the contact list.
 	 */
 	private void noSearchMatch() {
 
@@ -97,7 +96,6 @@ public class Main {
 	 */
 	private static void addPerson() {
 		person = new Person();
-		person.setFirstName("paul");
 		list.addPerson(person);
 	}
 
@@ -106,7 +104,7 @@ public class Main {
 	 * @param relayedEmail
 	 */
 	public void relaySEmail(String relayedEmail) {
-		person.setEmail(relayedEmail);
+		// person.setEmail(relayedEmail); Is what will go here
 	}
 
 	/**
@@ -169,7 +167,7 @@ public class Main {
 	 * This method acts as a relay for Person.getLastName
 	 * @param relayedLastName
 	 */
-	public String relayLastName(String relayedLastName) {
+	public String relayGLastName(String relayedLastName) {
 		return relayedLastName;
 	}
 
@@ -177,7 +175,7 @@ public class Main {
 	 * This method acts as a relay for Person.getNotes
 	 * @param relayedNotes
 	 */
-	public String relayNotes(String relayedNotes) {
+	public String relayGNotes(String relayedNotes) {
 		return relayedNotes;
 	}
 

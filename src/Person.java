@@ -1,7 +1,6 @@
 /**
  * Define a reusable class Person. One object of class Person contains the
- * persons visible email, normalized email, visible phone number, normalized
- * phone number, first name, last name, & notes.
+ * person’s email, phone number, first name, last name, notes, & their StreetAddress object.
  * 
  * @author kellylam
  */
@@ -27,7 +26,7 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of email to the value of the parameter newVizEmail
+	 * Sets the value of email to the value of the parameter newEmail
 	 * 
 	 * @param newEmail
 	 */

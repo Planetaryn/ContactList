@@ -33,7 +33,7 @@ import javax.swing.border.MatteBorder;
  */
 public class GUI {
 
-	public JFrame frame; //How do I make you private?
+	public JFrame frame; // How do I make you private?
 	private JTextField txtSearch;
 	private JTextField txtFirstName;
 	private JTextField textEmail;
@@ -56,8 +56,9 @@ public class GUI {
 	private JTextField txtCa;
 	private JTextField txtUnitedStates;
 	private JTextField textField;
-	private Person[] guiArray; //This is the array displayed in the JList
-	private Person displayPerson; //This is the person that is displayed in the GUI
+	private Person[] guiArray; // This is the array displayed in the JList
+	private Person displayPerson; // This is the person that is displayed in the
+									// GUI
 
 	/**
 	 * This method constructs the GUI.
@@ -71,15 +72,17 @@ public class GUI {
 		 * This method performs an action when the GUI window is closed.
 		 */
 		public void windowClosing(WindowEvent evt) {
-			// Close action goes here
+			// Close action goes here (save list)
 			System.exit(0);
 		}
 	}
 
 	/**
-	 * This list constructs the array guiArray from the arrayList contactList. 
+	 * This method constructs the array guiArray from the array list
+	 * contactList. This is necessary for a JList to display an array list.
 	 * 
-	 * -NoahNote: This method will be passed one of many arrays from the Main, depending on if the user is searching/sorting.
+	 * -NoahNote: This method will be passed one of many arrays from the Main,
+	 * depending on if the user is searching/sorting.
 	 */
 	private void makeList() {
 		ArrayList<Person> guiList = new ArrayList<Person>();
@@ -90,11 +93,12 @@ public class GUI {
 
 	/**
 	 * This method notifies the user that no match was found for their search.
+	 * 
 	 */
-	public void notifyNoSearchMatch(){
-		
+	public void notifyNoSearchMatch() {
+
 	}
-	
+
 	/**
 	 * This method initializes the content of the GUI frame
 	 */
@@ -116,13 +120,13 @@ public class GUI {
 		frame.getContentPane().add(txtSearch);
 		txtSearch.setColumns(10);
 
-		/**
-		 * Search Button Method
-		 */
 		JButton btnSearch = new JButton("Search");
 		btnSearch.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnSearch.setBounds(6, 52, 87, 28);
 		btnSearch.addActionListener(new ActionListener() {
+			/**
+			 * This method performs an action when the search button is pressed
+			 */
 			public void actionPerformed(ActionEvent e) {
 				// Search button action here
 			}
@@ -225,13 +229,13 @@ public class GUI {
 		lblAddress.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblAddress);
 
-		/**
-		 * Cancel Button
-		 */
-		btnCancel = new JButton(
-				"Discard Changes");
+		btnCancel = new JButton("Discard Changes");
 		btnCancel.setBounds(436, 384, 127, 28);
 		btnCancel.addActionListener(new ActionListener() {
+			/**
+			 * This method performs an action when the discard changes button is
+			 * pressed
+			 */
 			public void actionPerformed(ActionEvent e) {
 				// Cancel button action here
 			}
@@ -251,22 +255,20 @@ public class GUI {
 		scrollPane.setBounds(10, 92, 216, 285);
 		frame.getContentPane().add(scrollPane);
 
-		/**
-		 * This method(?) calls the method to create the array used for display. It then displays that array in a JList.
-		 * It has submethods(?) to return a selected element in the array, return the size of the array.
-		 * 
-		 * -NoahNote: The guiArray will be rewritten/changed when the user searches or sorts the list. If they search, the guiArray will contain only
-		 * the names that match the search. If they sort, it will display the names given by the sorting order. These methods will be written in 
-		 * class ContactList, and relayed to class GUI through the main.
-		 */
 		makeList();
 		list = new JList(guiArray);
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Noah Goldsmith", "Homer Simpson"};
+			String[] values = new String[] { "Noah Goldsmith", "Homer Simpson" };
+
+			/**
+			 * This method returns the index of the element of the array that is
+			 * currently selected.
+			 */
 			public int getSize() {
 				return values.length;
 			}
+
 			public Object getElementAt(int index) {
 				return values[index];
 			}
@@ -342,17 +344,17 @@ public class GUI {
 				0)));
 		textField.setBounds(150, 21, 94, 16);
 		panelAddress.add(textField);
-		
+
 		JLabel lblFirst = new JLabel("First:");
 		lblFirst.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFirst.setBounds(252, 22, 57, 16);
 		frame.getContentPane().add(lblFirst);
-		
+
 		JLabel lblLastName = new JLabel("Last:");
 		lblLastName.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLastName.setBounds(252, 64, 57, 16);
 		frame.getContentPane().add(lblLastName);
-		
+
 		JButton btnNewContact = new JButton("New Contact");
 		btnNewContact.setForeground(Color.BLACK);
 		btnNewContact.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
