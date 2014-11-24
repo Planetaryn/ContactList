@@ -12,6 +12,7 @@
  * V5: Added @param to the java doc description
  * V6: Corrected  typos per input from Kelly: “SuccessfulyWrittenToDisk” and “SuccessfulyReadFromDisk”  
  *     changed to “SuccessfullyWrittenToDisk” and “SuccessfullyReadFromDisk”
+ * v7: Made the constructor public per input from Noah.    
  * 
  */
 import java.io.*;
@@ -28,7 +29,7 @@ public class Disk {
 	 * fileExists variable to true.
 	 *  @param 
 	 */
-	Disk() {
+	public Disk() {
 
 	}
 
