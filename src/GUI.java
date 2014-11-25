@@ -293,7 +293,7 @@ public class GUI {
 		list = new JList<Person>(guiArray);
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] { "Noah Goldsmith", "Homer Simpson" };
+			String[] values = new String[] { "Noah Goldsmith" };
 
 			/**
 			 * This method returns the index of the element of the guiArray that
