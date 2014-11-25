@@ -121,7 +121,7 @@ public class Main {
 	 * 
 	 * @param relayedEmail
 	 */
-	public String relayGEmail(String relayedEmail) {
+	public static String relayGEmail(String relayedEmail) {
 		return relayedEmail;
 	}
 
@@ -130,7 +130,7 @@ public class Main {
 	 * 
 	 * @param relayedPhoneNumber
 	 */
-	public String relayGPhoneNumber(String relayedPhoneNumber) {
+	public static String relayGPhoneNumber(String relayedPhoneNumber) {
 		return relayedPhoneNumber;
 	}
 
@@ -139,7 +139,7 @@ public class Main {
 	 * 
 	 * @param relayedFirstName
 	 */
-	public String relayGFirstName(String relayedFirstName) {
+	public static String relayGFirstName(String relayedFirstName) {
 		return relayedFirstName;
 	}
 
@@ -148,7 +148,7 @@ public class Main {
 	 * 
 	 * @param relayedLastName
 	 */
-	public String relayGLastName(String relayedLastName) {
+	public static String relayGLastName(String relayedLastName) {
 		return relayedLastName;
 	}
 
@@ -157,7 +157,7 @@ public class Main {
 	 * 
 	 * @param relayedNotes
 	 */
-	public String relayGNotes(String relayedNotes) {
+	public static String relayGNotes(String relayedNotes) {
 		return relayedNotes;
 	}
 
@@ -166,7 +166,7 @@ public class Main {
 	 * 
 	 * @param relayedHouseNumber
 	 */
-	public String relayGHouseNumber(String relayedHouseNumber) {
+	public static String relayGHouseNumber(String relayedHouseNumber) {
 		return relayedHouseNumber;
 	}
 
@@ -175,7 +175,7 @@ public class Main {
 	 * 
 	 * @param relayedStreet
 	 */
-	public String relayGStreet(String relayedStreet) {
+	public static String relayGStreet(String relayedStreet) {
 		return relayedStreet;
 	}
 
@@ -184,7 +184,7 @@ public class Main {
 	 * 
 	 * @param relayedZip
 	 */
-	public String relayGZip(String relayedZip) {
+	public static String relayGZip(String relayedZip) {
 		return relayedZip;
 	}
 
@@ -193,7 +193,7 @@ public class Main {
 	 * 
 	 * @param relayedCity
 	 */
-	public String relayGCity(String relayedCity) {
+	public static String relayGCity(String relayedCity) {
 		return relayedCity;
 	}
 
@@ -202,7 +202,7 @@ public class Main {
 	 * 
 	 * @param relayedState
 	 */
-	public String relayGState(String relayedState) {
+	public static String relayGState(String relayedState) {
 		return relayedState;
 	}
 
@@ -211,7 +211,7 @@ public class Main {
 	 * 
 	 * @param relayedCountry
 	 */
-	public String relayGCountry(String relayedCountry) {
+	public static String relayGCountry(String relayedCountry) {
 		return relayedCountry;
 	}
 
