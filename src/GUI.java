@@ -79,6 +79,7 @@ public class GUI {
 	 */
 	public GUI() {
 		initialize();
+		this.frame.setVisible(true); // Must be the last thing done in this method.
 	}
 
 	/**
@@ -414,7 +415,7 @@ public class GUI {
 		btnNewContact.setBounds(313, 384, 127, 28);
 		frame.getContentPane().add(btnNewContact);
 		
-		this.frame.setVisible(true); //MUST BE LAST LINE
+		
 	}
 
 	/**
