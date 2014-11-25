@@ -1,10 +1,11 @@
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Define a reusable class ContactList. One object of class ContactList contains
  * up to 100 Person objects.
  */
-public class ContactList {
+public class ContactList implements Serializable{
 	private final int LIST_MAX_LENGTH = 100;
 	private ArrayList<Person> contactList;
 
