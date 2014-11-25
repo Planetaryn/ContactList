@@ -13,8 +13,9 @@ public class StreetAddress {
 	private String country;
 
 	/**
-	 * Sets the value of houseNumber, street, zip, city, state, & country when a
-	 * new object of class StreetAddress is created
+	 * Constructor for class StreetAddress. Sets the value of houseNumber,
+	 * street, zip, city, state, & country to be blanks strings when a new
+	 * object of class StreetAddress is created.
 	 */
 	public StreetAddress() {
 		System.out.println("New object of class StreetAddress constructed");

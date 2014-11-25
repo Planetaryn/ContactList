@@ -1,79 +1,83 @@
 /**
- * This Class provides interface to the hard disk for the OO Java project The
- * class has methods for saving and retrieving a directory list to/from a disk.
- * The class can save a single object (augment it to the end of the disk file)
- * or save the whole directory (override the existing file). The class can read
- * the directory from the disk and return the directory to the invoking class.
+ * This Class provides interface to the hard disk for the OO Java project. The
+ * class has methods for saving and retrieving the  whole directory list to/from a disk.
+ * The class saves the whole directory (override the existing file). The class can read
+ * the directory from the disk and return the directory (ContactList object) to the invoking class.  
  * 
- * @author ShmuelShaffer
+ * @author Shmuel Shaffer
+ * This is a version 2 which includes modifications based on feedback we received in the class.
+ * Version 3: changed the functionality of the contractor to modify the private fileExists flag
+ * formated 
+ * V4: Added a getDiskFileObject method
+ * V5: Added @param to the java doc description
+ * V6: Corrected  typos per input from Kelly: “SuccessfulyWrittenToDisk” and “SuccessfulyReadFromDisk”  
+ *     changed to “SuccessfullyWrittenToDisk” and “SuccessfullyReadFromDisk”
+ * v7: Made the constructor public per input from Noah.    
+ * 
  */
+import java.io.*;
+import java.util.*;
+
 public class Disk {
+	private final String CONTACT_LIST_FILE_NAME = "Contact_List.ser";
+	private boolean fileExists;
+	private ContactList directoryOfContactsFromDisk;
 
 	/**
 	 * Constructor for the Disk Class finds if the DirectoryProject.txt file
-	 * exists. If it does not exists, the constructor created the file and
-	 * closes it
+	 * exists. If it does not exists, the constructor sets the value of the
+	 * fileExists variable to true.
+	 * 
+	 * @param
 	 */
 	public Disk() {
 
 	}
 
 	/**
-	 * The toStorableString method gets a Person object which represents a
-	 * single contact and converts it into a printable string. The string uses
-	 * the "|" character as a separator between the various elements in the
-	 * Person object string and inserts a "\n" at the end of the string to marks
-	 * the end of the contact object string.
-	 */
-	String toStorableString(Person contact) {
-		String personAsString = "";
-		return personAsString;
-	}
-
-	/**
-	 * The writeToDisk method gets the List directory as an input and overrides
-	 * the existing directory file with a new directory file. The method returns
-	 * true if successful, and false if an error occurs.
-	 */
-	public boolean writeToDisk(ContactList manyContacts) {
-		Person oneContact = new Person();
-		boolean successfulyWrittenToDisk = true;
-		successfulyWrittenToDisk = writeToDisk(oneContact);
-		return successfulyWrittenToDisk;
-	}
-
-	/**
-	 * The writeToDisk method gets a Person object (a sub object of the List
-	 * object) as an input and augments the existing directory file on the disk
-	 * with a new with a new person data. The method returns true if successful,
-	 * and false if an error occurs.
-	 */
-	public boolean writeToDisk(Person contact) {
-		boolean successfulyWrittenToDisk = true;
-		return successfulyWrittenToDisk;
-	}
-
-	/**
-	 * The readFromDisk method reads the directory file from the disk and
-	 * returns a List object containing the whole directory.
-	 */
-	public ContactList readFromDisk() {
-		ContactList directoryOfContacts = new ContactList(1);
-		String lineFromDisk = "";
-		Person contact;
-		contact = this.fromString(lineFromDisk);
-		return directoryOfContacts;
-	}
-
-	/**
-	 * The fromString method gets a string of characters with | markets and
-	 * returns a a Person object containing the information from the disk about
-	 * that person. Elements of a Person which were not entered into the
-	 * directory remain an empty string "".
+	 * The writeToDisk method gets the ContactList Object as an input parameter
+	 * and overrides the existing directory file with a new directory file. The
+	 * method returns true if successful, and false if an error occurs.
 	 * 
+	 * @param - directoryOfContacts: ContactList object containing the directory
+	 *        object
+	 * @return - Returns true if write operation was successful and false if it
+	 *         failed.
 	 */
-	public Person fromString(String contact) {
-		Person directoryOfContacts = new Person();
-		return directoryOfContacts;
+	public boolean writeToDisk(ContactList directoryOfContacts) {
+		boolean successfullyWrittenToDisk = true;
+		System.out.println("Method writeToDisk called");
+		return successfullyWrittenToDisk;
 	}
+
+	/**
+	 * The readFromDisk method attempts to read an object from the disk. If the
+	 * read operation fails, the method returns false. If the read operation
+	 * succeeds the method returns true and populates the private class variable
+	 * ContactList object with the directory object from the disk file.
+	 * 
+	 * @return - Returns true if read is successful and false if operation
+	 *         failed.
+	 */
+
+	public boolean readFromDisk() {
+		boolean successfullyreadFromDisk = true;
+		System.out.println("Method readFromDisk called");
+		return successfullyreadFromDisk;
+	}
+
+	/**
+	 * The method getObjectFromDiskFile returns the object which was read from
+	 * the disk by the readFromDisk method. If the readFromDisk method was not
+	 * successful, the method returns null (rather than the address of a valid
+	 * ContactList object).
+	 * 
+	 * @return - Returns ContactList object containing the directory object
+	 *         which was read from the disk.
+	 */
+	public ContactList getDiskFileObject() {
+		System.out.println("Method getDiskFileObject called");
+		return directoryOfContactsFromDisk;
+	}
+
 }
