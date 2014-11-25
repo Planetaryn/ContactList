@@ -23,7 +23,6 @@ public class Main {
 			public void run() {
 				try {
 					window = new GUI();
-					window.frame.setVisible(true);
 					System.out.println("Program has compiled and is running");
 				} catch (Exception e) {
 					e.printStackTrace();

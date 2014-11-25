@@ -51,7 +51,7 @@ public class GUI {
 	@SuppressWarnings("unused")
 	private Person displayPerson; // This is the person that is displayed in the
 									// GUI
-	public JFrame frame; // How do I make you private?
+	private JFrame frame; // How do I make you private?
 	private Person[] guiArray; // This is the array displayed in the JList
 	private JLabel lblPhone;
 	private JLabel lblSearchBy;
@@ -413,6 +413,8 @@ public class GUI {
 		btnNewContact.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnNewContact.setBounds(313, 384, 127, 28);
 		frame.getContentPane().add(btnNewContact);
+		
+		this.frame.setVisible(true); //MUST BE LAST LINE
 	}
 
 	/**
