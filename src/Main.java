@@ -66,9 +66,9 @@ public class Main {
 	}
 
 	/**
-	 * This method searches the list for the values specified b the GUI, then
-	 * returns a new ContactList containing the results. If no match is found,
-	 * this method will call noSearchMatch.
+	 * This method searches the list for the values specified by the GUI, then
+	 * returns a new ContactList containing the results. If no match is found, 
+	 * it will notify the user through the GUI.
 	 * 
 	 * @param searchField
 	 *            , searchValue
@@ -76,14 +76,6 @@ public class Main {
 	public static ContactList searchList(String searchField, String searchValue) {
 		ContactList matches = new ContactList();
 		return matches;
-	}
-
-	/**
-	 * This method instructs the GUI to tell the user that there is no one with
-	 * the entered (last name/email) in the contact list.
-	 */
-	public static void noSearchMatch() {
-
 	}
 
 	/**

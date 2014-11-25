@@ -440,6 +440,6 @@ public class GUI {
 	 * This method notifies the user that no match was found for their search.
 	 * 
 	 */
-	public void notifyNoSearchMatch() {
+	public static void notifyNoSearchMatch() {
 	}
 }
