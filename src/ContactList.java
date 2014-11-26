@@ -1,12 +1,11 @@
 import java.io.Serializable;
 import java.util.*;
 
+
 /**
- * Define a reusable class ContactList. One object of class ContactList contains
- * up to 100 Person objects.
+ * Define a reusable class ContactList. One object of class ContactList contains Person objects.
  */
 public class ContactList implements Serializable{
-	private final int LIST_MAX_LENGTH = 100;
 	private ArrayList<Person> contactList;
 
 	/**
@@ -39,14 +38,21 @@ public class ContactList implements Serializable{
 	}
 
 	/**
-	 * Returns the objects in the contact list that match the search in a new
+	 * Returns the specified person object
+	 * @return 
+	 */
+	public Person getPerson (int index){
+		return contactList.get(index);
+	}
+	/**
+	 * Returns the objects in the contact list that match the search in a new 
 	 * ContactList object.
 	 * 
-	 * @param searchField
-	 *            , searchValue
+	 * @param searchField, searchValue
 	 * @return
 	 */
-	public ContactList searchForField(String searchField, String searchValue) {
+	public ContactList searchForField(String searchField,
+			String searchValue) {
 		System.out.println("Method ContactList.searchByField called");
 		// Extract field value and compare to searchValue
 		// Store array of objects that match the search
@@ -54,10 +60,9 @@ public class ContactList implements Serializable{
 		ContactList matches = new ContactList();
 		return matches;
 	}
-
+	
 	/**
-	 * This method sorts the ContactList by the field specified by the parameter
-	 * sortField.
+     * This method sorts the ContactList by the field specified by the parameter sortField.
 	 * 
 	 * @param SortField
 	 * @return

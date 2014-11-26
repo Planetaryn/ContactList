@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class Main {
 
 	private static ContactList list;
-	private static Person person;
 	private static GUI window;
+	private static Person person = new Person();;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -22,6 +22,8 @@ public class Main {
 			 */
 			public void run() {
 				try {
+					openList();
+					addPerson();
 					window = new GUI();
 					System.out.println("Program has compiled and is running");
 				} catch (Exception e) {
@@ -59,9 +61,27 @@ public class Main {
 	 * the user wants a sorted list or search results
 	 */
 	public static ArrayList getContactList() {
-		openList(); // required for compilation
-		// addPerson();
 		return (list.getList());
+	}
+	
+	/**
+	 * This method sets the person currently being edited
+	 * @return 
+	 */
+	public static void setPerson(int index){
+		if(index<0){
+			person = list.getPerson(0);
+		} else {
+			person = list.getPerson(index);
+		}
+
+	}
+	
+	/**
+	 * This method returns the person currently being edited
+	 */
+	public static Person getPerson(){
+		return person;
 	}
 
 	/**
@@ -88,9 +108,9 @@ public class Main {
 	/**
 	 * This method sets up a new person and adds it to the list.
 	 */
-	public static void addPerson() {
-		person = new Person();
+	public static Person addPerson() {
 		list.addPerson(person);
+		return (person);
 	}
 
 	/**
@@ -113,106 +133,126 @@ public class Main {
 			String lastName, String email, String phoneNumber, String notes,
 			String houseNumber, String street, String zip, String city,
 			String state, String country) {
+		person.setFirstName(firstName);
+		person.setLastName(lastName);
+		person.setEmail(email);
+		person.setPhoneNumber(phoneNumber);
+		person.setNotes(notes);
 
 	}
 
 	/**
 	 * This method acts as a relay for Person.getEmail
-	 * 
+	 * It passes the value from class Person to class GUI, without the GUI ever
+	 * touching class Person.
+	 *  
 	 * @param relayedEmail
 	 */
-	public static String relayGEmail(String relayedEmail) {
-		return relayedEmail;
+	public static String relayGEmail() {
+		return person.getEmail();
 	}
 
 	/**
 	 * This method acts as a relay for Person.getPhoneNumber
-	 * 
+	 * It passes the value from class Person to class GUI, without the GUI ever
+	 * touching class Person.
+	 *  
 	 * @param relayedPhoneNumber
 	 */
-	public static String relayGPhoneNumber(String relayedPhoneNumber) {
-		return relayedPhoneNumber;
+	public static String relayGPhoneNumber() {
+		return person.getPhoneNumber();
 	}
 
 	/**
 	 * This method acts as a relay for Person.getFirstName
+	 * It passes the value from class Person to class GUI, without the GUI ever
+	 * touching class Person.
 	 * 
 	 * @param relayedFirstName
 	 */
-	public static String relayGFirstName(String relayedFirstName) {
-		return relayedFirstName;
+	public static String relayGFirstName() {
+		return person.getFirstName();
 	}
 
 	/**
 	 * This method acts as a relay for Person.getLastName
-	 * 
+	 * It passes the value from class Person to class GUI, without the GUI ever
+	 * touching class Person.
+	 *  
 	 * @param relayedLastName
 	 */
-	public static String relayGLastName(String relayedLastName) {
-		return relayedLastName;
+	public static String relayGLastName() {
+		return person.getLastName();
 	}
 
 	/**
 	 * This method acts as a relay for Person.getNotes
+	 * It passes the value from class Person to class GUI, without the GUI ever
+	 * touching class Person.
 	 * 
-	 * @param relayedNotes
 	 */
-	public static String relayGNotes(String relayedNotes) {
-		return relayedNotes;
+	public static String relayGNotes() {
+		return person.getNotes();
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getHouseNumber
+	 * It passes the value from class StreetAddress to class GUI, without the GUI ever
+	 * touching class StreetAddress.
 	 * 
-	 * @param relayedHouseNumber
 	 */
-	public static String relayGHouseNumber(String relayedHouseNumber) {
-		return relayedHouseNumber;
+	public static String relayGHouseNumber() {
+		return "14";
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getStreet
+	 * It passes the value from class StreetAddress to class GUI, without the GUI ever
+	 * touching class StreetAddress.
 	 * 
-	 * @param relayedStreet
 	 */
-	public static String relayGStreet(String relayedStreet) {
-		return relayedStreet;
+	public static String relayGStreet() {
+		return "Street";
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getZip
+	 * It passes the value from class StreetAddress to class GUI, without the GUI ever
+	 * touching class StreetAddress.
 	 * 
-	 * @param relayedZip
 	 */
-	public static String relayGZip(String relayedZip) {
-		return relayedZip;
+	public static String relayGZip() {
+		return "Zip";
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getCity
+	 * It passes the value from class StreetAddress to class GUI, without the GUI ever
+	 * touching class StreetAddress.
 	 * 
-	 * @param relayedCity
 	 */
-	public static String relayGCity(String relayedCity) {
-		return relayedCity;
+	public static String relayGCity() {
+		return "City";
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getState
+	 * It passes the value from class StreetAddress to class GUI, without the GUI ever
+	 * touching class StreetAddress.
 	 * 
-	 * @param relayedState
 	 */
-	public static String relayGState(String relayedState) {
-		return relayedState;
+	public static String relayGState() {
+		return "State";
 	}
 
 	/**
-	 * This method acts as a relay for StreetAddress.getCountry
+	 * This method acts as a relay for StreetAddress.getCountry.
+	 * It passes the value from class StreetAddress to class GUI, without the GUI ever
+	 * touching class StreetAddress.
 	 * 
-	 * @param relayedCountry
 	 */
-	public static String relayGCountry(String relayedCountry) {
-		return relayedCountry;
+	public static String relayGCountry() {
+		return "Country";
 	}
 
 }
