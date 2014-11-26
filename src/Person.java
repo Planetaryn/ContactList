@@ -1,122 +1,116 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Define a reusable class Person. One object of class Person contains the
- * persons visible email, normalized email, visible phone number, normalized
- * phone number, first name, last name and notes.
+ * person's email, phone number, first name, last name, notes, & their
+ * StreetAddress object.
  * 
- * @author Kelly Lam (version 1)
- * Version 2: Irma added variables and methods to handle first name and last name
+ * @author Kelly Lam
  */
-
 public class Person {
-	private String vizEmail;
-	private String vizPhoneNumber;
-	private String normalizedPhoneNumber;
+	private String email;
+	private String phoneNumber;
 	private String firstName;
 	private String lastName;
 	private String notes;
 	private StreetAddress address;
 
 	/**
-	 * This method creates a new object of class StreetAddress when a new object
-	 * of class Person is constructed
+	 * Constructor for class Person. Creates a new object of class
+	 * StreetAddress, and fills all fields with blank strings when a new object
+	 * of class Person is created.
+	 * 
+	 * @author Noah
 	 */
 	public Person() {
-		System.out.println("New object of class Person constructed");
+		Person person;
+		person = new Person();
+		person.setFirstName("");
+		person.setLastName("");
+		person.setEmail("");
+		person.setPhoneNumber("");
+		person.setNotes("");
 	}
 
 	/**
-	 * Sets the value of vizEmail to the value of the parameter newVizEmail 
-	 * which format will be changed later
+	 * Sets the value of email to the value of the parameter newEmail
 	 * 
-	 * @param newVizEmail
+	 * @param newEmail
+	 * @author Kelly
 	 */
-	public void setVizEmail(String newVizEmail) {
-		System.out.println("Method Person.setVizEmail called");
+	public void setEmail(String newEmail) {
+		email = newEmail;
 	}
 
 	/**
-	 * Sets the value of vizPhoneNumber to the value of the parameter newVizPhoneNumber
+	 * Sets the value of phoneNumber to the value of the parameter
+	 * newPhoneNumber
 	 * 
-	 * @param newVizPhoneNumber
+	 * @param newPhoneNumber
+	 * @author Kelly
 	 */
-	public void setVizPhoneNumber(String newVizPhoneNumber) {
-		System.out.println("Method Person.setPhoneNumber called");
-	}
-
-	/**
-	 * Sets the value of normalizedPhoneNumber to the value of the parameter newNormalizedPhoneNumber
-	 * 
-	 * @param newNormalizedPhoneNumber
-	 */
-	public void setNormalizedPhoneNumber(String newNormalizedPhoneNumber) {
-		System.out.println("Method Person.setNormalizedPhoneNumber called");
+	public void setPhoneNumber(String newPhoneNumber) {
+		phoneNumber = newPhoneNumber;
 	}
 
 	/**
 	 * Sets the value of firstName to the value parameter newFirstName
 	 * 
 	 * @param newFirstName
+	 * @author Irma
 	 */
 	public void setFirstName(String newFirstName) {
-		System.out.println("Method Person.setFirstName called");
+		firstName = newFirstName;
 	}
 
 	/**
 	 * Sets the value of lastName to the value of the parameter newLastName
 	 * 
 	 * @param newLastName
+	 * @author Irma
 	 */
 	public void setLastName(String newLastName) {
-		System.out.println("Method Person.setLastName called");
+		lastName = newLastName;
 	}
 
 	/**
 	 * Sets the value of notes to the value of the parameter newNotes
 	 * 
 	 * @param newNotes
+	 * @author Kelly
 	 */
 	public void setNotes(String newNotes) {
-		System.out.println("Method Person.setNotes called");
+		notes = newNotes;
 	}
 
 	/**
-	 * Returns the value of vizEmail
+	 * Returns the value of email
 	 * 
 	 * @return
+	 * @author Kelly
 	 */
-	public String getVizEmail() {
-		System.out.println("Method Person.getVizEmail called");
-		return vizEmail;
-	}
-
-
-	/**
-	 * Returns the value of vizPhoneNumber
-	 * 
-	 * @return
-	 */
-	public String getVizPhoneNumber() {
-		System.out.println("Method Person.getVizPhoneNumber called");
-		return vizPhoneNumber;
+	public String getEmail() {
+		return email;
 	}
 
 	/**
-	 * Returns the value of normalizedPhoneNumber
+	 * Returns the value of phoneNumber
 	 * 
 	 * @return
+	 * @author Kelly
 	 */
-	public String getNormalizedPhoneNumber() {
-		System.out.println("Method Person.getNormalizedPhoneNumber called");
-		return normalizedPhoneNumber;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
 	/**
 	 * Returns the value of firstName
 	 * 
 	 * @return
+	 * @author Irma
 	 */
 	public String getFirstName() {
-		System.out.println("Method Person.getFirstName called");
 		return firstName;
 	}
 
@@ -124,9 +118,9 @@ public class Person {
 	 * Returns the value of lastName
 	 * 
 	 * @return
+	 * @author Irma
 	 */
 	public String getLastName() {
-		System.out.println("Method Person.getLastName called");
 		return lastName;
 	}
 
@@ -134,9 +128,9 @@ public class Person {
 	 * Returns the value of Notes
 	 * 
 	 * @return
+	 * @author Kelly
 	 */
 	public String getNotes() {
-		System.out.println("Method Person.getNotes called");
 		return notes;
 	}
 
@@ -146,10 +140,21 @@ public class Person {
 	 * 
 	 * @param testPhoneNumber
 	 * @return
+	 * @author Kelly
 	 */
 	public boolean verifyPhoneFormat(String testPhoneNumber) {
-		System.out.println("Method Person.verifyPhoneFormat called");
-		return true;
+		String verifyPhoneNumber = testPhoneNumber;
+		
+		Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
+		Matcher matcher = pattern.matcher(verifyPhoneNumber);
+		
+		if (matcher.matches()) {
+			return true;
+		}
+		else {
+			return false;
+			// Pop out "Phone Number must be in the form XXX-XXX-XXXX" in GUI.
+		}
 	}
 
 	/**
@@ -158,18 +163,32 @@ public class Person {
 	 * 
 	 * @param testEmail
 	 * @return
+	 * @author Kelly
 	 */
 	public boolean verifyEmailFormat(String testEmail) {
-		System.out.println("Method Person.verifyEmailFormat called");
-		return true;
+		String verifyEmail = testEmail;
+		
+		Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		Matcher matcher = pattern.matcher(verifyEmail);
+		
+		if (matcher.matches()) {
+			return true;
+		}
+		else {
+			return false;
+			// Pop out "Email must be in the form ______@_____.____" in GUI.
+		}
 	}
 
 	/**
 	 * Returns a string containing a persons first name, last name, email
-	 * address, phone number, address and notes.
+	 * address, phone number, address, & notes.
+	 * 
+	 * @return
+	 * @author Kelly
 	 */
 	public String toString() {
-		System.out.println("Method Person.toString called");
+		System.out.println("ToString method is called");
 		return ("");
 	}
 
