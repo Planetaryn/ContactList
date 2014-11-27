@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -51,10 +50,6 @@ public class GUI {
 			setOpaque(true);
 		}
 
-		// public void update (int index){
-		// fireContentsChanged(this, index, index);
-		// }
-
 		public Component getListCellRendererComponent(JList list, Object value,
 				int index, boolean isSelected, boolean cellHasFocus) {
 
@@ -94,7 +89,6 @@ public class GUI {
 
 	private JButton btnCancel;
 	private JFrame frame;
-	private ArrayList<Person> guiList;
 	private JList<Person> list;
 	/**
 	 * This establishes a new document listener & the actions that will be
@@ -135,8 +129,8 @@ public class GUI {
 		 * @param e
 		 */
 		private void updateAll(DocumentEvent e) {
-			;
-			Main.updatePerson(Main.getPerson(), txtFirstName.getText(),
+			Main.setPerson(list.getSelectedIndex());
+			Main.updatePerson(txtFirstName.getText(),
 					txtLastName.getText(), txtEmail.getText(),
 					txtPhone.getText(), txtpnNotes.getText(),
 					txtHouseNumber.getText(), txtStreet.getText(),
@@ -144,8 +138,7 @@ public class GUI {
 					txtCountry.getText());
 		}
 	};
-	private DefaultListModel model1 = new DefaultListModel();
-	private DefaultListModel model2 = new DefaultListModel();
+	private DefaultListModel<Person> model1 = new DefaultListModel<Person>();
 	private JScrollPane scrollPane_1;
 	private String searchField;
 	private JSeparator separator;
@@ -167,7 +160,7 @@ public class GUI {
 	 * This method constructs the GUI.
 	 */
 	public GUI() {
-		makeList();
+		// makeList();
 		initialize();
 		this.frame.setVisible(true); // Must be the last thing done in this
 										// method.
@@ -178,33 +171,9 @@ public class GUI {
 	 * the selected Person object.
 	 */
 	private void fillData(Person person) {
-		updateList();
 		updateFields();
 	}
 
-	/**
-	 * List selection listener
-	 */
-
-	/**
-	 * This method returns the index of the selected item in the JList
-	 * 
-	 * @return
-	 */
-	public int getListSelectedIndex() {
-		return list.getSelectedIndex();
-	}
-
-	/**
-	 * This method returns the Person object in the guiArray at the index
-	 * specified by the parameter
-	 * 
-	 * @param index
-	 * @return
-	 */
-	private Person getPersonAt(int index) {
-		return guiList.get(index);
-	}
 
 	/**
 	 * This method returns the value of the variable sortField.
@@ -415,12 +384,11 @@ public class GUI {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model2.clear();
+				model1.clear();
 				Main.addPerson();
-				updateList();
-				for (int i = 0; i < guiList.size(); i++) {
-					list.setModel(model2);
-					model2.addElement(guiList.get(i));
+				for (int i = 0; i < Main.getSize(); i++) {
+					model1.addElement(Main.getPersonAtIndex(i));
+					list.setModel(model1);
 				}
 			}
 		});
@@ -485,13 +453,13 @@ public class GUI {
 		scrollPane.setBounds(10, 92, 216, 285);
 		frame.getContentPane().add(scrollPane);
 
-		list = new JList(guiList.toArray());
+		list = new JList((Main.getContactList()).toArray());
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setCellRenderer(new CellRenderer());
 		list.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				Main.setPerson(getListSelectedIndex());
+				Main.setPerson(list.getSelectedIndex());
 				fillData(Main.getPerson());
 			}
 		});
@@ -499,28 +467,6 @@ public class GUI {
 		list.setSelectedIndex(0);
 		list.setBorder(null);
 
-	}
-	
-	/**
-	 * This method constructs the array guiArray from the array list
-	 * contactList. This is necessary for a JList to display an array list.
-	 * 
-	 * -NoahNote: This method will be passed one of many arrays from the Main,
-	 * depending on if the user is searching/sorting.
-	 */
-	private void makeList() {
-		guiList = new ArrayList<Person>();
-		guiList.addAll(Main.getContactList());
-
-	}
-
-	/**
-	 * This method sets the selected index of the list.
-	 * 
-	 * @param selectedIndex
-	 */
-	public void setListSelectedIndex(int selectedIndex) {
-		list.setSelectedIndex(selectedIndex);
 	}
 
 	/**
@@ -538,13 +484,5 @@ public class GUI {
 		txtEmail.setText(Main.relayGEmail());
 		txtPhone.setText(Main.relayGPhoneNumber());
 		txtpnNotes.setText(Main.relayGNotes());
-	}
-
-	/**
-	 * This method updates the guiList to match the contact list in main
-	 */
-	private void updateList() {
-		guiList.clear();
-		guiList.addAll(Main.getContactList());
 	}
 }

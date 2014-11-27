@@ -20,6 +20,12 @@ public class ContactList implements Serializable{
 	}
 
 	/**
+	 * This method returns the size of the contactList
+	 */
+	public int getSize(){
+		return contactList.size();
+	}
+	/**
 	 * Adds a Person to the contactList
 	 * 
 	 * @param newPerson

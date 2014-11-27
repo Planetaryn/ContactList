@@ -83,7 +83,21 @@ public class Main {
 	public static Person getPerson(){
 		return person;
 	}
-
+	
+	/**
+	 * This method returns the person at the selected index
+	 */
+	public static Person getPersonAtIndex(int index){
+		return list.getPerson(index);
+	}
+	
+	/**
+	 * This method returns the size of the array
+	 */
+	public static int getSize(){
+		return list.getSize();
+	}
+	
 	/**
 	 * This method searches the list for the values specified by the GUI, then
 	 * returns a new ContactList containing the results. If no match is found, 
@@ -129,7 +143,7 @@ public class Main {
 	 * @param state
 	 * @param country
 	 */
-	public static void updatePerson(Person person, String firstName,
+	public static void updatePerson(String firstName,
 			String lastName, String email, String phoneNumber, String notes,
 			String houseNumber, String street, String zip, String city,
 			String state, String country) {
