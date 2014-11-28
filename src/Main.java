@@ -12,7 +12,6 @@ public class Main {
 
 	private static ContactList list;
 	private static GUI window;
-	private static Person person = new Person();;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -64,25 +63,20 @@ public class Main {
 		return (list.getList());
 	}
 	
-	/**
-	 * This method sets the person currently being edited
-	 * @return 
-	 */
-	public static void setPerson(int index){
-		if(index<0){
-			person = list.getPerson(0);
-		} else {
-			person = list.getPerson(index);
-		}
-
-	}
+//	/**
+//	 * This method sets the person currently being edited
+//	 * @return 
+//	 */
+//	public static void setPerson(int index){
+//			person = list.getPerson(index);
+//	}
 	
-	/**
-	 * This method returns the person currently being edited
-	 */
-	public static Person getPerson(){
-		return person;
-	}
+//	/**
+//	 * This method returns the person currently being edited
+//	 */
+//	public static Person getPerson(){
+//		return person;
+//	}
 	
 	/**
 	 * This method returns the person at the selected index
@@ -121,10 +115,10 @@ public class Main {
 
 	/**
 	 * This method sets up a new person and adds it to the list.
+	 * @return 
 	 */
-	public static Person addPerson() {
-		list.addPerson(person);
-		return (person);
+	public static void addPerson() {
+		list.addPerson();
 	}
 
 	/**
@@ -147,11 +141,16 @@ public class Main {
 			String lastName, String email, String phoneNumber, String notes,
 			String houseNumber, String street, String zip, String city,
 			String state, String country) {
-		person.setFirstName(firstName);
-		person.setLastName(lastName);
-		person.setEmail(email);
-		person.setPhoneNumber(phoneNumber);
-		person.setNotes(notes);
+		
+		try {
+			list.getPerson(window.getPersonIndex()).setFirstName(firstName);
+			list.getPerson(window.getPersonIndex()).setLastName(lastName);
+			list.getPerson(window.getPersonIndex()).setEmail(email);
+			list.getPerson(window.getPersonIndex()).setPhoneNumber(phoneNumber);
+			list.getPerson(window.getPersonIndex()).setNotes(notes);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -163,7 +162,13 @@ public class Main {
 	 * @param relayedEmail
 	 */
 	public static String relayGEmail() {
-		return person.getEmail();
+		String email = "";
+		try {
+			email = list.getPerson(window.getPersonIndex()).getEmail();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return email;
 	}
 
 	/**
@@ -174,7 +179,13 @@ public class Main {
 	 * @param relayedPhoneNumber
 	 */
 	public static String relayGPhoneNumber() {
-		return person.getPhoneNumber();
+		String phoneNumber = "";
+		try {
+			phoneNumber = list.getPerson(window.getPersonIndex()).getPhoneNumber();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return phoneNumber;
 	}
 
 	/**
@@ -185,7 +196,13 @@ public class Main {
 	 * @param relayedFirstName
 	 */
 	public static String relayGFirstName() {
-		return person.getFirstName();
+		String firstName = "";
+		try {
+			firstName = list.getPerson(window.getPersonIndex()).getFirstName();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return firstName;
 	}
 
 	/**
@@ -196,7 +213,13 @@ public class Main {
 	 * @param relayedLastName
 	 */
 	public static String relayGLastName() {
-		return person.getLastName();
+		String lastName = "";
+		try {
+			lastName = list.getPerson(window.getPersonIndex()).getLastName();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lastName;
 	}
 
 	/**
@@ -206,7 +229,13 @@ public class Main {
 	 * 
 	 */
 	public static String relayGNotes() {
-		return person.getNotes();
+		String notes = "";
+		try {
+			notes = list.getPerson(window.getPersonIndex()).getNotes();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return notes;
 	}
 
 	/**

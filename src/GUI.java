@@ -53,7 +53,7 @@ public class GUI {
 		public Component getListCellRendererComponent(JList list, Object value,
 				int index, boolean isSelected, boolean cellHasFocus) {
 
-			setText(Main.relayGFirstName() + " " + Main.relayGLastName());
+			setText((Main.getPersonAtIndex(index)).toString());
 			if (isSelected) {
 				setBackground(Color.BLUE);
 				setForeground(Color.WHITE);
@@ -90,55 +90,80 @@ public class GUI {
 	private JButton btnCancel;
 	private JFrame frame;
 	private JList<Person> list;
+
+	// /**
+	// * This establishes a new document listener & the actions that will be
+	// * performed when it is triggered
+	// */
+	// class MyDocumentListener implements DocumentListener {
+	//
+	// public void insertUpdate(DocumentEvent e) {
+	// updateAll(e);
+	// }
+	// public void removeUpdate(DocumentEvent e) {
+	// updateAll(e);
+	// }
+	// public void changedUpdate(DocumentEvent e) {
+	// //Plain text components do not fire these events
+	// }
+
 	/**
-	 * This establishes a new document listener & the actions that will be
-	 * performed when it is triggered
+	 * This method instructs the Main to update a specified Person object.
+	 * 
 	 */
-	DocumentListener listener = new DocumentListener() {
+	private void updateAll() {
+		Main.updatePerson(txtFirstName.getText(), txtLastName.getText(),
+				txtEmail.getText(), txtPhone.getText(), txtpnNotes.getText(),
+				txtHouseNumber.getText(), txtStreet.getText(),
+				txtZip.getText(), txtCity.getText(), txtState.getText(),
+				txtCountry.getText());
+	}
 
-		/**
-		 * This method updates a Person Object when a character is changed in a
-		 * text field.
-		 */
-		@Override
-		public void changedUpdate(DocumentEvent e) {
-			updateAll(e);
-		}
+	// }
 
-		/**
-		 * This method updates a Person Object when a character is added to a
-		 * text field.
-		 */
-		@Override
-		public void insertUpdate(DocumentEvent e) {
-			updateAll(e);
-		}
-
-		/**
-		 * This method updates a Person Object when a character is removed from
-		 * a text field.
-		 */
-		@Override
-		public void removeUpdate(DocumentEvent e) {
-			updateAll(e);
-		}
-
-		/**
-		 * This method instructs the Main to update a specified Person object.
-		 * 
-		 * @param e
-		 */
-		private void updateAll(DocumentEvent e) {
-			Main.setPerson(list.getSelectedIndex());
-			Main.updatePerson(txtFirstName.getText(),
-					txtLastName.getText(), txtEmail.getText(),
-					txtPhone.getText(), txtpnNotes.getText(),
-					txtHouseNumber.getText(), txtStreet.getText(),
-					txtZip.getText(), txtCity.getText(), txtState.getText(),
-					txtCountry.getText());
-		}
-	};
-	private DefaultListModel<Person> model1 = new DefaultListModel<Person>();
+	// DocumentListener listener = new DocumentListener() {
+	//
+	// /**
+	// * This method updates a Person Object when a character is changed in a
+	// * text field.
+	// */
+	// @Override
+	// public void changedUpdate(DocumentEvent e) {
+	// updateAll(e);
+	// }
+	//
+	// /**
+	// * This method updates a Person Object when a character is added to a
+	// * text field.
+	// */
+	// @Override
+	// public void insertUpdate(DocumentEvent e) {
+	// updateAll(e);
+	// }
+	//
+	// /**
+	// * This method updates a Person Object when a character is removed from
+	// * a text field.
+	// */
+	// @Override
+	// public void removeUpdate(DocumentEvent e) {
+	// updateAll(e);
+	// }
+	//
+	// /**
+	// * This method instructs the Main to update a specified Person object.
+	// *
+	// * @param e
+	// */
+	// private void updateAll(DocumentEvent e) {
+	// Main.updatePerson(txtFirstName.getText(), txtLastName.getText(),
+	// txtEmail.getText(), txtPhone.getText(),
+	// txtpnNotes.getText(), txtHouseNumber.getText(),
+	// txtStreet.getText(), txtZip.getText(), txtCity.getText(),
+	// txtState.getText(), txtCountry.getText());
+	// }
+	// };
+	private DefaultListModel<Person> model;
 	private JScrollPane scrollPane_1;
 	private String searchField;
 	private JSeparator separator;
@@ -165,15 +190,6 @@ public class GUI {
 		this.frame.setVisible(true); // Must be the last thing done in this
 										// method.
 	}
-
-	/**
-	 * This method fills the data fields in the GUI with the data extracted from
-	 * the selected Person object.
-	 */
-	private void fillData(Person person) {
-		updateFields();
-	}
-
 
 	/**
 	 * This method returns the value of the variable sortField.
@@ -209,8 +225,10 @@ public class GUI {
 				null, null, null));
 		txtFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		txtFirstName.setHorizontalAlignment(SwingConstants.LEFT);
-		txtFirstName.setText(Main.relayGFirstName());
-		txtFirstName.getDocument().addDocumentListener(listener);
+		txtFirstName.setText("First");
+//		txtFirstName.getDocument()
+//				.addDocumentListener(new MyDocumentListener());
+
 		txtFirstName.setColumns(10);
 		frame.getContentPane().add(txtFirstName);
 
@@ -218,11 +236,11 @@ public class GUI {
 		txtLastName.setBounds(313, 56, 250, 28);
 		txtLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		txtLastName.setText(Main.relayGLastName());
+		txtLastName.setText("Last");
 		txtLastName.setHorizontalAlignment(SwingConstants.LEFT);
 		txtLastName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		txtLastName.setColumns(10);
-		txtLastName.getDocument().addDocumentListener(listener);
+//		txtLastName.getDocument().addDocumentListener(new MyDocumentListener());
 		frame.getContentPane().add(txtLastName);
 
 		JLabel lblEmail = new JLabel("Email:");
@@ -232,12 +250,12 @@ public class GUI {
 
 		txtEmail = new JTextField();
 		txtEmail.setBounds(313, 96, 250, 28);
-		txtEmail.setText(Main.relayGEmail());
+		txtEmail.setText("Email");
 		txtEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
 				null, null));
 		txtEmail.setBackground(Color.WHITE);
 		txtEmail.setColumns(10);
-		txtEmail.getDocument().addDocumentListener(listener);
+//		txtEmail.getDocument().addDocumentListener(new MyDocumentListener());
 		frame.getContentPane().add(txtEmail);
 
 		JPanel panelAddress = new JPanel();
@@ -249,62 +267,63 @@ public class GUI {
 		panelAddress.setLayout(null);
 
 		txtHouseNumber = new JTextField();
-		txtHouseNumber.setText(Main.relayGHouseNumber());
+		txtHouseNumber.setText("123");
 		txtHouseNumber.setBounds(6, 6, 70, 16);
 		txtHouseNumber
 				.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtHouseNumber.setColumns(10);
-		txtHouseNumber.getDocument().addDocumentListener(listener);
+//		txtHouseNumber.getDocument().addDocumentListener(
+//				new MyDocumentListener());
 		panelAddress.add(txtHouseNumber);
 
 		txtStreet = new JTextField();
-		txtStreet.setText(Main.relayGStreet());
+		txtStreet.setText("Street");
 		txtStreet.setColumns(10);
 		txtStreet.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtStreet.setBounds(75, 6, 169, 16);
-		txtStreet.getDocument().addDocumentListener(listener);
+//		txtStreet.getDocument().addDocumentListener(new MyDocumentListener());
 		panelAddress.add(txtStreet);
 
 		txtCity = new JTextField();
-		txtCity.setText(Main.relayGCity());
+		txtCity.setText("City");
 		txtCity.setColumns(10);
 		txtCity.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtCity.setBounds(6, 21, 122, 16);
-		txtCity.getDocument().addDocumentListener(listener);
+//		txtCity.getDocument().addDocumentListener(new MyDocumentListener());
 		panelAddress.add(txtCity);
 
 		txtState = new JTextField();
-		txtState.setText(Main.relayGState());
+		txtState.setText("State");
 		txtState.setColumns(10);
 		txtState.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtState.setBounds(127, 21, 24, 16);
-		txtState.getDocument().addDocumentListener(listener);
+//		txtState.getDocument().addDocumentListener(new MyDocumentListener());
 		panelAddress.add(txtState);
 
 		txtCountry = new JTextField();
-		txtCountry.setText(Main.relayGCountry());
+		txtCountry.setText("Country");
 		txtCountry.setColumns(10);
 		txtCountry.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtCountry.setBounds(6, 36, 238, 16);
-		txtCountry.getDocument().addDocumentListener(listener);
+//		txtCountry.getDocument().addDocumentListener(new MyDocumentListener());
 		panelAddress.add(txtCountry);
 
 		txtZip = new JTextField();
-		txtZip.setText(Main.relayGZip());
+		txtZip.setText("Zip");
 		txtZip.setColumns(10);
 		txtZip.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtZip.setBounds(150, 21, 94, 16);
-		txtZip.getDocument().addDocumentListener(listener);
+//		txtZip.getDocument().addDocumentListener(new MyDocumentListener());
 		panelAddress.add(txtZip);
 
 		txtPhone = new JTextField();
 		txtPhone.setBounds(313, 136, 250, 28);
-		txtPhone.setText(Main.relayGPhoneNumber());
+		txtPhone.setText("Phone");
 		txtPhone.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
 				null, null));
 		txtPhone.setColumns(10);
 		txtPhone.setBackground(Color.WHITE);
-		txtPhone.getDocument().addDocumentListener(listener);
+//		txtPhone.getDocument().addDocumentListener(new MyDocumentListener());
 		frame.getContentPane().add(txtPhone);
 
 		scrollPane_1 = new JScrollPane();
@@ -315,7 +334,7 @@ public class GUI {
 
 		txtpnNotes = new JTextPane();
 		scrollPane_1.setViewportView(txtpnNotes);
-		txtpnNotes.setText(Main.relayGNotes());
+		txtpnNotes.setText("Notes");
 		txtpnNotes.setBorder(null);
 
 		JLabel lblPhone = new JLabel("Phone:");
@@ -374,7 +393,7 @@ public class GUI {
 		});
 		frame.getContentPane().add(btnSearch);
 
-		JButton btnNewContact = new JButton("New Contact");
+		JButton btnNewContact = new JButton("Save Contact");
 		btnNewContact.setToolTipText("Creates a new blank contact");
 		btnNewContact.addActionListener(new ActionListener() {
 			/**
@@ -384,11 +403,13 @@ public class GUI {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model1.clear();
+				model = new DefaultListModel<Person>();
+				model.clear();
+				updateAll();
 				Main.addPerson();
 				for (int i = 0; i < Main.getSize(); i++) {
-					model1.addElement(Main.getPersonAtIndex(i));
-					list.setModel(model1);
+					model.addElement(Main.getPersonAtIndex(i));
+					list.setModel(model);
 				}
 			}
 		});
@@ -459,14 +480,25 @@ public class GUI {
 		list.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				Main.setPerson(list.getSelectedIndex());
-				fillData(Main.getPerson());
+				updateFields();
 			}
 		});
 		scrollPane.setViewportView(list);
 		list.setSelectedIndex(0);
 		list.setBorder(null);
 
+	}
+
+	/**
+	 * This method returns the index of the currently selected person in the
+	 * JList
+	 */
+	public int getPersonIndex() {
+		int index = 0;
+		if (list.getSelectedIndex() < 0) {
+			index = list.getSelectedIndex();
+		}
+		return index;
 	}
 
 	/**
