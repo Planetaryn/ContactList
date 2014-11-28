@@ -10,18 +10,20 @@
  * formated 
  * V4: Added a getDiskFileObject method
  * V5: Added @param to the java doc description
- * V6: Corrected  typos per input from Kelly: “SuccessfulyWrittenToDisk” and “SuccessfulyReadFromDisk”  
- *     changed to “SuccessfullyWrittenToDisk” and “SuccessfullyReadFromDisk”
- * v7: Made the constructor public per input from Noah.    
+ * V6: Corrected  typos per input from Kelly: �SuccessfulyWrittenToDisk� and �SuccessfulyReadFromDisk�  
+ *     changed to �SuccessfullyWrittenToDisk� and �SuccessfullyReadFromDisk�
+ * v7: Made the constructor public per input from Noah. 
+ * v8: Added the actual code for the class.
  * 
  */
 import java.io.*;
-import java.util.*;
 
 public class Disk {
 	private final String CONTACT_LIST_FILE_NAME = "Contact_List.ser";
 	private boolean fileExists;
-	private ContactList directoryOfContactsFromDisk;
+
+	private File contactListFile = new File(CONTACT_LIST_FILE_NAME);
+	private ContactList contactListFromDisk = null;
 
 	/**
 	 * Constructor for the Disk Class finds if the DirectoryProject.txt file
@@ -31,6 +33,14 @@ public class Disk {
 	 * @param
 	 */
 	public Disk() {
+		// System.out.println("In constructor");
+		if (contactListFile.exists()) {
+			fileExists = true;
+		} else {
+			fileExists = false;
+
+			// System.out.println("file does not exist");
+		}
 
 	}
 
@@ -44,10 +54,32 @@ public class Disk {
 	 * @return - Returns true if write operation was successful and false if it
 	 *         failed.
 	 */
-	public boolean writeToDisk(ContactList directoryOfContacts) {
-		boolean successfullyWrittenToDisk = true;
-		System.out.println("Method writeToDisk called");
-		return successfullyWrittenToDisk;
+	public boolean writeToDisk(ContactList contactListObject) {
+		FileOutputStream fileOutput = null;
+		ObjectOutputStream objectOutput = null;
+		fileExists = true;
+		try {
+			fileOutput = new FileOutputStream(contactListFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			fileExists = false;
+		}
+		try {
+			objectOutput = new ObjectOutputStream(fileOutput);
+		} catch (IOException e) {
+			e.printStackTrace();
+			fileExists = false;
+
+		}
+		try {
+			objectOutput.writeObject(contactListObject);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			fileExists = false;
+
+		}
+		return fileExists;
 	}
 
 	/**
@@ -62,7 +94,38 @@ public class Disk {
 
 	public boolean readFromDisk() {
 		boolean successfullyreadFromDisk = true;
-		System.out.println("Method readFromDisk called");
+		ObjectInputStream objectInputStream = null;
+		FileInputStream fileInput = null;
+		if (fileExists) {
+			try {
+				fileInput = new FileInputStream(contactListFile);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				successfullyreadFromDisk = false;
+			}
+			try {
+				objectInputStream = new ObjectInputStream(fileInput);
+			} catch (IOException e) {
+
+				e.printStackTrace();
+				successfullyreadFromDisk = false;
+
+			}
+			try {
+				contactListFromDisk = (ContactList) objectInputStream
+						.readObject();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+				successfullyreadFromDisk = false;
+
+			} catch (ClassNotFoundException e) {
+
+				e.printStackTrace();
+				successfullyreadFromDisk = false;
+
+			}
+		}
 		return successfullyreadFromDisk;
 	}
 
@@ -76,8 +139,11 @@ public class Disk {
 	 *         which was read from the disk.
 	 */
 	public ContactList getDiskFileObject() {
-		System.out.println("Method getDiskFileObject called");
-		return directoryOfContactsFromDisk;
+		if (!fileExists) {
+			contactListFromDisk = null;
+
+		}
+		return contactListFromDisk;
 	}
 
 }
