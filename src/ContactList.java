@@ -11,7 +11,6 @@ public class ContactList implements Serializable{
 	/**
 	 * Constructs a new object of class ContactList.
 	 * 
-	 * @param contactListLength
 	 */
 	public ContactList() {
 		contactList = new ArrayList<Person>();
@@ -30,8 +29,8 @@ public class ContactList implements Serializable{
 	 * 
 	 * @param newPerson
 	 */
-	public void addPerson(Person newPerson) {
-		contactList.add(newPerson);
+	public void addPerson(Person person) {
+		contactList.add(person);
 	}
 
 	/**
