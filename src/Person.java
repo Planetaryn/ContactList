@@ -15,7 +15,7 @@ public class Person implements Serializable{
 	private String firstName;
 	private String lastName;
 	private String notes;
-	private StreetAddress address;
+	private StreetAddress address = new StreetAddress();
 
 	/**
 	 * Constructor for class Person. Creates a new object of class
@@ -25,20 +25,13 @@ public class Person implements Serializable{
 	 * @author Noah
 	 */
 	public Person() {
-		StreetAddress address = new StreetAddress();
-		this.setFirstName("New");
-		this.setLastName("Person");
-		this.setEmail("Email");
-		this.setPhoneNumber("Phone Number");
-		this.setNotes("Notes");
-		address.setHouseNumber("14");
-		address.setStreet("Street");
-		address.setZip("Zipcode");
-		address.setCity("City");
-		address.setState("State");
-		address.setCountry("Country");
+		this.setFirstName("");
+		this.setLastName("");
+		this.setEmail("");
+		this.setPhoneNumber("");
+		this.setNotes("");
 	}
-
+	
 	/**
 	 * Sets the value of email to the value of the parameter newEmail
 	 * 
@@ -194,7 +187,35 @@ public class Person implements Serializable{
 	 * @author Kelly
 	 */
 	public String toString() {
-		return (this.getFirstName() +" " +this.getLastName());
+		String contact = "";
+		contact += (this.getFirstName() +" " +this.getLastName() +"\n");
+		contact += ("Email: " +this.getEmail() +"\n");
+		contact += ("Phone: " +this.getPhoneNumber() +"\n");
+		contact += (address);
+		contact += ("Notes:" +this.getNotes() +"\n");
+		return (contact);
+	}
+
+	/**
+	 * This method sets the values of houseNumber, street, zip, state, and country in the 
+	 * person's address.
+	 * 
+	 * @author noahgoldsmith
+	 * @param houseNumber
+	 * @param street
+	 * @param zip
+	 * @param state
+	 * @param country
+	 */
+	public void setStreetAddress(String houseNumber, String street, String zip, String city,
+			String state, String country) {
+		address.setHouseNumber(houseNumber);
+		address.setStreet(street);
+		address.setZip(zip);
+		address.setCity(city);
+		address.setState(state);
+		address.setCountry(country);
+				
 	}
 
 }

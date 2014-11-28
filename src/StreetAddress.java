@@ -32,7 +32,6 @@ public class StreetAddress {
      *
      */
     public StreetAddress(String newHouse, String newStreet, String newZip, String newCity, String newState, String newCountry) {
-        System.out.println("Using parametrized  constructor");
         houseNumber = newHouse;
         street = newStreet;
         zip = newZip;
@@ -48,7 +47,6 @@ public class StreetAddress {
      * @param newHouseNumber
      */
     public void setHouseNumber(String newHouseNumber) {
-        System.out.println("Method StreetAddress.setHouseNumber called");
         houseNumber = newHouseNumber;
     }
 
@@ -57,7 +55,6 @@ public class StreetAddress {
      * @param newStreet
      */
     public void setStreet(String newStreet) {
-        System.out.println("Method StreetAddress.setStreet called");
         street = newStreet;
     }
 
@@ -66,7 +63,6 @@ public class StreetAddress {
      * @param newZip
      */
     public void setZip(String newZip) {
-        System.out.println("Method StreetAddress.setZip called");
         zip = newZip;
     }
 
@@ -75,7 +71,6 @@ public class StreetAddress {
      * @param newCity
      */
     public void setCity(String newCity) {
-        System.out.println("Method StreetAddress.setCity called");
         city = newCity;
     }
 
@@ -84,7 +79,6 @@ public class StreetAddress {
      * @param newState
      */
     public void setState(String newState) {
-        System.out.println("Method StreetAddress.setState called");
         state = newState;
     }
 
@@ -93,7 +87,6 @@ public class StreetAddress {
      * @param newCountry
      */
     public void setCountry(String newCountry) {
-        System.out.println("Method StreetAddress.setCountry called");
         country = newCountry;
     }
 
@@ -102,7 +95,6 @@ public class StreetAddress {
      * @return
      */
     public String getHouseNumber() {
-        System.out.println("Method StreetAddress.getHouseNumber called");
         return houseNumber;
     }
 
@@ -111,7 +103,6 @@ public class StreetAddress {
      * @return
      */
     public String getStreet() {
-        System.out.println("Method StreetAddress.getStreet called");
         return street;
     }
 
@@ -120,7 +111,6 @@ public class StreetAddress {
      * @return
      */
     public String getZip() {
-        System.out.println("Method StreetAddress.getZip called");
         return zip;
     }
 
@@ -130,7 +120,6 @@ public class StreetAddress {
      * @return
      */
     public String getCity() {
-        System.out.println("Method StreetAddress.getCity called");
         return city;
     }
 
@@ -140,7 +129,6 @@ public class StreetAddress {
      * @return
      */
     public String getState() {
-        System.out.println("Method StreetAddress.getState called");
         return state;
     }
 
@@ -150,7 +138,6 @@ public class StreetAddress {
      * @return
      */
     public String getCountry() {
-        System.out.println("Method StreetAddress.getCountry called");
         return country;
     }
 
@@ -159,12 +146,11 @@ public class StreetAddress {
      * zip, state, & country
      */
     public String toString() {
-        return "houseNumber = " + houseNumber + "\n" +
-                "street = " + street + "\n" +
-                "zip = " + zip + "\n" +
-                "city = " + city + "\n" +
-                "state = " + state + "\n" +
-                "country =" + country;
+    	String address = "";
+    	address += (this.getHouseNumber() +" " +this.getStreet() +"\n");
+    	address += (this.getCity() +" " +this.getState() +", " +this.getZip() +"\n");
+    	address += (this.getCountry() +"\n");
+        return address;
 
     }
 
