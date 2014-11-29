@@ -31,6 +31,9 @@ public class ContactList implements Serializable{
 	 */
 	public void addPerson() {
 		Person person = new Person();
+		person.setEmail("test");
+		person.setFirstName("testFirst");
+		person.setLastName("testLast");
 		contactList.add(person);
 	}
 
