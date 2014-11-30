@@ -26,7 +26,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -38,123 +37,13 @@ import javax.swing.event.ListSelectionListener;
  */
 public class GUI {
 
-	/**
-	 * Defines a custom cell renderer for a JList
-	 * 
-	 * @author noahgoldsmith
-	 *
-	 */
-	public class CellRenderer extends JLabel implements ListCellRenderer {
-
-		public CellRenderer() {
-			setOpaque(true);
-		}
-
-		public Component getListCellRendererComponent(JList list, Object value,
-				int index, boolean isSelected, boolean cellHasFocus) {
-
-			setText((Main.getPersonAtIndex(index)).toString());
-			if (isSelected) {
-				setBackground(Color.BLUE);
-				setForeground(Color.WHITE);
-			} else if (index % 2 == 0) {
-				setBackground(Color.WHITE);
-				setForeground(Color.BLACK);
-			} else {
-				setBackground(Color.LIGHT_GRAY);
-				setForeground(Color.BLACK);
-			}
-			return this;
-		}
-	}
-
-	class WindowEventHandler extends WindowAdapter {
-		/**
-		 * This method instructs the Main to save the list to the disk when the
-		 * GUI window is closed.
-		 */
-		@Override
-		public void windowClosing(WindowEvent evt) {
-
-			System.exit(0);
-		}
-	}
-	
-
-	/**
-	 * This method notifies the user that no match was found for their search.
-	 * 
-	 */
-	public static void notifyNoSearchMatch() {
-	}
-
-	private JButton btnCancel;
-	private JFrame frame;
-	private JList<Person> list = new JList<Person>();
-	private int index = -1;
-
-	/**
-	 * This method instructs the Main to update a specified Person object.
-	 * 
-	 */
-	public void updateAll() {
-		if(list.getSelectedIndex() != -1) {
-			Main.updatePerson(txtFirstName.getText(), txtLastName.getText(),
-					txtEmail.getText(), txtPhone.getText(), txtpnNotes.getText(),
-					txtHouseNumber.getText(), txtStreet.getText(),
-					txtZip.getText(), txtCity.getText(), txtState.getText(),
-					txtCountry.getText());
-		}
-	}
-	
-	class DocumentListener implements javax.swing.event.DocumentListener {
-
-		private GUI gui;
-		
-		DocumentListener(GUI gui) {
-			this.gui = gui;
-		}
-		
-		/**
-		 * This method updates a Person Object when a character is changed in a
-		 * text field.
-		 */
-		public void changedUpdate(DocumentEvent e) {
-			updateAll(e);
-		}
-
-		/**
-		 * This method updates a Person Object when a character is added to a
-		 * text field.
-		 */
-		public void insertUpdate(DocumentEvent e) {
-			updateAll(e);
-		}
-
-		/**
-		 * This method updates a Person Object when a character is removed from
-		 * a text field.
-		 */
-		public void removeUpdate(DocumentEvent e) {
-			updateAll(e);
-		}
-
-		/**
-		 * This method instructs the Main to update a specified Person object.
-		 *
-		 * @param e
-		 */
-		private void updateAll(DocumentEvent e) {
-			gui.updateAll();
-			gui.updateModel();
-		}
-	};
-
+	@SuppressWarnings("rawtypes")
 	private DefaultListModel model = new DefaultListModel();
 	private JScrollPane scrollPane_1;
+	@SuppressWarnings("unused")
 	private String searchField;
 	private JSeparator separator;
-	private String sortField = "lastName";
+	private String sortField;
 	private JTextField txtCity;
 	private JTextField txtCountry;
 	private JTextField txtEmail;
@@ -167,6 +56,9 @@ public class GUI {
 	private JTextField txtState;
 	private JTextField txtStreet;
 	private JTextField txtZip;
+	private JFrame frame;
+	private JList<Person> list = new JList<Person>();
+	private int index = -1;
 	private DocumentListener listener;
 
 	/**
@@ -178,20 +70,13 @@ public class GUI {
 		this.frame.setVisible(true); // Must be the last thing done in this
 										// method.
 		listener = new DocumentListener(this);
-		
-	}
 
-	/**
-	 * This method returns the value of the variable sortField.
-	 */
-	public String getSortField() {
-		return sortField;
 	}
 
 	/**
 	 * This method initializes the content of the GUI frame
 	 */
-	@SuppressWarnings({ "rawtypes", "serial", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 
 		frame = new JFrame();
@@ -244,7 +129,7 @@ public class GUI {
 				null, null));
 		txtEmail.setBackground(Color.WHITE);
 		txtEmail.setColumns(10);
-	    txtEmail.getDocument().addDocumentListener(listener);
+		txtEmail.getDocument().addDocumentListener(listener);
 		frame.getContentPane().add(txtEmail);
 
 		JPanel panelAddress = new JPanel();
@@ -256,7 +141,7 @@ public class GUI {
 		panelAddress.setLayout(null);
 
 		txtHouseNumber = new JTextField();
-		txtHouseNumber.setText("123");
+		txtHouseNumber.setText("12345");
 		txtHouseNumber.setBounds(6, 6, 70, 16);
 		txtHouseNumber
 				.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
@@ -265,7 +150,7 @@ public class GUI {
 		panelAddress.add(txtHouseNumber);
 
 		txtStreet = new JTextField();
-		txtStreet.setText("Street");
+		txtStreet.setText("El Monte Rd");
 		txtStreet.setColumns(10);
 		txtStreet.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtStreet.setBounds(75, 6, 169, 16);
@@ -273,7 +158,7 @@ public class GUI {
 		panelAddress.add(txtStreet);
 
 		txtCity = new JTextField();
-		txtCity.setText("City");
+		txtCity.setText("Los Altos Hills");
 		txtCity.setColumns(10);
 		txtCity.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtCity.setBounds(6, 21, 122, 16);
@@ -281,7 +166,7 @@ public class GUI {
 		panelAddress.add(txtCity);
 
 		txtState = new JTextField();
-		txtState.setText("State");
+		txtState.setText("CA");
 		txtState.setColumns(10);
 		txtState.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtState.setBounds(127, 21, 24, 16);
@@ -289,7 +174,7 @@ public class GUI {
 		panelAddress.add(txtState);
 
 		txtCountry = new JTextField();
-		txtCountry.setText("Country");
+		txtCountry.setText("United States of America");
 		txtCountry.setColumns(10);
 		txtCountry.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtCountry.setBounds(6, 36, 238, 16);
@@ -297,7 +182,7 @@ public class GUI {
 		panelAddress.add(txtCountry);
 
 		txtZip = new JTextField();
-		txtZip.setText("Zip");
+		txtZip.setText("94022");
 		txtZip.setColumns(10);
 		txtZip.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtZip.setBounds(150, 21, 94, 16);
@@ -373,10 +258,14 @@ public class GUI {
 			/**
 			 * This method instructs the main to search for the text in the
 			 * txtSearch field in the field specified by the variable
-			 * searchField.
+			 * searchField when the search button is pressed.
+			 * 
+			 * @param e
+			 * @author noahgoldsmith
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// TODO
 			}
 		});
 		frame.getContentPane().add(btnSearch);
@@ -388,13 +277,19 @@ public class GUI {
 			 * This Method instructs the main to create a new "blank" Person
 			 * object and add it to the contactList when the New Contact button
 			 * is pressed.
+			 * 
+			 * @param e
+			 * @author noahgoldsmith
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Main.addPerson();
-				updateAll();
+				updatePerson();
 				updateFields();
 				updateModel();
+				list.setSelectedIndex(Main.getSize() - 1); // This may not work
+															// once the list is
+															// sorting
 			}
 		});
 		btnNewContact.setForeground(Color.BLACK);
@@ -406,18 +301,19 @@ public class GUI {
 		btnSave.setBounds(436, 384, 127, 28);
 		btnSave.addActionListener(new ActionListener() {
 			/**
-			 * This method instructs the main to discard the changes made by the
-			 * user to the current Person object, and revert to the last version
-			 * of that Person object.
-			 * 
-			 * (This is a nice to have)
+			 * This method updates the currently selected person object, then
+			 * updates the list model to reflect any changes when the Save
+			 * Contact button is pressed.
+			 *
+			 * @param e
+			 * @author noahgoldsmith
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int selection = list.getSelectedIndex();
-				updateAll();
+				updatePerson();
 				updateFields();
-				updateModel();	
+				updateModel();
 				list.setSelectedIndex(selection);
 			}
 		});
@@ -430,13 +326,17 @@ public class GUI {
 		comboSearchBy.setBounds(108, 53, 118, 27);
 		comboSearchBy.setModel(new DefaultComboBoxModel<String>(new String[] {
 				"Last Name", "Zip Code" }));
-		/**
-		 * This method sets the variable searchField to the value displayed in
-		 * the JComboBox comboSearchBy
-		 */
 		comboSearchBy.addActionListener(new ActionListener() {
+			/**
+			 * This method sets the variable searchField to the value displayed
+			 * in the JComboBox comboSearchBy.
+			 * 
+			 * @param e
+			 * @author noahgoldsmith
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// TODO
 			}
 		});
 		frame.getContentPane().add(comboSearchBy);
@@ -446,13 +346,17 @@ public class GUI {
 		comboSortBy.setBounds(62, 385, 164, 27);
 		comboSortBy.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "Last Name" }));
-		/**
-		 * This method sets the variable sortField to the value displayed in the
-		 * JComboBox comboSortBy.
-		 */
 		comboSortBy.addActionListener(new ActionListener() {
+			/**
+			 * This method sets the variable sortField to the value displayed in
+			 * the JComboBox comboSortBy.
+			 * 
+			 * @param e
+			 * @author noahgoldsmith
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// TODO
 			}
 		});
 		frame.getContentPane().add(comboSortBy);
@@ -467,10 +371,19 @@ public class GUI {
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setCellRenderer(new CellRenderer());
 		list.addListSelectionListener(new ListSelectionListener() {
-		      public void valueChanged(ListSelectionEvent le) {
-		        index = list.getSelectedIndex();
-		        updateFields();
-		      }
+
+			/**
+			 * This method updates the variable index so that it reflects the
+			 * currently selected index in the JList whenever the user selects a
+			 * different index in the JList.
+			 * 
+			 * @param le
+			 * @author noahgoldsmith
+			 */
+			public void valueChanged(ListSelectionEvent le) {
+				index = list.getSelectedIndex();
+				updateFields();
+			}
 		});
 		scrollPane.setViewportView(list);
 		list.setSelectedIndex(0);
@@ -479,28 +392,199 @@ public class GUI {
 	}
 
 	/**
+	 * Defines class CellRenderer. Class CellRenderer controls how a JList is
+	 * displayed.
+	 * 
+	 * @author noahgoldsmith
+	 *
+	 */
+	@SuppressWarnings({ "serial", "rawtypes" })
+	public class CellRenderer extends JLabel implements ListCellRenderer {
+
+		/**
+		 * Class CellRenderer constructor
+		 * 
+		 * @author noahgoldsmith
+		 */
+		public CellRenderer() {
+			setOpaque(true);
+		}
+
+		/**
+		 * This component sets the background and foreground colors of a JList
+		 * to different colors so that the colors alternate, and so that a
+		 * selected index becomes a different color.
+		 * 
+		 * @author noahgoldsmith
+		 */
+		public Component getListCellRendererComponent(JList list, Object value,
+				int index, boolean isSelected, boolean cellHasFocus) {
+
+			setText((Main.getPersonAtIndex(index)).toString());
+			if (isSelected) {
+				setBackground(Color.BLUE);
+				setForeground(Color.WHITE);
+			} else if (index % 2 == 0) {
+				setBackground(Color.WHITE);
+				setForeground(Color.BLACK);
+			} else {
+				setBackground(Color.LIGHT_GRAY);
+				setForeground(Color.BLACK);
+			}
+			return this;
+		}
+	}
+
+	/**
+	 * Defines class WindowEventHandler. WindowEventHandler initiates actions
+	 * when the GUI window is closed.
+	 * 
+	 * @author noahgoldsmith
+	 *
+	 */
+	class WindowEventHandler extends WindowAdapter {
+		/**
+		 * This method instructs the Main to save the list to the disk when the
+		 * GUI window is closed.
+		 */
+		@Override
+		public void windowClosing(WindowEvent evt) {
+			// TODO
+			System.exit(0);
+		}
+	}
+
+	/**
+	 * Defines class DocumentListener. DocumentListener sets up a document
+	 * listener that updates a person object and the list model when a document
+	 * is changed in any way.
+	 * 
+	 * @author noahgoldsmith
+	 *
+	 */
+	class DocumentListener implements javax.swing.event.DocumentListener {
+
+		private GUI gui;
+
+		/**
+		 * Constructor for class DocumentListener
+		 * 
+		 * @param gui
+		 */
+		DocumentListener(GUI gui) {
+			this.gui = gui;
+		}
+
+		/**
+		 * This method updates a Person Object when a character is changed in a
+		 * text field.
+		 * 
+		 * @author noahgoldsmith
+		 */
+		public void changedUpdate(DocumentEvent e) {
+			updateAll(e);
+		}
+
+		/**
+		 * This method updates a Person Object when a character is added to a
+		 * text field.
+		 * 
+		 * @author noahgoldsmith
+		 */
+		public void insertUpdate(DocumentEvent e) {
+			updateAll(e);
+		}
+
+		/**
+		 * This method updates a Person Object when a character is removed from
+		 * a text field.
+		 * 
+		 * @author noahgoldsmith
+		 */
+		public void removeUpdate(DocumentEvent e) {
+			updateAll(e);
+		}
+
+		/**
+		 * This method instructs the Main to update a specified Person object.
+		 *
+		 * @param e
+		 * @author noahgoldsmith
+		 */
+		private void updateAll(DocumentEvent e) {
+			gui.updatePerson();
+			gui.updateModel();
+		}
+	};
+
+	/**
+	 * This method returns the value of the variable sortField. (In this version
+	 * of the program, the sortfield is always lastName)
+	 * 
+	 * @author noahgoldsmith
+	 */
+	public String getSortField() {
+		sortField = "lastName";
+		return sortField;
+	}
+
+	/**
 	 * This method returns the index of the currently selected person in the
 	 * JList
+	 * 
+	 * @author noahgoldsmith
 	 */
 	public int getPersonIndex() {
 		return index;
 	}
 
 	/**
-	 * This method updates the JList model
+	 * This method notifies the user that no match was found for their search.
+	 * 
+	 * @author noahgoldsmith
 	 */
-	public void updateModel(){
+	public static void notifyNoSearchMatch() {
+		// TODO
+	}
+
+	/**
+	 * This method updates the current person object so that the data in the
+	 * person object matches the data displayed in text fields. The current
+	 * person object is the object currently selected in the JList.
+	 * 
+	 * @author noahgoldsmith
+	 */
+	public void updatePerson() {
+		if (list.getSelectedIndex() != -1) {
+			Main.updatePerson(txtFirstName.getText(), txtLastName.getText(),
+					txtEmail.getText(), txtPhone.getText(),
+					txtpnNotes.getText(), txtHouseNumber.getText(),
+					txtStreet.getText(), txtZip.getText(), txtCity.getText(),
+					txtState.getText(), txtCountry.getText());
+		}
+	}
+
+	/**
+	 * This method updates model used for the JList so that it displays what is
+	 * currently in the contact list.
+	 * 
+	 * @author noahgoldsmith
+	 */
+	@SuppressWarnings("unchecked")
+	public void updateModel() {
 		model.clear();
 		for (int i = 0; i < Main.getSize(); i++) {
-			System.out.println(Main.getPersonAtIndex(i));
 			model.addElement(Main.getPersonAtIndex(i));
 			list.setModel(model);
 		}
 	}
-	
+
 	/**
-	 * This method updates all text fields so that it shows
-	 * the data of the index selected in the JList list.
+	 * This method updates the all text fields in the GUI so that they display
+	 * the data held in the current person object. The current person object is
+	 * the object currently selected in the JList.
+	 * 
+	 * @author noahgoldsmith
 	 */
 	public void updateFields() {
 		txtHouseNumber.setText(Main.relayGHouseNumber());

@@ -54,6 +54,7 @@ public class Disk {
 	 * @return - Returns true if write operation was successful and false if it
 	 *         failed.
 	 */
+	@SuppressWarnings("resource")
 	public boolean writeToDisk(ContactList contactListObject) {
 		FileOutputStream fileOutput = null;
 		ObjectOutputStream objectOutput = null;
@@ -92,6 +93,7 @@ public class Disk {
 	 *         failed.
 	 */
 
+	@SuppressWarnings("resource")
 	public boolean readFromDisk() {
 		boolean successfullyreadFromDisk = true;
 		ObjectInputStream objectInputStream = null;

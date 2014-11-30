@@ -23,7 +23,6 @@ public class Main {
 				try {
 					openList();
 					window = new GUI();
-					System.out.println("Program has compiled and is running");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,9 +36,12 @@ public class Main {
 	 * This method creates a new contact list, and populates it with the data
 	 * stored on the disk. If there is no list stored on the disk it leaves the
 	 * new list empty.
+	 * 
+	 * @author noahgoldsmith
 	 */
 	private static void openList() {
 		list = new ContactList();
+		// TODO
 		// Will pass list to disk as a parameter
 		// Disk will then populate list with the array stored on disk
 		// A new list opens up with a blank person object already created
@@ -49,36 +51,19 @@ public class Main {
 
 	/**
 	 * This method writes the list to disk when the program is closed.
+	 * 
 	 */
+	@SuppressWarnings("unused")
 	private void saveList() {
-
+		//TODO
 	}
 
 	/**
-	 * This method returns the ArrayList list. It has logic to determine if it
-	 * the user wants a sorted list or search results
-	 */
-	public static ArrayList getContactList() {
-		return (list.getList());
-	}
-
-	// /**
-	// * This method sets the person currently being edited
-	// * @return
-	// */
-	// public static void setPerson(int index){
-	// person = list.getPerson(index);
-	// }
-
-	// /**
-	// * This method returns the person currently being edited
-	// */
-	// public static Person getPerson(){
-	// return person;
-	// }
-
-	/**
-	 * This method returns the person at the selected index
+	 * This method returns the person in the list at the index specified by the
+	 * parameter
+	 * 
+	 * @param index
+	 * @author noahgoldsmith
 	 */
 	public static Person getPersonAtIndex(int index) {
 		return list.getPerson(index);
@@ -105,17 +90,21 @@ public class Main {
 	}
 
 	/**
-	 * This method sorts the list by the field specified in the GUI.
+	 * This method sorts the list by the field specified in the GUI. (For this
+	 * version of the program, sortField is always lastName)
+	 * 
+	 * @param sortField
+	 * @author noahgoldsmith
 	 */
 	@SuppressWarnings("unused")
 	private void sortList(String sortField) {
-
+		// TODO
 	}
 
 	/**
 	 * This method sets up a new person and adds it to the list.
 	 * 
-	 * @return
+	 * @author noahgoldsmith
 	 */
 	public static void addPerson() {
 		list.addPerson();
@@ -123,7 +112,8 @@ public class Main {
 
 	/**
 	 * This method updates all fields in the specified Person object and it's
-	 * StreetAddress object.
+	 * StreetAddress object. If there is no person currently selected in the
+	 * GUI, the method will not run.
 	 * 
 	 * @param firstName
 	 * @param lastName
@@ -136,6 +126,7 @@ public class Main {
 	 * @param city
 	 * @param state
 	 * @param country
+	 * @author noahgoldsmith
 	 */
 	public static void updatePerson(String firstName, String lastName,
 			String email, String phoneNumber, String notes, String houseNumber,
@@ -147,15 +138,23 @@ public class Main {
 			list.getPerson(window.getPersonIndex()).setEmail(email);
 			list.getPerson(window.getPersonIndex()).setPhoneNumber(phoneNumber);
 			list.getPerson(window.getPersonIndex()).setNotes(notes);
+			list.getPerson(window.getPersonIndex()).setHouseNumber(houseNumber);
+			list.getPerson(window.getPersonIndex()).setStreet(street);
+			list.getPerson(window.getPersonIndex()).setZip(zip);
+			list.getPerson(window.getPersonIndex()).setCity(city);
+			list.getPerson(window.getPersonIndex()).setState(state);
+			list.getPerson(window.getPersonIndex()).setCountry(country);
 		}
 
 	}
 
 	/**
 	 * This method acts as a relay for Person.getEmail It passes the value from
-	 * class Person to class GUI, without the GUI ever touching class Person.
+	 * class Person to class GUI, without the GUI ever touching class Person. It
+	 * will return an empty string if no person is currently selected.
 	 * 
-	 * @param relayedEmail
+	 * @return
+	 * @author noahgoldsmith
 	 */
 	public static String relayGEmail() {
 		String email = "";
@@ -170,7 +169,8 @@ public class Main {
 	 * from class Person to class GUI, without the GUI ever touching class
 	 * Person.
 	 * 
-	 * @param relayedPhoneNumber
+	 * @return
+	 * @author noahgoldsmith
 	 */
 	public static String relayGPhoneNumber() {
 		String phoneNumber = "";
@@ -184,9 +184,11 @@ public class Main {
 	/**
 	 * This method acts as a relay for Person.getFirstName It passes the value
 	 * from class Person to class GUI, without the GUI ever touching class
-	 * Person.
+	 * Person. It will return an empty string if no person is currently
+	 * selected.
 	 * 
-	 * @param relayedFirstName
+	 * @return
+	 * @author noahgoldsmith
 	 */
 	public static String relayGFirstName() {
 		String firstName = "";
@@ -199,9 +201,11 @@ public class Main {
 	/**
 	 * This method acts as a relay for Person.getLastName It passes the value
 	 * from class Person to class GUI, without the GUI ever touching class
-	 * Person.
+	 * Person. It will return an empty string if no person is currently
+	 * selected.
 	 * 
-	 * @param relayedLastName
+	 * @return
+	 * @author noahgoldsmith
 	 */
 	public static String relayGLastName() {
 		String lastName = "";
@@ -214,8 +218,11 @@ public class Main {
 
 	/**
 	 * This method acts as a relay for Person.getNotes It passes the value from
-	 * class Person to class GUI, without the GUI ever touching class Person.
+	 * class Person to class GUI, without the GUI ever touching class Person. It
+	 * will return an empty string if no person is currently selected.
 	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 */
 	public static String relayGNotes() {
 		String notes = "";
@@ -228,66 +235,110 @@ public class Main {
 	/**
 	 * This method acts as a relay for StreetAddress.getHouseNumber It passes
 	 * the value from class StreetAddress to class GUI, without the GUI ever
-	 * touching class StreetAddress.
+	 * touching class StreetAddress. It will return an empty string if no person
+	 * is currently selected.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 * 
 	 */
 	public static String relayGHouseNumber() {
-		return "14";
+		String houseNumber = "";
+		if (window.getPersonIndex() != -1) {
+			houseNumber = list.getPerson(window.getPersonIndex())
+					.getHouseNumber();
+		}
+		return houseNumber;
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getStreet It passes the
 	 * value from class StreetAddress to class GUI, without the GUI ever
-	 * touching class StreetAddress.
+	 * touching class StreetAddress. It will return an empty string if no person
+	 * is currently selected.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 * 
 	 */
 	public static String relayGStreet() {
-		return "Street";
+		String street = "";
+		if (window.getPersonIndex() != -1) {
+			street = list.getPerson(window.getPersonIndex()).getStreet();
+		}
+		return street;
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getZip It passes the value
 	 * from class StreetAddress to class GUI, without the GUI ever touching
-	 * class StreetAddress.
+	 * class StreetAddress. It will return an empty string if no person is
+	 * currently selected.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 * 
 	 */
 	public static String relayGZip() {
-		return "Zip";
+		String zip = "";
+		if (window.getPersonIndex() != -1) {
+			zip = list.getPerson(window.getPersonIndex()).getZip();
+		}
+		return zip;
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getCity It passes the value
 	 * from class StreetAddress to class GUI, without the GUI ever touching
-	 * class StreetAddress.
+	 * class StreetAddress. It will return an empty string if no person is
+	 * currently selected.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 * 
 	 */
 	public static String relayGCity() {
-		return "City";
+		String city = "";
+		if (window.getPersonIndex() != -1) {
+			city = list.getPerson(window.getPersonIndex()).getCity();
+		}
+		return city;
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getState It passes the
 	 * value from class StreetAddress to class GUI, without the GUI ever
-	 * touching class StreetAddress.
+	 * touching class StreetAddress. It will return an empty string if no person
+	 * is currently selected.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 * 
 	 */
 	public static String relayGState() {
-		return "State";
+		String state = "";
+		if (window.getPersonIndex() != -1) {
+			state = list.getPerson(window.getPersonIndex()).getState();
+		}
+		return state;
 	}
 
 	/**
 	 * This method acts as a relay for StreetAddress.getCountry. It passes the
 	 * value from class StreetAddress to class GUI, without the GUI ever
-	 * touching class StreetAddress.
+	 * touching class StreetAddress. It will return an empty string if no person
+	 * is currently selected.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 * 
 	 */
 	public static String relayGCountry() {
-		return "Country";
+		String country = "";
+		if (window.getPersonIndex() != -1) {
+			country = list.getPerson(window.getPersonIndex()).getCountry();
+		}
+		return country;
 	}
 
 }
-
-/*
- * -------Paste of run from console------- An object of class ContactList has
- * been constructed Program has compiled and is running
- */

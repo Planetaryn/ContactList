@@ -1,10 +1,13 @@
+import java.io.Serializable;
+
 /**
  * Defines a reusable class StreetAddress. One object of class StreetAddress
  * contains a house number, street, zip, city, state, & country.
  *
  * @author irmarodarte
  */
-public class StreetAddress {
+@SuppressWarnings("serial")
+public class StreetAddress implements Serializable{
     private String houseNumber;
     private String street;
     private String zip;
@@ -18,12 +21,12 @@ public class StreetAddress {
      * object of class StreetAddress is created.
      */
     public StreetAddress() {
-        setHouseNumber("");
-        setStreet("");
-        setZip("");
-        setCity("");
-        setState("");
-        setCountry("");
+        setHouseNumber("12345");
+        setStreet("El Monte Rd");
+        setZip("94022");
+        setCity("Los Altos Hills");
+        setState("CA");
+        setCountry("United States of America");
     }
 
     /**
@@ -32,7 +35,6 @@ public class StreetAddress {
      *
      */
     public StreetAddress(String newHouse, String newStreet, String newZip, String newCity, String newState, String newCountry) {
-        System.out.println("Using parametrized  constructor");
         houseNumber = newHouse;
         street = newStreet;
         zip = newZip;

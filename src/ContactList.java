@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * Define a reusable class ContactList. One object of class ContactList contains Person objects.
  */
+@SuppressWarnings("serial")
 public class ContactList implements Serializable{
 	private ArrayList<Person> contactList;
 
@@ -14,8 +15,6 @@ public class ContactList implements Serializable{
 	 */
 	public ContactList() {
 		contactList = new ArrayList<Person>();
-		System.out
-				.println("An object of class ContactList has been constructed");
 	}
 
 	/**
@@ -60,6 +59,7 @@ public class ContactList implements Serializable{
 	public ContactList searchForField(String searchField,
 			String searchValue) {
 		System.out.println("Method ContactList.searchByField called");
+		// TODO
 		// Extract field value and compare to searchValue
 		// Store array of objects that match the search
 		// Return that array
@@ -75,6 +75,7 @@ public class ContactList implements Serializable{
 	 */
 	public void sortByField(String SortField) {
 		System.out.println("Method ContactList.sortByField called");
+		// TODO
 
 	}
 }
