@@ -54,8 +54,7 @@ public class Main {
 	 * 
 	 * @author noahgoldsmith
 	 */
-	@SuppressWarnings("unused")
-	private void saveList() {
+	public static void saveList() {
 		//TODO
 	}
 

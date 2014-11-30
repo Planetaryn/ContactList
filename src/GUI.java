@@ -450,7 +450,7 @@ public class GUI {
 		 */
 		@Override
 		public void windowClosing(WindowEvent evt) {
-			// TODO
+			Main.saveList();
 			System.exit(0);
 		}
 	}
