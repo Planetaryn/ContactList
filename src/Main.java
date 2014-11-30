@@ -52,6 +52,7 @@ public class Main {
 	/**
 	 * This method writes the list to disk when the program is closed.
 	 * 
+	 * @author noahgoldsmith
 	 */
 	@SuppressWarnings("unused")
 	private void saveList() {
@@ -63,6 +64,7 @@ public class Main {
 	 * parameter
 	 * 
 	 * @param index
+	 * @return
 	 * @author noahgoldsmith
 	 */
 	public static Person getPersonAtIndex(int index) {
@@ -71,6 +73,9 @@ public class Main {
 
 	/**
 	 * This method returns the size of the array
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 */
 	public static int getSize() {
 		return list.getSize();
@@ -83,6 +88,8 @@ public class Main {
 	 * 
 	 * @param searchField
 	 *            , searchValue
+	 * @return
+	 * @author noahgoldsmith
 	 */
 	public static ContactList searchList(String searchField, String searchValue) {
 		ContactList matches = new ContactList();

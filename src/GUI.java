@@ -415,6 +415,7 @@ public class GUI {
 		 * to different colors so that the colors alternate, and so that a
 		 * selected index becomes a different color.
 		 * 
+		 * @return
 		 * @author noahgoldsmith
 		 */
 		public Component getListCellRendererComponent(JList list, Object value,
@@ -521,6 +522,7 @@ public class GUI {
 	 * This method returns the value of the variable sortField. (In this version
 	 * of the program, the sortfield is always lastName)
 	 * 
+	 * @return
 	 * @author noahgoldsmith
 	 */
 	public String getSortField() {
@@ -532,6 +534,7 @@ public class GUI {
 	 * This method returns the index of the currently selected person in the
 	 * JList
 	 * 
+	 * @return
 	 * @author noahgoldsmith
 	 */
 	public int getPersonIndex() {
