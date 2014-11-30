@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,13 +9,13 @@ import java.util.regex.Pattern;
  * 
  * @author Kelly Lam
  */
-public class Person {
+public class Person implements Serializable{
 	private String email;
 	private String phoneNumber;
 	private String firstName;
 	private String lastName;
 	private String notes;
-	private StreetAddress address;
+	private StreetAddress address = new StreetAddress();
 
 	/**
 	 * Constructor for class Person. Creates a new object of class
@@ -23,21 +24,14 @@ public class Person {
 	 * 
 	 * @author Noah
 	 */
-	public Person() { // ShS. Commented out code that is not needed.
-	/**	Person person;
-		person = new Person(); */
-		firstName ="";
-		//person.setFirstName(""); // ShS. Commented out code that is not needed; there is no need to use the set function within the Person class
-		lastName ="";
-		// person.setLastName("");// ShS. Commented out code that is not needed; there is no need to use the set function within the Person class
-		email="";
-		//person.setEmail("");// ShS. Commented out code that is not needed; there is no need to use the set function within the Person class
-		phoneNumber="";
-		//person.setPhoneNumber("");// ShS. Commented out code that is not needed; there is no need to use the set function within the Person class
-		notes="";
-		// person.setNotes(""); // ShS. Commented out code that is not needed; there is no need to use the set function within the Person class
+	public Person() {
+		this.setFirstName("");
+		this.setLastName("");
+		this.setEmail("");
+		this.setPhoneNumber("");
+		this.setNotes("");
 	}
-
+	
 	/**
 	 * Sets the value of email to the value of the parameter newEmail
 	 * 
@@ -148,12 +142,11 @@ public class Person {
 	 * @author Kelly
 	 */
 	public boolean verifyPhoneFormat(String testPhoneNumber) {
-//		String verifyPhoneNumber = testPhoneNumber; // ShS. No need to copy strings. Use input parameter in the matcher directly
+		String verifyPhoneNumber = testPhoneNumber;
 		
 		Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
-//		Matcher matcher = pattern.matcher(verifyPhoneNumber); // ShS. No need to copy strings. Use input parameter in the matcher directly
-		Matcher matcher = pattern.matcher(testPhoneNumber);
-
+		Matcher matcher = pattern.matcher(verifyPhoneNumber);
+		
 		if (matcher.matches()) {
 			return true;
 		}
@@ -172,12 +165,11 @@ public class Person {
 	 * @author Kelly
 	 */
 	public boolean verifyEmailFormat(String testEmail) {
-	//	String verifyEmail = testEmail; // ShS. No need to copy strings. Use input parameter in the matcher directly
+		String verifyEmail = testEmail;
 		
 		Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-//		Matcher matcher = pattern.matcher(verifyEmail); // ShS. No need to copy strings. Use input parameter in the matcher directly
-		Matcher matcher = pattern.matcher(testEmail);
-
+		Matcher matcher = pattern.matcher(verifyEmail);
+		
 		if (matcher.matches()) {
 			return true;
 		}
@@ -195,8 +187,35 @@ public class Person {
 	 * @author Kelly
 	 */
 	public String toString() {
-		System.out.println("ToString method is called");
-		return ("");
+		String contact = "";
+		contact += (this.getFirstName() +" " +this.getLastName() +"\n");
+		contact += ("Email: " +this.getEmail() +"\n");
+		contact += ("Phone: " +this.getPhoneNumber() +"\n");
+		contact += (address);
+		contact += ("Notes:" +this.getNotes() +"\n");
+		return (contact);
+	}
+
+	/**
+	 * This method sets the values of houseNumber, street, zip, state, and country in the 
+	 * person's address.
+	 * 
+	 * @author noahgoldsmith
+	 * @param houseNumber
+	 * @param street
+	 * @param zip
+	 * @param state
+	 * @param country
+	 */
+	public void setStreetAddress(String houseNumber, String street, String zip, String city,
+			String state, String country) {
+		address.setHouseNumber(houseNumber);
+		address.setStreet(street);
+		address.setZip(zip);
+		address.setCity(city);
+		address.setState(state);
+		address.setCountry(country);
+				
 	}
 
 }
