@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
@@ -29,7 +30,7 @@ public class GUINotification extends JDialog {
 		firstLine = newFirstLine;
 		secondLine = newSecondLine;
 		initialize();
-		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 
 	}
@@ -63,6 +64,7 @@ public class GUINotification extends JDialog {
 				 * @param e
 				 * @author noahgoldsmith
 				 */
+				@Override
 				public void actionPerformed(ActionEvent e) {
 					dispose();
 				}

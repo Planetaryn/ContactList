@@ -1,5 +1,4 @@
 import java.awt.EventQueue;
-import java.util.ArrayList;
 
 /**
  * This class controls the operation of the contact list program. It has methods
@@ -20,6 +19,7 @@ public class Main {
 			/**
 			 * This method creates and opens a new GUI.
 			 */
+			@Override
 			public void run() {
 				try {
 					openList();

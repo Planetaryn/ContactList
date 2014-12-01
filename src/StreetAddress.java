@@ -176,6 +176,7 @@ public class StreetAddress implements Serializable {
 	 * @return
 	 * @author irmarodarte
 	 */
+	@Override
 	public String toString() {
 		return "houseNumber = " + houseNumber + "\n" + "street = " + street
 				+ "\n" + "zip = " + zip + "\n" + "city = " + city + "\n"

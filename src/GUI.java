@@ -65,12 +65,11 @@ public class GUI {
 	 * This method constructs the GUI.
 	 */
 	public GUI() {
-		updateModel();
 		initialize();
-		this.frame.setVisible(true); // Must be the last thing done in this
-										// method.
+		Main.addPerson();
+		updateModel();
+		this.frame.setVisible(true);
 		listener = new DocumentListener(this);
-
 	}
 
 	/**
@@ -283,13 +282,26 @@ public class GUI {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Main.addPerson();
-				updatePerson();
-				updateFields();
-				updateModel();
-				list.setSelectedIndex(Main.getSize() - 1); // This may not work
-															// once the list is
-															// sorting
+				if (txtLastName.getText().isEmpty() == false) {
+					Main.addPerson();
+					updatePerson();
+					updateFields();
+					updateModel();
+					list.setSelectedIndex(Main.getSize() - 1); // This may not
+																// work
+																// once the list
+																// is
+																// sorting
+				} else {
+					try {
+						@SuppressWarnings("unused")
+						GUINotification dialog = new GUINotification(
+								"Error: No last name!",
+								"You must enter a last name for this person.");
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
 			}
 		});
 		btnNewContact.setForeground(Color.BLACK);
@@ -380,6 +392,7 @@ public class GUI {
 			 * @param le
 			 * @author noahgoldsmith
 			 */
+			@Override
 			public void valueChanged(ListSelectionEvent le) {
 				index = list.getSelectedIndex();
 				updateFields();
@@ -418,6 +431,7 @@ public class GUI {
 		 * @return
 		 * @author noahgoldsmith
 		 */
+		@Override
 		public Component getListCellRendererComponent(JList list, Object value,
 				int index, boolean isSelected, boolean cellHasFocus) {
 
@@ -482,6 +496,7 @@ public class GUI {
 		 * 
 		 * @author noahgoldsmith
 		 */
+		@Override
 		public void changedUpdate(DocumentEvent e) {
 			updateAll(e);
 		}
@@ -492,6 +507,7 @@ public class GUI {
 		 * 
 		 * @author noahgoldsmith
 		 */
+		@Override
 		public void insertUpdate(DocumentEvent e) {
 			updateAll(e);
 		}
@@ -502,6 +518,7 @@ public class GUI {
 		 * 
 		 * @author noahgoldsmith
 		 */
+		@Override
 		public void removeUpdate(DocumentEvent e) {
 			updateAll(e);
 		}

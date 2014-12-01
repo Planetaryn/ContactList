@@ -322,6 +322,7 @@ public class Person implements Serializable {
 	 * @return
 	 * @author Kelly
 	 */
+	@Override
 	public String toString() {
 		return (this.getFirstName() + " " + this.getLastName());
 	}
