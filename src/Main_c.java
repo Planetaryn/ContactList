@@ -16,7 +16,7 @@ import java.util.Scanner;
  * 						Removed the sortByField method from the main; this is a ContactList method.
  * 						removed the getSize() method; it is a Java method that does not need to be redone.
  */
-public class Main {
+public class Main_c {
 
 	static Scanner console = new Scanner(System.in); // is there a need to make this static?
 	static BufferedReader br = new BufferedReader(new InputStreamReader( // is there a need to make this static?
