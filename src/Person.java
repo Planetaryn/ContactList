@@ -17,7 +17,7 @@ public class Person implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String notes;
-	private StreetAddress address = new StreetAddress();;
+	private StreetAddress address = new StreetAddress();
 
 	/**
 	 * Constructor for class Person. Creates a new object of class
@@ -35,7 +35,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Sets the value of email to the value of the parameter newEmail
+	 * Sets the value of email to the value of the parameter newEmail.
 	 * 
 	 * @param newEmail
 	 * @author Kelly
@@ -46,7 +46,7 @@ public class Person implements Serializable {
 
 	/**
 	 * Sets the value of phoneNumber to the value of the parameter
-	 * newPhoneNumber
+	 * newPhoneNumber.
 	 * 
 	 * @param newPhoneNumber
 	 * @author Kelly
@@ -56,7 +56,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Sets the value of firstName to the value parameter newFirstName
+	 * Sets the value of firstName to the value parameter newFirstName.
 	 * 
 	 * @param newFirstName
 	 * @author Irma
@@ -66,7 +66,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Sets the value of lastName to the value of the parameter newLastName
+	 * Sets the value of lastName to the value of the parameter newLastName.
 	 * 
 	 * @param newLastName
 	 * @author Irma
@@ -142,7 +142,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Sets the value of notes to the value of the parameter newNotes
+	 * Sets the value of notes to the value of the parameter newNotes.
 	 * 
 	 * @param newNotes
 	 * @author Kelly
@@ -152,7 +152,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Returns the value of email
+	 * Returns the value of email.
 	 * 
 	 * @return
 	 * @author Kelly
@@ -162,7 +162,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Returns the value of phoneNumber
+	 * Returns the value of phoneNumber.
 	 * 
 	 * @return
 	 * @author Kelly
@@ -172,7 +172,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Returns the value of firstName
+	 * Returns the value of firstName.
 	 * 
 	 * @return
 	 * @author Irma
@@ -182,7 +182,7 @@ public class Person implements Serializable {
 	}
 
 	/**
-	 * Returns the value of lastName
+	 * Returns the value of lastName.
 	 * 
 	 * @return
 	 * @author Irma
@@ -305,17 +305,16 @@ public class Person implements Serializable {
 			// Pop out "Email must be in the form ______@_____.____" in GUI.
 		}
 	}
-	
+
 	/**
-	 * This method compares the person object person1 to another person object person2.
-	 * returns -1 if person1 < person2
-	 * returns 0 if person1 == person2
-	 * returns 1 if person1 > person2
+	 * This method compares the person object person1 to another person object
+	 * person2. returns -1 if person1 < person2m returns 0 if person1 ==
+	 * person2, returns 1 if person1 > person2.
 	 * 
 	 * @param person2
 	 * @author noahgoldsmith
 	 */
-	public int compareTo(Person person2){
+	public int compareTo(Person person2) {
 		int comparisonValue = 0;
 		return comparisonValue;
 	}

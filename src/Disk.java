@@ -14,13 +14,14 @@
  *     changed to �SuccessfullyWrittenToDisk� and �SuccessfullyReadFromDisk�
  * v7: Made the constructor public per input from Noah. 
  * v8: Added the actual code for the class.
+ * v9: This version is fully tested with the non-GUI main program.
  * 
  */
 import java.io.*;
 
 public class Disk {
 	private final String CONTACT_LIST_FILE_NAME = "Contact_List.ser";
-	private boolean fileExists;
+	private boolean fileExists = false;
 
 	private File contactListFile = new File(CONTACT_LIST_FILE_NAME);
 	private ContactList contactListFromDisk = null;
@@ -32,16 +33,20 @@ public class Disk {
 	 * 
 	 * @param
 	 */
-	public Disk() {
-		// System.out.println("In constructor");
+
+	/**
+	 * Constructor for the DiskToFromDisk
+	 */
+	Disk() {
+		System.out.println("In constructor");
 		if (contactListFile.exists()) {
 			fileExists = true;
+			System.out.println("file exists");
+
 		} else {
-			fileExists = false;
-
-			// System.out.println("file does not exist");
+			System.out.println("file does not exist");
 		}
-
+		System.out.println("file exists flag =" + fileExists);
 	}
 
 	/**
@@ -93,7 +98,7 @@ public class Disk {
 	 */
 
 	public boolean readFromDisk() {
-		boolean successfullyreadFromDisk = true;
+		// boolean successfullyreadFromDisk = true;
 		ObjectInputStream objectInputStream = null;
 		FileInputStream fileInput = null;
 		if (fileExists) {
@@ -101,14 +106,14 @@ public class Disk {
 				fileInput = new FileInputStream(contactListFile);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
-				successfullyreadFromDisk = false;
+				fileExists = false;
 			}
 			try {
 				objectInputStream = new ObjectInputStream(fileInput);
 			} catch (IOException e) {
 
 				e.printStackTrace();
-				successfullyreadFromDisk = false;
+				fileExists = false;
 
 			}
 			try {
@@ -117,16 +122,16 @@ public class Disk {
 			} catch (IOException e) {
 
 				e.printStackTrace();
-				successfullyreadFromDisk = false;
+				fileExists = false;
 
 			} catch (ClassNotFoundException e) {
 
 				e.printStackTrace();
-				successfullyreadFromDisk = false;
+				fileExists = false;
 
 			}
 		}
-		return successfullyreadFromDisk;
+		return fileExists;
 	}
 
 	/**

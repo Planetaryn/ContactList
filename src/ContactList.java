@@ -21,7 +21,7 @@ public class ContactList implements Serializable {
 	}
 
 	/**
-	 * This method returns the size of the contactList
+	 * This method returns the size of the contactList.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -31,7 +31,7 @@ public class ContactList implements Serializable {
 	}
 
 	/**
-	 * Adds a Person to the contactList
+	 * Adds a Person object to the contactList.
 	 * 
 	 * @param newPerson
 	 * @author noahgoldsmith
@@ -42,7 +42,7 @@ public class ContactList implements Serializable {
 	}
 
 	/**
-	 * Returns the ArrayList contactList
+	 * Returns the ArrayList contactList.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -52,7 +52,7 @@ public class ContactList implements Serializable {
 	}
 
 	/**
-	 * Returns the specified person object
+	 * Returns the specified person object.
 	 * 
 	 * @return
 	 * @author noahgoldsmith

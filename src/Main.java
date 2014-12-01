@@ -17,7 +17,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 
 			/**
-			 * This method creates and opens a new GUI
+			 * This method creates and opens a new GUI.
 			 */
 			public void run() {
 				try {
@@ -60,7 +60,7 @@ public class Main {
 
 	/**
 	 * This method returns the person in the list at the index specified by the
-	 * parameter
+	 * parameter.
 	 * 
 	 * @param index
 	 * @return
@@ -71,7 +71,7 @@ public class Main {
 	}
 
 	/**
-	 * This method returns the size of the array
+	 * This method returns the size of the array.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -97,7 +97,7 @@ public class Main {
 
 	/**
 	 * This method sorts the list by the field specified in the GUI. (For this
-	 * version of the program, sortField is always lastName)
+	 * version of the program, sortField is always lastName).
 	 * 
 	 * @param sortField
 	 * @author noahgoldsmith

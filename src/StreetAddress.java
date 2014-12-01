@@ -34,7 +34,7 @@ public class StreetAddress implements Serializable {
 	/**
 	 * Parametrized constructor for class StreetAddress. Creates a new object of
 	 * class StreetAddress and fills houseNumber, street, zip, city, state, &
-	 * country with the values passed as parameters
+	 * country with the values passed as parameters.
 	 *
 	 * @author irmarodarte
 	 */
@@ -50,7 +50,7 @@ public class StreetAddress implements Serializable {
 
 	/**
 	 * Sets the value of houseNumber to the value of the parameter
-	 * newHouseNumber
+	 * newHouseNumber.
 	 * 
 	 * @param newHouseNumber
 	 * @author irmarodarte
@@ -60,7 +60,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Sets the value of street to the value of the parameter newStreet
+	 * Sets the value of street to the value of the parameter newStreet.
 	 * 
 	 * @param newStreet
 	 * @author irmarodarte
@@ -70,7 +70,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Sets the value of zip to the value of the parameter newZip
+	 * Sets the value of zip to the value of the parameter newZip.
 	 * 
 	 * @param newZip
 	 * @author irmarodarte
@@ -80,7 +80,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Sets the value of city to the value of the parameter newCity
+	 * Sets the value of city to the value of the parameter newCity.
 	 * 
 	 * @param newCity
 	 * @author irmarodarte
@@ -90,7 +90,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Sets the value of state to the value of the parameter newState
+	 * Sets the value of state to the value of the parameter newState.
 	 * 
 	 * @param newState
 	 * @author irmarodarte
@@ -100,7 +100,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Sets the value of country to the value of the parameter newCountry
+	 * Sets the value of country to the value of the parameter newCountry.
 	 * 
 	 * @param newCountry
 	 * @author irmarodarte
@@ -110,7 +110,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Returns the value of houseNumber
+	 * Returns the value of houseNumber.
 	 * 
 	 * @return
 	 * @author irmarodarte
@@ -120,7 +120,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Returns the value of street
+	 * Returns the value of street.
 	 * 
 	 * @return
 	 * @author irmarodarte
@@ -130,7 +130,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Returns the value of zip
+	 * Returns the value of zip.
 	 * 
 	 * @return
 	 * @author irmarodarte
@@ -140,7 +140,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Returns the value of city
+	 * Returns the value of city.
 	 *
 	 * @return
 	 * @author irmarodarte
@@ -150,7 +150,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Returns the value of state
+	 * Returns the value of state.
 	 *
 	 * @return
 	 * @author irmarodarte
@@ -160,7 +160,7 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Returns the value of country
+	 * Returns the value of country.
 	 *
 	 * @return
 	 * @author irmarodarte
@@ -171,7 +171,7 @@ public class StreetAddress implements Serializable {
 
 	/**
 	 * Returns a string containing the values of house number, street, city,
-	 * zip, state, & country
+	 * zip, state, & country.
 	 * 
 	 * @return
 	 * @author irmarodarte
