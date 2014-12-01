@@ -14,6 +14,7 @@
  *     changed to “SuccessfullyWrittenToDisk” and “SuccessfullyReadFromDisk”
  * v7: Made the constructor public per input from Noah. 
  * v8: Added the actual code for the class.
+ * v9: This version is fully tested with the non-GUI main program.
  * 
  */
 import java.io.*;
