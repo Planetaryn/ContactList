@@ -100,7 +100,7 @@ public class GUI {
 				null, null, null));
 		txtFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		txtFirstName.setHorizontalAlignment(SwingConstants.LEFT);
-		txtFirstName.setText("First");
+		txtFirstName.setText("");
 		txtFirstName.getDocument().addDocumentListener(listener);
 
 		txtFirstName.setColumns(10);
@@ -110,7 +110,7 @@ public class GUI {
 		txtLastName.setBounds(313, 56, 250, 28);
 		txtLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		txtLastName.setText("Last");
+		txtLastName.setText("");
 		txtLastName.setHorizontalAlignment(SwingConstants.LEFT);
 		txtLastName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		txtLastName.setColumns(10);
@@ -124,7 +124,7 @@ public class GUI {
 
 		txtEmail = new JTextField();
 		txtEmail.setBounds(313, 96, 250, 28);
-		txtEmail.setText("Email");
+		txtEmail.setText("");
 		txtEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
 				null, null));
 		txtEmail.setBackground(Color.WHITE);
@@ -191,7 +191,7 @@ public class GUI {
 
 		txtPhone = new JTextField();
 		txtPhone.setBounds(313, 136, 250, 28);
-		txtPhone.setText("Phone");
+		txtPhone.setText("");
 		txtPhone.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
 				null, null));
 		txtPhone.setColumns(10);
@@ -207,7 +207,7 @@ public class GUI {
 
 		txtpnNotes = new JTextPane();
 		scrollPane_1.setViewportView(txtpnNotes);
-		txtpnNotes.setText("Notes");
+		txtpnNotes.setText("");
 		txtpnNotes.setBorder(null);
 
 		JLabel lblPhone = new JLabel("Phone:");
@@ -539,15 +539,6 @@ public class GUI {
 	 */
 	public int getPersonIndex() {
 		return index;
-	}
-
-	/**
-	 * This method notifies the user that no match was found for their search.
-	 * 
-	 * @author noahgoldsmith
-	 */
-	public static void notifyNoSearchMatch() {
-		// TODO
 	}
 
 	/**

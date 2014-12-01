@@ -27,11 +27,8 @@ public class Person implements Serializable {
 	 * @author Noah
 	 */
 	public Person() {
-		this.setFirstName("New");
-		this.setLastName("Person");
-		this.setEmail("Email");
-		this.setPhoneNumber("Phone Number");
-		this.setNotes("Notes");
+		this.setFirstName("New Person");
+		this.setLastName("");
 	}
 
 	/**

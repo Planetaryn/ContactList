@@ -12,6 +12,7 @@ public class Main {
 
 	private static ContactList list;
 	private static GUI window;
+	private static GUINotification dialog; // ////////////////////
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -30,6 +31,19 @@ public class Main {
 
 		});
 
+	}
+
+	/**
+	 * This method notifies the user that no match was found for their search.
+	 * 
+	 * @author noahgoldsmith
+	 */
+	public static void notifyNoSearchMatch() {
+		try {
+			dialog = new GUINotification("No Match Found", "Please try again.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -55,7 +69,7 @@ public class Main {
 	 * @author noahgoldsmith
 	 */
 	public static void saveList() {
-		//TODO
+		// TODO
 	}
 
 	/**
@@ -138,18 +152,28 @@ public class Main {
 			String email, String phoneNumber, String notes, String houseNumber,
 			String street, String zip, String city, String state, String country) {
 
-		if (window.getPersonIndex() != -1) {
-			list.getPerson(window.getPersonIndex()).setFirstName(firstName);
-			list.getPerson(window.getPersonIndex()).setLastName(lastName);
-			list.getPerson(window.getPersonIndex()).setEmail(email);
-			list.getPerson(window.getPersonIndex()).setPhoneNumber(phoneNumber);
-			list.getPerson(window.getPersonIndex()).setNotes(notes);
-			list.getPerson(window.getPersonIndex()).setHouseNumber(houseNumber);
-			list.getPerson(window.getPersonIndex()).setStreet(street);
-			list.getPerson(window.getPersonIndex()).setZip(zip);
-			list.getPerson(window.getPersonIndex()).setCity(city);
-			list.getPerson(window.getPersonIndex()).setState(state);
-			list.getPerson(window.getPersonIndex()).setCountry(country);
+		if (window.getPersonIndex() != -1) {			
+			if (lastName.isEmpty() || lastName == "Person") {
+				try {
+					dialog = new GUINotification("Error: No last name!", "You must enter a last name for this person.");
+					} catch (Exception e) {
+					e.printStackTrace();
+					}
+			} else{
+				list.getPerson(window.getPersonIndex()).setFirstName(firstName);
+				list.getPerson(window.getPersonIndex()).setLastName(lastName);
+				list.getPerson(window.getPersonIndex()).setEmail(email);
+				list.getPerson(window.getPersonIndex()).setPhoneNumber(
+						phoneNumber);
+				list.getPerson(window.getPersonIndex()).setNotes(notes);
+				list.getPerson(window.getPersonIndex()).setHouseNumber(
+						houseNumber);
+				list.getPerson(window.getPersonIndex()).setStreet(street);
+				list.getPerson(window.getPersonIndex()).setZip(zip);
+				list.getPerson(window.getPersonIndex()).setCity(city);
+				list.getPerson(window.getPersonIndex()).setState(state);
+				list.getPerson(window.getPersonIndex()).setCountry(country);
+			}
 		}
 
 	}
