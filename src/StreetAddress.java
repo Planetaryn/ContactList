@@ -1,6 +1,6 @@
 
 
-import java.io.Serializable;
+import java.io.Serializable;  // Shmuel Added serialization to facilitate storage on disk 
 
 
 /**
@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * @author irmarodarte
  */
-public class StreetAddress implements Serializable{
+public class StreetAddress implements Serializable{ // Shmuel Added serialization to facilitate storage on disk 
     private String houseNumber;
     private String street;
     private String zip;
