@@ -9,7 +9,12 @@ import java.util.Scanner;
  * which initialize the GUI and creates a new contact list or opens an existing
  * contact list.
  * 
- * @author noahgoldsmith
+ * Version 1: noahgoldsmith
+ * Version 2: Shmuel - 	Added the Disk object function.
+ * 						Modified the switch in the menu
+ * 						Added the sort function and verified that it is integrated with the print function.
+ * 						Removed the sortByField method from the main; this is a ContactList method.
+ * 						removed the getSize() method; it is a Java method that does not need to be redone.
  */
 public class Main {
 
@@ -17,24 +22,27 @@ public class Main {
 	static BufferedReader br = new BufferedReader(new InputStreamReader( // is there a need to make this static?
 			System.in));
 	private static ContactList list = new ContactList(); //ShS is there a need to declare this private or static
+	private static ContactList searchedListObject = new ContactList();		// Shmuel: Added searchedList object
 	private static Disk diskHandler = new Disk();
+	private static final int ATTEMPT_COUNT_LIMIT=3;
 	
 	public static void main(String[] args) { // moved main to the top to make it more readable
         ContactList directoryList;
         directoryList = new ContactList();
+
 		boolean successfulDiskRead=false; 
 		Disk diskHandler = new Disk();
 		successfulDiskRead=diskHandler.readFromDisk();
 		System.out.println("successfulDiskRead ="+ successfulDiskRead);
 		   if(successfulDiskRead){
 			   directoryList = diskHandler.getDiskFileObject();
-               System.out.println("Directrory file exists on disk");
+               //System.out.println("Directory file exists on disk");
                list=directoryList;
-               printList();
+               // printList();
 
            }
 		   else{
-               System.out.println("Directrory file does not exist on disk");
+               //System.out.println("Directory file does not exist on disk");
 
 			   
 		   }
@@ -45,17 +53,26 @@ public class Main {
 	/**
 	 * This method displays and reads the user menu
 	 * 
-	 * @author noahgoldsmith
+	 * @author Version 0: basic MEnue noahgoldsmith
+	 * Version1: Shmuel	added options o, 3, 4, & 5
 	 */
 	public static void menu() { // moved menu after main to make it more readable
+		String searchString;
+		String searchField="";
+		int attemptCounter;
+		
 		System.out.println("Enter 1 to add a new contact to the contact list");
 		System.out.println("Enter 2 to print out the contact list");
-		System.out.println("Enter 0 to exit the application");
+		System.out.println("Enter 3 to retrieve contact(s) by last name");
+		System.out.println("Enter 4 to retrieve contact(s) by email address");
+		System.out.println("Enter 5 to retrieve contact(s) by zip code");
 
+		System.out.println("Enter 0 to exit the application");
 		int selection = console.nextInt();
+
 		switch (selection) {
-		case 0:
-			System.out.println("Option 0  was exercised"); //  debug statement: Option 3 is not exercised
+		case 0: //Shmuel: added case 0
+			System.out.println("Saving Contact List to disk"); //  debug statement: Option 3 is not exercised
 			diskHandler.writeToDisk(list);
 			exit();
 			break;
@@ -69,9 +86,54 @@ public class Main {
 		case 2:
 			printList();
 			break;
+		case 3: //Shmuel: added retrieve contact(s) by last name
+		case 4: //Shmuel: added retrieve contact(s) by email address
+		case 5: //Shmuel: added retrieve contact(s) by zip code
+			attemptCounter=0;
+			searchString = "";
+			if(selection==3){
+				System.out.print("Please enter the searched contact's last name: ");
+				searchField="Last Name";
+			}
+			else if(selection==4){
+				System.out.print("Please enter the searched contact's email address: ");
+				searchField="email";
+			}
+			else if(selection==5){
+				System.out.print("Please enter the searched contact's zip code: ");
+				searchField="zip code";
+			}
+			try {
+			searchString = br.readLine();
+			if (searchString.isEmpty() && attemptCounter<ATTEMPT_COUNT_LIMIT) {
+				attemptCounter+=1;
+				System.out.println("You did not enter a last name, please try again");
+				searchString = br.readLine();
+			}
+			if(searchString.isEmpty() ){
+							
+				System.out.println("No last name entered, returning to the main menu");
+				System.out.println("");
+			}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			//
+			System.out.println();
+			searchedListObject= list.searchForField(searchField, searchString);
+			System.out.println(list.matchedListToString(searchedListObject));
 
+			menu();
+			break;
+/*		case 4:   //Shmuel: added retrieve contact(s) by email address
+			printList();
+			break;
+		case 5://Shmuel: added retrieve contact(s) by zip code
+			printList();
+			break;
+*/
 		default: //  debug statement: default option is exercised when you enter 0
-			System.out.println("default was exercised");
+			System.out.println("default was exercised; Contact List not saved to disk");
 		}
 	}
 	/**
@@ -82,6 +144,7 @@ public class Main {
 	 * @throws IOException
 	 */
 	private static void addPerson() throws IOException {
+		String searchString;
 		Person person = new Person();
 
 		System.out.print("Please enter the contacts first name: ");
@@ -91,13 +154,13 @@ public class Main {
 		String lastName = "";
 		lastName = br.readLine();
 		if (lastName.isEmpty()) {
-			for (int i = 0; i <= 2; i++) {
+			for (int i = 0; i < ATTEMPT_COUNT_LIMIT; i++) {
 				System.out
 						.println("You did not enter a last name, please try again");
 				System.out.print("Please enter the contacts last name: ");
 				lastName = br.readLine();
 			}
-			System.out.println("No last name entered, returning to the menu");
+			System.out.println("No last name entered, returning to the main menu");
 			System.out.println("");
 			menu();
 		}
@@ -167,26 +230,18 @@ public class Main {
 
 
 
-	/**
-	 * This method creates a new contact list, and populates it with the data
-	 * stored on the disk. If there is no list stored on the disk it leaves the
-	 * new list empty.
-	 */
-	private static void openList() {
-		list = new ContactList();
-		// Will pass list to disk as a parameter
-		// Disk will then populate list with the array stored on disk
-		// A new list opens up with a blank person object already created
-		// An existing list opens up with the first person in that list
-		// displayed
-	}
-
 	private static void printList() {
-		for (int i = 0; i < list.getSize(); i++) {
-			System.out.println(list.getPerson(i));
-		}
+		list.sortByField("Name");
+			System.out.print(list);
 		menu();
 	}
+/**	private static ContactList searchForField(String fieldName, String fieldValue){
+		ContactList matches = new ContactList();
+		matches=list.searchForField(fieldName, fieldValue);
+		return matches;	
+	}
+	*/
+
 
 	/**
 	 * This method searches the list for the values specified by the user, then
@@ -201,21 +256,6 @@ public class Main {
 		return matches;
 	}
 
-	/**
-	 * This method writes the list to disk when the program is closed.
-	 */
-	private void saveList() {
 
-	}
-
-	/**
-	 * This method returns the list by the sorted by last name.
-	 * 
-	 * @author noahgoldsmith
-	 */
-	@SuppressWarnings("unused")
-	private void sortList(String sortField) {
-
-	}
 
 }

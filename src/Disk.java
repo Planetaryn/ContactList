@@ -39,15 +39,14 @@ public class Disk {
 	 * Constructor for the DiskToFromDisk
 	 */
 	Disk() {
-		System.out.println("In constructor");
 		if (contactListFile.exists()) {
 			fileExists = true;			
-			System.out.println("file exists");
+			//System.out.println("file exists");
 
 		} else {
-			System.out.println("file does not exist");
+			//System.out.println("file does not exist");
 		}
-		System.out.println("file exists flag ="+ fileExists);
+		//System.out.println("file exists flag ="+ fileExists);
 	}
 	
 

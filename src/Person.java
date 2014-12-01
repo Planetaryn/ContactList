@@ -132,7 +132,13 @@ public class Person implements Serializable{
 	public String getNotes() {
 		return notes;
 	}
-
+	/**
+	 * Shmuel: Added method to get the Zip code 
+	 */
+	public String getZip() {
+		return address.getZip();
+	}
+	
 	/**
 	 * Verify the phone number format to make sure the phone number is valid.
 	 * Returns true if the phone number is correct.
@@ -192,7 +198,7 @@ public class Person implements Serializable{
 		contact += ("Email: " +this.getEmail() +"\n");
 		contact += ("Phone: " +this.getPhoneNumber() +"\n");
 		contact += (address);
-		contact += ("Notes:" +this.getNotes() +"\n");
+		contact += ("Notes: " +this.getNotes() +"\n"); //Shmuel: added a space after the ":"
 		return (contact);
 	}
 

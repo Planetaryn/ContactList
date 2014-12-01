@@ -151,7 +151,7 @@ public class StreetAddress implements Serializable{ // Shmuel Added serializatio
      * zip, state, & country
      */
     public String toString() {
-    	String address = "";
+    	String address = "Address:"+"\n";
     	address += (this.getHouseNumber() +" " +this.getStreet() +"\n");
     	address += (this.getCity() +" " +this.getState() +", " +this.getZip() +"\n");
     	address += (this.getCountry() +"\n");
