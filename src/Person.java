@@ -318,6 +318,7 @@ public class Person implements Serializable {
 
 	/**
 	 * Returns a string containing a persons first name & last name.
+	 * (This string is what is displayed in the JList)
 	 * 
 	 * @return
 	 * @author Kelly

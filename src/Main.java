@@ -11,7 +11,8 @@ public class Main {
 
 	private static ContactList list;
 	private static GUI window;
-	private static GUINotification dialog; // ////////////////////
+	@SuppressWarnings("unused")
+	private static GUINotification dialog;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

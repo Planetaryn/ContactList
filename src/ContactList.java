@@ -91,6 +91,5 @@ public class ContactList implements Serializable {
 	public void sortByField(String SortField) {
 		System.out.println("Method ContactList.sortByField called");
 		// TODO
-
 	}
 }
