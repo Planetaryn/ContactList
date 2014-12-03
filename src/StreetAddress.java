@@ -23,12 +23,12 @@ public class StreetAddress implements Serializable {
 	 * @author irmarodarte
 	 */
 	public StreetAddress() {
-		setHouseNumber("12345");
-		setStreet("El Monte Rd");
-		setZip("94022");
-		setCity("Los Altos Hills");
-		setState("CA");
-		setCountry("United States of America");
+		setHouseNumber("House #");
+		setStreet("Street");
+		setZip("ZIP code");
+		setCity("City");
+		setState("State");
+		setCountry("Country");
 	}
 
 	/**

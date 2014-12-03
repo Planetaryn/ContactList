@@ -11,6 +11,12 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Defines a reusable class GUINotification. One object of class GUI contains a
+ * graphical dialog box.
+ * 
+ * @author noahgoldsmith
+ */
 @SuppressWarnings("serial")
 public class GUINotification extends JDialog {
 
@@ -47,37 +53,34 @@ public class GUINotification extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		{
-			JLabel lblFirstLine = new JLabel(firstLine);
-			lblFirstLine.setHorizontalAlignment(SwingConstants.CENTER);
-			lblFirstLine.setBounds(6, 6, 437, 35);
-			lblFirstLine.setFont(new Font("Lucida Grande", Font.PLAIN, 26));
-			contentPanel.add(lblFirstLine);
-		}
-		{
-			JButton btnOK = new JButton("OK");
-			btnOK.addActionListener(new ActionListener() {
 
-				/**
-				 * This method closes the JPanel when the OK button is pressed.
-				 * 
-				 * @param e
-				 * @author noahgoldsmith
-				 */
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					dispose();
-				}
-			});
+		JLabel lblFirstLine = new JLabel(firstLine);
+		lblFirstLine.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFirstLine.setBounds(6, 6, 437, 35);
+		lblFirstLine.setFont(new Font("Lucida Grande", Font.PLAIN, 26));
+		contentPanel.add(lblFirstLine);
+		JButton btnOK = new JButton("OK");
+		btnOK.addActionListener(new ActionListener() {
 
-			JLabel lblSecondLine = new JLabel(secondLine);
-			lblSecondLine.setHorizontalAlignment(SwingConstants.CENTER);
-			lblSecondLine.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-			lblSecondLine.setBounds(6, 39, 437, 25);
-			contentPanel.add(lblSecondLine);
-			btnOK.setBounds(155, 68, 140, 35);
-			contentPanel.add(btnOK);
-		}
+			/**
+			 * This method closes the JPanel when the OK button is pressed.
+			 * 
+			 * @param e
+			 * @author noahgoldsmith
+			 */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+
+		JLabel lblSecondLine = new JLabel(secondLine);
+		lblSecondLine.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSecondLine.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		lblSecondLine.setBounds(6, 39, 437, 25);
+		contentPanel.add(lblSecondLine);
+		btnOK.setBounds(155, 68, 140, 35);
+		contentPanel.add(btnOK);
 
 	}
 }

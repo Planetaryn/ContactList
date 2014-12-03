@@ -39,6 +39,7 @@ public class ContactList implements Serializable {
 	public void addPerson() {
 		Person person = new Person();
 		contactList.add(person);
+		this.sortByField(Main.relayGSortField());
 	}
 
 	/**
@@ -88,8 +89,40 @@ public class ContactList implements Serializable {
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public void sortByField(String SortField) {
-		System.out.println("Method ContactList.sortByField called");
-		// TODO
+	public void sortByField(String sortField) {
+		String sortFieldI;
+		String sortFieldIIPlusOne;
+		Person tempPerson = new Person();
+		if (sortField == "Name") {
+			for (int sortIndex = 0; sortIndex < 2; sortIndex++) {
+				for (int i = 0; i < contactList.size() - 1; i++) {
+					for (int j = 0; j < contactList.size() - 1 - i; j++) {
+
+						if (sortIndex == 0) { // first sort on first name
+							sortFieldI = contactList.get(j).getFirstName();
+							sortFieldIIPlusOne = contactList.get(j + 1)
+									.getFirstName();
+						} else { // Sort on second name after the sort on first
+									// name
+									// is complete
+							sortFieldI = contactList.get(j).getLastName();
+							sortFieldIIPlusOne = contactList.get(j + 1)
+									.getLastName();
+						}
+						sortFieldI = sortFieldI.toLowerCase();
+						sortFieldIIPlusOne = sortFieldIIPlusOne.toLowerCase();
+						if (sortFieldI.compareTo(sortFieldIIPlusOne) > 0) {
+							// need to swap Person Objects
+							tempPerson = contactList.get(j);
+							contactList.remove(j);
+							contactList.add(j + 1, tempPerson);
+
+						}
+
+					}
+				}
+
+			}
+		}
 	}
 }

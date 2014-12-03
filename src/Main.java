@@ -117,9 +117,8 @@ public class Main {
 	 * @param sortField
 	 * @author noahgoldsmith
 	 */
-	@SuppressWarnings("unused")
-	private void sortList(String sortField) {
-		// TODO
+	public static void sortList(String sortField) {
+		list.sortByField(sortField);
 	}
 
 	/**
@@ -128,7 +127,38 @@ public class Main {
 	 * @author noahgoldsmith
 	 */
 	public static void addPerson() {
-		list.addPerson();
+		if (list.getSize() == 0) {
+			list.addPerson();
+		} else {
+			if (checkLastName() == true) {
+				list.addPerson();
+			}
+		}
+	}
+
+	/**
+	 * This method checks to see if all person objects in the list have a last
+	 * name. If they do not, it notifies the user.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public static boolean checkLastName() {
+		boolean hasLastName = true;
+		for (int i = 0; i < list.getSize(); i++) {
+			if (list.getPerson(i).getLastName().isEmpty()) {
+				hasLastName = false;
+				try {
+					dialog = new GUINotification(
+							("Error: A person has no last name!"),
+							"You must enter a last name for "
+									+ list.getPerson(i).getFirstName() + "!");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return hasLastName;
 	}
 
 	/**
@@ -153,14 +183,15 @@ public class Main {
 			String email, String phoneNumber, String notes, String houseNumber,
 			String street, String zip, String city, String state, String country) {
 
-		if (window.getPersonIndex() != -1) {			
-			if (lastName.isEmpty() || lastName == "Person") {
+		if (window.getPersonIndex() != -1) {
+			if (lastName.isEmpty()) {
 				try {
-					dialog = new GUINotification("Error: No last name!", "You must enter a last name for this person.");
-					} catch (Exception e) {
+					dialog = new GUINotification("Error: No last name!",
+							"You must enter a last name for this person.");
+				} catch (Exception e) {
 					e.printStackTrace();
-					}
-			} else{
+				}
+			} else {
 				list.getPerson(window.getPersonIndex()).setFirstName(firstName);
 				list.getPerson(window.getPersonIndex()).setLastName(lastName);
 				list.getPerson(window.getPersonIndex()).setEmail(email);
@@ -177,6 +208,25 @@ public class Main {
 			}
 		}
 
+	}
+
+	/**
+	 * This method acts as a relay for GUI.getSortField(). It passes the value
+	 * from class GUI to any other class.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public static String relayGSortField() {
+		String sortField = "";
+		if(window != null){
+			if (window.getSortField() != null) {
+				sortField = window.getSortField();
+			}			
+		} else {
+			sortField = "Name";
+		}
+		return sortField;
 	}
 
 	/**

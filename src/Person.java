@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  */
 
 @SuppressWarnings("serial")
-public class Person implements Serializable {
+public class Person implements Comparable<Person>, Serializable {
 	private String email;
 	private String phoneNumber;
 	private String firstName;
@@ -325,7 +325,13 @@ public class Person implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return (this.getFirstName() + " " + this.getLastName());
+		String contact = "";
+		contact += (this.getFirstName() +" " +this.getLastName() +"\n");
+		contact += ("Email: " +this.getEmail() +"\n");
+		contact += ("Phone: " +this.getPhoneNumber() +"\n");
+		contact += (address);
+		contact += ("Notes:" +this.getNotes() +"\n");
+		return (contact);
 	}
 
 }

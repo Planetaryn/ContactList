@@ -140,7 +140,7 @@ public class GUI {
 		panelAddress.setLayout(null);
 
 		txtHouseNumber = new JTextField();
-		txtHouseNumber.setText("12345");
+		txtHouseNumber.setText("House #");
 		txtHouseNumber.setBounds(6, 6, 70, 16);
 		txtHouseNumber
 				.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
@@ -149,7 +149,7 @@ public class GUI {
 		panelAddress.add(txtHouseNumber);
 
 		txtStreet = new JTextField();
-		txtStreet.setText("El Monte Rd");
+		txtStreet.setText("Street");
 		txtStreet.setColumns(10);
 		txtStreet.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtStreet.setBounds(75, 6, 169, 16);
@@ -157,7 +157,7 @@ public class GUI {
 		panelAddress.add(txtStreet);
 
 		txtCity = new JTextField();
-		txtCity.setText("Los Altos Hills");
+		txtCity.setText("City");
 		txtCity.setColumns(10);
 		txtCity.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtCity.setBounds(6, 21, 122, 16);
@@ -165,15 +165,15 @@ public class GUI {
 		panelAddress.add(txtCity);
 
 		txtState = new JTextField();
-		txtState.setText("CA");
+		txtState.setText("State");
 		txtState.setColumns(10);
 		txtState.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
-		txtState.setBounds(127, 21, 24, 16);
+		txtState.setBounds(127, 21, 59, 16);
 		txtState.getDocument().addDocumentListener(listener);
 		panelAddress.add(txtState);
 
 		txtCountry = new JTextField();
-		txtCountry.setText("United States of America");
+		txtCountry.setText("Country");
 		txtCountry.setColumns(10);
 		txtCountry.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtCountry.setBounds(6, 36, 238, 16);
@@ -181,10 +181,10 @@ public class GUI {
 		panelAddress.add(txtCountry);
 
 		txtZip = new JTextField();
-		txtZip.setText("94022");
+		txtZip.setText("ZIP code");
 		txtZip.setColumns(10);
 		txtZip.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
-		txtZip.setBounds(150, 21, 94, 16);
+		txtZip.setBounds(185, 21, 59, 16);
 		txtZip.getDocument().addDocumentListener(listener);
 		panelAddress.add(txtZip);
 
@@ -283,15 +283,11 @@ public class GUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (txtLastName.getText().isEmpty() == false) {
-					Main.addPerson();
 					updatePerson();
+					Main.addPerson();
 					updateFields();
 					updateModel();
-					list.setSelectedIndex(Main.getSize() - 1); // This may not
-																// work
-																// once the list
-																// is
-																// sorting
+
 				} else {
 					try {
 						@SuppressWarnings("unused")
@@ -325,6 +321,7 @@ public class GUI {
 				int selection = list.getSelectedIndex();
 				updatePerson();
 				updateFields();
+				Main.sortList(sortField);
 				updateModel();
 				list.setSelectedIndex(selection);
 			}
@@ -357,7 +354,7 @@ public class GUI {
 		comboSortBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		comboSortBy.setBounds(62, 385, 164, 27);
 		comboSortBy.setModel(new DefaultComboBoxModel<String>(
-				new String[] { "Last Name" }));
+				new String[] { "Name" }));
 		comboSortBy.addActionListener(new ActionListener() {
 			/**
 			 * This method sets the variable sortField to the value displayed in
@@ -435,7 +432,7 @@ public class GUI {
 		public Component getListCellRendererComponent(JList list, Object value,
 				int index, boolean isSelected, boolean cellHasFocus) {
 
-			setText((Main.getPersonAtIndex(index)).toString());
+			setText((Main.getPersonAtIndex(index)).getFirstName() +" " +(Main.getPersonAtIndex(index)).getLastName());
 			if (isSelected) {
 				setBackground(Color.BLUE);
 				setForeground(Color.WHITE);
@@ -537,13 +534,13 @@ public class GUI {
 
 	/**
 	 * This method returns the value of the variable sortField. (In this version
-	 * of the program, the sortfield is always lastName)
+	 * of the program, the sortfield is always Name)
 	 * 
 	 * @return
 	 * @author noahgoldsmith
 	 */
 	public String getSortField() {
-		sortField = "lastName";
+		sortField = "Name";
 		return sortField;
 	}
 
