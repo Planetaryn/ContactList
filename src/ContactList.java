@@ -36,8 +36,7 @@ public class ContactList implements Serializable {
 	 * @param newPerson
 	 * @author noahgoldsmith
 	 */
-	public void addPerson() {
-		Person person = new Person();
+	public void addPerson(Person person) {
 		contactList.add(person);
 		this.sortByField(Main.relayGSortField());
 	}
@@ -69,16 +68,39 @@ public class ContactList implements Serializable {
 	 * @param searchField
 	 *            , searchValue
 	 * @return
-	 * @author noahgoldsmith
+	 * @author shmuelshaffer (modified by noahgoldsmith)
 	 */
 	public ContactList searchForField(String searchField, String searchValue) {
-		System.out.println("Method ContactList.searchForField called");
-		// TODO
-		// Extract field value and compare to searchValue
-		// Store array of objects that match the search
-		// Return that array
-		ContactList matches = new ContactList();
-		return matches;
+		String searchedField = "";
+		ContactList matchingContacts = new ContactList();
+		for (int i = 0; i < contactList.size(); i++) {
+			switch (searchField) {
+			case "Last Name":
+				searchedField = contactList.get(i).getLastName().toLowerCase();
+				if (searchedField.toLowerCase().equals(
+						searchValue.toLowerCase())) {
+					matchingContacts.addPerson(contactList.get(i));
+				}
+				break;
+
+			case "ZIP code":
+				searchedField = contactList.get(i).getZip().toLowerCase();
+				if (searchedField.toLowerCase().equals(
+						searchValue.toLowerCase())) {
+					matchingContacts.addPerson(contactList.get(i));
+				}
+				break;
+
+			case "Email":
+				searchedField = contactList.get(i).getEmail().toLowerCase();
+				if (searchedField.toLowerCase().equals(
+						searchValue.toLowerCase())) {
+					matchingContacts.addPerson(contactList.get(i));
+				}
+				break;
+			}
+		}
+		return matchingContacts;
 	}
 
 	/**

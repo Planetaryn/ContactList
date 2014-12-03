@@ -28,6 +28,8 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.JToggleButton;
+import javax.swing.JRadioButton;
 
 /**
  * Defines a reusable class GUI. One object of class GUI contains the graphical
@@ -41,9 +43,7 @@ public class GUI {
 	private DefaultListModel model = new DefaultListModel();
 	private JScrollPane scrollPane_1;
 	@SuppressWarnings("unused")
-	private String searchField;
 	private JSeparator separator;
-	private String sortField;
 	private JTextField txtCity;
 	private JTextField txtCountry;
 	private JTextField txtEmail;
@@ -56,10 +56,16 @@ public class GUI {
 	private JTextField txtState;
 	private JTextField txtStreet;
 	private JTextField txtZip;
+	private JComboBox comboShow;
+	private JComboBox comboSortBy;
+	private JComboBox comboSearchBy;
 	private JFrame frame;
 	private JList<Person> list = new JList<Person>();
-	private int index = -1;
 	private DocumentListener listener;
+	private int index = -1;
+	private String shownList;
+	private String searchField = "Last Name";
+	private String sortField = "Name";
 
 	/**
 	 * This method constructs the GUI.
@@ -224,15 +230,15 @@ public class GUI {
 		lblNotes.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblNotes);
 
-		JLabel lblSearchBy = new JLabel("for");
+		JLabel lblSearchBy = new JLabel("by");
 		lblSearchBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		lblSearchBy.setBounds(89, 57, 19, 16);
+		lblSearchBy.setBounds(88, 57, 19, 16);
 		lblSearchBy.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblSearchBy);
 
 		JLabel lblSortBy = new JLabel("Sort by:");
-		lblSortBy.setBounds(10, 389, 61, 16);
-		lblSortBy.setHorizontalAlignment(SwingConstants.LEFT);
+		lblSortBy.setBounds(10, 389, 50, 16);
+		lblSortBy.setHorizontalAlignment(SwingConstants.RIGHT);
 		frame.getContentPane().add(lblSortBy);
 
 		JLabel lblFirst = new JLabel("First:");
@@ -244,6 +250,11 @@ public class GUI {
 		lblLastName.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLastName.setBounds(252, 64, 57, 16);
 		frame.getContentPane().add(lblLastName);
+
+		JLabel lblShow = new JLabel("Show:");
+		lblShow.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblShow.setBounds(10, 361, 50, 16);
+		frame.getContentPane().add(lblShow);
 
 		separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
@@ -257,14 +268,19 @@ public class GUI {
 			/**
 			 * This method instructs the main to search for the text in the
 			 * txtSearch field in the field specified by the variable
-			 * searchField when the search button is pressed.
+			 * searchField when the search button is pressed. It then updates
+			 * the GUI to show the search matches.
 			 * 
 			 * @param e
 			 * @author noahgoldsmith
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO
+				Main.searchList(searchField, txtSearch.getText());
+				shownList = "Search Results";
+				updateModel();
+				comboShow.setSelectedIndex(1);
+
 			}
 		});
 		frame.getContentPane().add(btnSearch);
@@ -330,11 +346,11 @@ public class GUI {
 		btnSave.setForeground(Color.BLACK);
 		frame.getContentPane().add(btnSave);
 
-		JComboBox comboSearchBy = new JComboBox<String>();
+		comboSearchBy = new JComboBox<String>();
 		comboSearchBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		comboSearchBy.setBounds(108, 53, 118, 27);
 		comboSearchBy.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"Last Name", "Zip Code" }));
+				"Last Name", "ZIP code", "Email" }));
 		comboSearchBy.addActionListener(new ActionListener() {
 			/**
 			 * This method sets the variable searchField to the value displayed
@@ -345,12 +361,12 @@ public class GUI {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO
+				searchField = comboSearchBy.getSelectedItem().toString();
 			}
 		});
 		frame.getContentPane().add(comboSearchBy);
 
-		JComboBox comboSortBy = new JComboBox<String>();
+		comboSortBy = new JComboBox<String>();
 		comboSortBy.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		comboSortBy.setBounds(62, 385, 164, 27);
 		comboSortBy.setModel(new DefaultComboBoxModel<String>(
@@ -365,15 +381,38 @@ public class GUI {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO
+				sortField = comboSortBy.getSelectedItem().toString();
 			}
 		});
 		frame.getContentPane().add(comboSortBy);
 
+		comboShow = new JComboBox();
+		comboShow.addActionListener(new ActionListener() {
+			/**
+			 * This method sets the variable shownList to the value displayed in
+			 * the JComboBox comboShow.
+			 * 
+			 * @param e
+			 * @author noahgoldsmith
+			 */
+			public void actionPerformed(ActionEvent e) {
+				shownList = comboShow.getSelectedItem().toString();
+				updateModel();
+				if (Main.getSize(shownList) != 0) {
+					list.setSelectedIndex(0);
+				}
+			}
+		});
+		comboShow.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		comboShow.setModel(new DefaultComboBoxModel(new String[] {
+				"Contact List", "Search Results" }));
+		comboShow.setBounds(62, 357, 164, 27);
+		frame.getContentPane().add(comboShow);
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		scrollPane.setBounds(10, 92, 216, 285);
+		scrollPane.setBounds(10, 85, 216, 256);
 		frame.getContentPane().add(scrollPane);
 
 		list = new JList(model);
@@ -432,7 +471,9 @@ public class GUI {
 		public Component getListCellRendererComponent(JList list, Object value,
 				int index, boolean isSelected, boolean cellHasFocus) {
 
-			setText((Main.getPersonAtIndex(index)).getFirstName() +" " +(Main.getPersonAtIndex(index)).getLastName());
+			setText((Main.getPersonAtIndex(index, shownList)).getFirstName()
+					+ " "
+					+ (Main.getPersonAtIndex(index, shownList)).getLastName());
 			if (isSelected) {
 				setBackground(Color.BLUE);
 				setForeground(Color.WHITE);
@@ -581,8 +622,11 @@ public class GUI {
 	@SuppressWarnings("unchecked")
 	public void updateModel() {
 		model.clear();
-		for (int i = 0; i < Main.getSize(); i++) {
-			model.addElement(Main.getPersonAtIndex(i));
+		if (shownList == null) {
+			shownList = "Contact List";
+		}
+		for (int i = 0; i < Main.getSize(shownList); i++) {
+			model.addElement(Main.getPersonAtIndex(i, shownList));
 			list.setModel(model);
 		}
 	}

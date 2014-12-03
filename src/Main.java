@@ -10,6 +10,7 @@ import java.awt.EventQueue;
 public class Main {
 
 	private static ContactList list;
+	private static ContactList matchingContacts;
 	private static GUI window;
 	@SuppressWarnings("unused")
 	private static GUINotification dialog;
@@ -78,11 +79,26 @@ public class Main {
 	 * parameter.
 	 * 
 	 * @param index
+	 *            , selectedList
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static Person getPersonAtIndex(int index) {
-		return list.getPerson(index);
+	public static Person getPersonAtIndex(int index, String selectedList) {
+		Person personAtIndex = new Person();
+		switch (selectedList) {
+		case "Contact List":
+			personAtIndex = list.getPerson(index);
+			break;
+		case "Search Results":
+			if (matchingContacts != null) {
+				personAtIndex = matchingContacts.getPerson(index);
+			}
+			break;
+		default:
+			personAtIndex = list.getPerson(index);
+		}
+
+		return personAtIndex;
 	}
 
 	/**
@@ -91,8 +107,21 @@ public class Main {
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static int getSize() {
-		return list.getSize();
+	public static int getSize(String selectedList) {
+		int size = 0;
+		switch (selectedList) {
+		case "Contact List":
+			size = list.getSize();
+			break;
+		case "Search Results":
+			if (matchingContacts != null) {
+				size = matchingContacts.getSize();
+			}
+			break;
+		default:
+			size = 0;
+		}
+		return size;
 	}
 
 	/**
@@ -105,9 +134,9 @@ public class Main {
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static ContactList searchList(String searchField, String searchValue) {
-		ContactList matches = new ContactList();
-		return matches;
+	public static void searchList(String searchField, String searchValue) {
+		matchingContacts = new ContactList();
+		matchingContacts = list.searchForField(searchField, searchValue);
 	}
 
 	/**
@@ -127,11 +156,12 @@ public class Main {
 	 * @author noahgoldsmith
 	 */
 	public static void addPerson() {
+		Person person = new Person();
 		if (list.getSize() == 0) {
-			list.addPerson();
+			list.addPerson(person);
 		} else {
 			if (checkLastName() == true) {
-				list.addPerson();
+				list.addPerson(person);
 			}
 		}
 	}
@@ -219,10 +249,10 @@ public class Main {
 	 */
 	public static String relayGSortField() {
 		String sortField = "";
-		if(window != null){
+		if (window != null) {
 			if (window.getSortField() != null) {
 				sortField = window.getSortField();
-			}			
+			}
 		} else {
 			sortField = "Name";
 		}
