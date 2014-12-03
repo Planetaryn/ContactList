@@ -57,7 +57,7 @@ public class Main {
 	 * @author noahgoldsmith
 	 */
 	private static void openList() {
-		if(disk.readFromDisk() == true){
+		if (disk.readFromDisk() == true) {
 			list = disk.getDiskFileObject();
 		} else {
 			list = new ContactList();
@@ -221,19 +221,29 @@ public class Main {
 					e.printStackTrace();
 				}
 			} else {
-				list.getPerson(window.getPersonIndex()).setFirstName(firstName);
-				list.getPerson(window.getPersonIndex()).setLastName(lastName);
-				list.getPerson(window.getPersonIndex()).setEmail(email);
-				list.getPerson(window.getPersonIndex()).setPhoneNumber(
-						phoneNumber);
-				list.getPerson(window.getPersonIndex()).setNotes(notes);
-				list.getPerson(window.getPersonIndex()).setHouseNumber(
-						houseNumber);
-				list.getPerson(window.getPersonIndex()).setStreet(street);
-				list.getPerson(window.getPersonIndex()).setZip(zip);
-				list.getPerson(window.getPersonIndex()).setCity(city);
-				list.getPerson(window.getPersonIndex()).setState(state);
-				list.getPerson(window.getPersonIndex()).setCountry(country);
+				if (list.getPerson(window.getPersonIndex()).verifyEmailFormat(
+						email) == true) {
+					if (list.getPerson(window.getPersonIndex())
+							.verifyPhoneFormat(phoneNumber) == true) {
+						list.getPerson(window.getPersonIndex()).setFirstName(
+								firstName);
+						list.getPerson(window.getPersonIndex()).setLastName(
+								lastName);
+						list.getPerson(window.getPersonIndex()).setEmail(email);
+						list.getPerson(window.getPersonIndex()).setPhoneNumber(
+								phoneNumber);
+						list.getPerson(window.getPersonIndex()).setNotes(notes);
+						list.getPerson(window.getPersonIndex()).setHouseNumber(
+								houseNumber);
+						list.getPerson(window.getPersonIndex()).setStreet(
+								street);
+						list.getPerson(window.getPersonIndex()).setZip(zip);
+						list.getPerson(window.getPersonIndex()).setCity(city);
+						list.getPerson(window.getPersonIndex()).setState(state);
+						list.getPerson(window.getPersonIndex()).setCountry(
+								country);
+					}
+				}
 			}
 		}
 

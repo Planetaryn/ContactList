@@ -11,3 +11,4 @@ bin/
 
 # ignore project files
 .settings
+/Contact_List.ser

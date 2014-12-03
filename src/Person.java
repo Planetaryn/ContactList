@@ -10,13 +10,13 @@ import java.util.regex.Pattern;
  * @author Kelly Lam
  */
 
-@SuppressWarnings("serial")
 public class Person implements Comparable<Person>, Serializable {
 	private String email;
 	private String phoneNumber;
 	private String firstName;
 	private String lastName;
 	private String notes;
+	private GUINotification dialog;
 	private StreetAddress address = new StreetAddress();
 
 	/**
@@ -272,11 +272,17 @@ public class Person implements Comparable<Person>, Serializable {
 		Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
 		Matcher matcher = pattern.matcher(verifyPhoneNumber);
 
-		if (matcher.matches()) {
+		if (matcher.matches() == true || verifyPhoneNumber.isEmpty()) {
 			return true;
 		} else {
+
+			try {
+				dialog = new GUINotification("Error:Incorrect Format!",
+						"Phone number must be in the form ###-###-####");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return false;
-			// Pop out "Phone Number must be in the form XXX-XXX-XXXX" in GUI.
 		}
 	}
 
@@ -295,11 +301,16 @@ public class Person implements Comparable<Person>, Serializable {
 				.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 		Matcher matcher = pattern.matcher(verifyEmail);
 
-		if (matcher.matches()) {
+		if (matcher.matches() == true || verifyEmail.isEmpty()) {
 			return true;
 		} else {
+			try {
+				dialog = new GUINotification("Error:Incorrect Format!",
+						"Email must be in the form ______@_____.____");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return false;
-			// Pop out "Email must be in the form ______@_____.____" in GUI.
 		}
 	}
 
@@ -325,11 +336,11 @@ public class Person implements Comparable<Person>, Serializable {
 	@Override
 	public String toString() {
 		String contact = "";
-		contact += (this.getFirstName() +" " +this.getLastName() +"\n");
-		contact += ("Email: " +this.getEmail() +"\n");
-		contact += ("Phone: " +this.getPhoneNumber() +"\n");
+		contact += (this.getFirstName() + " " + this.getLastName() + "\n");
+		contact += ("Email: " + this.getEmail() + "\n");
+		contact += ("Phone: " + this.getPhoneNumber() + "\n");
 		contact += (address);
-		contact += ("Notes:" +this.getNotes() +"\n");
+		contact += ("Notes:" + this.getNotes() + "\n");
 		return (contact);
 	}
 
