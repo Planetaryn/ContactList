@@ -87,6 +87,7 @@ public class GUI {
 	private void initialize() {
 
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 576, 443);
 		frame.addWindowListener(new WindowEventHandler());
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
