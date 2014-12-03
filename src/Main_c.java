@@ -15,6 +15,7 @@ import java.util.Scanner;
  * 						Added the sort function and verified that it is integrated with the print function.
  * 						Removed the sortByField method from the main; this is a ContactList method.
  * 						removed the getSize() method; it is a Java method that does not need to be redone.
+ * Version 3: Shmuel	Removed the IF statements from the switch per suggestion from Noah.
  */
 public class Main_c {
 
@@ -46,6 +47,7 @@ public class Main_c {
 
 			   
 		   }
+
 		menu();
 	}
 	
@@ -86,53 +88,71 @@ public class Main_c {
 		case 2:
 			printList();
 			break;
-		case 3: //Shmuel: added retrieve contact(s) by last name
-		case 4: //Shmuel: added retrieve contact(s) by email address
-		case 5: //Shmuel: added retrieve contact(s) by zip code
-			attemptCounter=0;
-			searchString = "";
-			if(selection==3){
-				System.out.print("Please enter the searched contact's last name: ");
-				searchField="Last Name";
-			}
-			else if(selection==4){
-				System.out.print("Please enter the searched contact's email address: ");
-				searchField="email";
-			}
-			else if(selection==5){
-				System.out.print("Please enter the searched contact's zip code: ");
-				searchField="zip code";
-			}
+		case 3: // Shmuel: added retrieve contact(s) by last name
+			System.out.print("Please enter the searched contact's last name: ");
+			searchField = "Last Name";
 			try {
-			searchString = br.readLine();
-			if (searchString.isEmpty() && attemptCounter<ATTEMPT_COUNT_LIMIT) {
-				attemptCounter+=1;
-				System.out.println("You did not enter a last name, please try again");
 				searchString = br.readLine();
-			}
-			if(searchString.isEmpty() ){
-							
-				System.out.println("No last name entered, returning to the main menu");
-				System.out.println("");
-			}
+				if (searchString.isEmpty()) {
+					System.out
+							.println("You did not enter a value to search for" +"\n");
+				} else {
+					System.out.println();
+					searchedListObject = list.searchForField(searchField,
+							searchString);
+					System.out.println(list
+							.matchedListToString(searchedListObject));
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			//
-			System.out.println();
-			searchedListObject= list.searchForField(searchField, searchString);
-			System.out.println(list.matchedListToString(searchedListObject));
 
 			menu();
 			break;
-/*		case 4:   //Shmuel: added retrieve contact(s) by email address
-			printList();
+		case 4: //Shmuel: added retrieve contact(s) by email address
+			System.out.print("Please enter the searched contact's email address: ");
+			searchField="email";
+			try {
+				searchString = br.readLine();
+				if (searchString.isEmpty()) {
+					System.out
+							.println("You did not enter a value to search for"+"\n");
+				} else {
+					System.out.println();
+					searchedListObject = list.searchForField(searchField,
+							searchString);
+					System.out.println(list
+							.matchedListToString(searchedListObject));
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			menu();
 			break;
-		case 5://Shmuel: added retrieve contact(s) by zip code
-			printList();
+		case 5: //Shmuel: added retrieve contact(s) by zip code
+			System.out.print("Please enter the searched contact's zip code: ");
+			searchField="zip code";
+			
+			try {
+				searchString = br.readLine();
+				if (searchString.isEmpty()) {
+					System.out
+							.println("You did not enter a value to search for"+"\n");
+				} else {
+					System.out.println();
+					searchedListObject = list.searchForField(searchField,
+							searchString);
+					System.out.println(list
+							.matchedListToString(searchedListObject));
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			menu();
 			break;
-*/
-		default: //  debug statement: default option is exercised when you enter 0
+
+		default: //  not normal exit
 			System.out.println("default was exercised; Contact List not saved to disk");
 		}
 	}

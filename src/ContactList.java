@@ -152,7 +152,7 @@ public class ContactList implements Serializable{
 	public String matchedListToString(ContactList matchedList) {
 		String matchedListString;
 		if (matchedList.getSize() == 0) {
-			matchedListString = "There are no matching contacts in the directory";
+			matchedListString = "There are no matching contacts in the directory"+"\n";
 		} else {
 			matchedListString = "Matching contacts in your directory:" + "\n";
 
