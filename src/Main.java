@@ -14,6 +14,7 @@ public class Main {
 	private static GUI window;
 	@SuppressWarnings("unused")
 	private static GUINotification dialog;
+	private static Disk disk = new Disk();
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -56,13 +57,11 @@ public class Main {
 	 * @author noahgoldsmith
 	 */
 	private static void openList() {
-		list = new ContactList();
-		// TODO
-		// Will pass list to disk as a parameter
-		// Disk will then populate list with the array stored on disk
-		// A new list opens up with a blank person object already created
-		// An existing list opens up with the first person in that list
-		// displayed
+		if(disk.readFromDisk() == true){
+			list = disk.getDiskFileObject();
+		} else {
+			list = new ContactList();
+		}
 	}
 
 	/**
@@ -71,7 +70,7 @@ public class Main {
 	 * @author noahgoldsmith
 	 */
 	public static void saveList() {
-		// TODO
+		disk.writeToDisk(list);
 	}
 
 	/**

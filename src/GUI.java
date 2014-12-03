@@ -72,7 +72,9 @@ public class GUI {
 	 */
 	public GUI() {
 		initialize();
-		Main.addPerson();
+		if(Main.getSize("Contact List") == 0){
+			Main.addPerson();
+		}
 		updateModel();
 		this.frame.setVisible(true);
 		listener = new DocumentListener(this);
