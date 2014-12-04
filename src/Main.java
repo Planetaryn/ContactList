@@ -191,6 +191,24 @@ public class Main {
 	}
 
 	/**
+	 * This method finds a person by the specified UUID. It then returns that
+	 * persons index in the list.
+	 * 
+	 * @param uuid
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public static int findUUID(String uuid) {
+		int index = 0;
+		for (int i = 0; i < list.getSize(); i++) {
+			if (list.getPerson(i).getUUID() == uuid) {
+				index = i;
+			}
+		}
+		return index;
+	}
+
+	/**
 	 * This method updates all fields in the specified Person object and it's
 	 * StreetAddress object. If there is no person currently selected in the
 	 * GUI, the method will not run.
@@ -459,6 +477,21 @@ public class Main {
 			country = list.getPerson(window.getPersonIndex()).getCountry();
 		}
 		return country;
+	}
+
+	/**
+	 * This method returns the UUID of the person object currently selected in
+	 * the JList.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public static String relayGUUID() {
+		String uuid = "";
+		if (window.getPersonIndex() != -1) {
+			uuid = list.getPerson(window.getPersonIndex()).getUUID();
+		}
+		return uuid;
 	}
 
 }

@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +17,7 @@ public class Person implements Comparable<Person>, Serializable {
 	private String firstName;
 	private String lastName;
 	private String notes;
+	private String uuid;
 	private GUINotification dialog;
 	private StreetAddress address = new StreetAddress();
 
@@ -29,6 +31,7 @@ public class Person implements Comparable<Person>, Serializable {
 	public Person() {
 		this.setFirstName("New Person");
 		this.setLastName("");
+		uuid = UUID.randomUUID().toString();
 	}
 
 	/**
@@ -256,6 +259,16 @@ public class Person implements Comparable<Person>, Serializable {
 	 */
 	public String getNotes() {
 		return notes;
+	}
+
+	/**
+	 * This method returns the person objects universally unique identifier.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public String getUUID() {
+		return uuid;
 	}
 
 	/**

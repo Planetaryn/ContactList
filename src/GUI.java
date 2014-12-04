@@ -66,13 +66,14 @@ public class GUI {
 	private String shownList;
 	private String searchField = "Last Name";
 	private String sortField = "Name";
+	private String uuid = "";
 
 	/**
 	 * This method constructs the GUI.
 	 */
 	public GUI() {
 		initialize();
-		if(Main.getSize("Contact List") == 0){
+		if (Main.getSize("Contact List") == 0) {
 			Main.addPerson();
 		}
 		updateModel();
@@ -306,6 +307,7 @@ public class GUI {
 					Main.addPerson();
 					updateFields();
 					updateModel();
+					list.setSelectedIndex(0);
 
 				} else {
 					try {
@@ -338,11 +340,12 @@ public class GUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int selection = list.getSelectedIndex();
+				uuid = Main.relayGUUID();
 				updatePerson();
 				updateFields();
 				Main.sortList(sortField);
 				updateModel();
-				list.setSelectedIndex(selection);
+				list.setSelectedIndex(Main.findUUID(uuid));
 			}
 		});
 		btnSave.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
