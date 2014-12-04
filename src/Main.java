@@ -239,7 +239,7 @@ public class Main {
 					e.printStackTrace();
 				}
 			} else {
-				if (list.getPerson(window.getPersonIndex()).verifyEmailFormat(
+				if (list.getPerson(window.getPersonIndex()).verifyEmailFormat( //TODO There may be a better way to do this using ands
 						email) == true) {
 					if (list.getPerson(window.getPersonIndex())
 							.verifyPhoneFormat(phoneNumber) == true) {
