@@ -15,6 +15,8 @@
  * v7: Made the constructor public per input from Noah. 
  * v8: Added the actual code for the class.
  * v9: This version is fully tested with the non-GUI main program.
+ * v10: Removed the word "variable" per guidance from Elaine Haight.
+ * v11: Modified Java docs for constructor per input from Kelly.
  * 
  */
 import java.io.*;
@@ -28,25 +30,21 @@ public class Disk {
 
 	/**
 	 * Constructor for the Disk Class finds if the DirectoryProject.txt file
-	 * exists. If it does not exists, the constructor sets the value of the
-	 * fileExists variable to true.
+	 * exists. If it exists, the constructor sets fileExists to true. Otherwise,
+	 * fileExists remains false.
 	 * 
 	 * @param
 	 */
 
-	/**
-	 * Constructor for the DiskToFromDisk
-	 */
 	Disk() {
-		System.out.println("In constructor");
 		if (contactListFile.exists()) {
 			fileExists = true;
-			System.out.println("file exists");
+			// System.out.println("file exists");
 
 		} else {
-			System.out.println("file does not exist");
+			// System.out.println("file does not exist");
 		}
-		System.out.println("file exists flag =" + fileExists);
+		// System.out.println("file exists flag ="+ fileExists);
 	}
 
 	/**
@@ -90,13 +88,12 @@ public class Disk {
 	/**
 	 * The readFromDisk method attempts to read an object from the disk. If the
 	 * read operation fails, the method returns false. If the read operation
-	 * succeeds the method returns true and populates the private class variable
-	 * ContactList object with the directory object from the disk file.
+	 * succeeds the method returns true and populates the ContactList object
+	 * with the directory object from the disk file.
 	 * 
 	 * @return - Returns true if read is successful and false if operation
 	 *         failed.
 	 */
-
 	public boolean readFromDisk() {
 		// boolean successfullyreadFromDisk = true;
 		ObjectInputStream objectInputStream = null;
