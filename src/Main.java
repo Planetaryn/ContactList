@@ -136,6 +136,9 @@ public class Main {
 	public static void searchList(String searchField, String searchValue) {
 		matchingContacts = new ContactList();
 		matchingContacts = list.searchForField(searchField, searchValue);
+		if (matchingContacts.getSize() <= 0){
+			notifyNoSearchMatch();
+		}
 	}
 
 	/**

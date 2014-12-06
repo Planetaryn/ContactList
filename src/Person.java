@@ -6,12 +6,12 @@ import java.util.regex.Pattern;
 /**
  * Define a reusable class Person. One object of class Person contains the
  * person's email, phone number, first name, last name, notes, & their
- * StreetAddress object.
+ * StreetAddress object. Implements Serializable.
  * 
  * @author Kelly Lam
  */
 
-public class Person implements Comparable<Person>, Serializable {
+public class Person implements Serializable {
 	private String email;
 	private String phoneNumber;
 	private String firstName;
@@ -192,7 +192,7 @@ public class Person implements Comparable<Person>, Serializable {
 	}
 
 	/**
-	 * Returns a string containing a persons house number.
+	 * Returns a string containing a person's house number.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -202,7 +202,7 @@ public class Person implements Comparable<Person>, Serializable {
 	}
 
 	/**
-	 * Returns a string containing a persons street.
+	 * Returns a string containing a person's street.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -212,7 +212,7 @@ public class Person implements Comparable<Person>, Serializable {
 	}
 
 	/**
-	 * Returns a string containing a persons zipcode.
+	 * Returns a string containing a person's ZIP code.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -222,7 +222,7 @@ public class Person implements Comparable<Person>, Serializable {
 	}
 
 	/**
-	 * Returns a string containing a persons city.
+	 * Returns a string containing a person's city.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -232,7 +232,7 @@ public class Person implements Comparable<Person>, Serializable {
 	}
 
 	/**
-	 * Returns a string containing a persons state.
+	 * Returns a string containing a person's state.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -242,7 +242,7 @@ public class Person implements Comparable<Person>, Serializable {
 	}
 
 	/**
-	 * Returns a string containing a persons country.
+	 * Returns a string containing a person's country.
 	 * 
 	 * @return
 	 * @author noahgoldsmith
@@ -325,19 +325,6 @@ public class Person implements Comparable<Person>, Serializable {
 			}
 			return false;
 		}
-	}
-
-	/**
-	 * This method compares the person object person1 to another person object
-	 * person2. returns -1 if person1 < person2m returns 0 if person1 ==
-	 * person2, returns 1 if person1 > person2.
-	 * 
-	 * @param person2
-	 * @author noahgoldsmith
-	 */
-	public int compareTo(Person person2) {
-		int comparisonValue = 0;
-		return comparisonValue;
 	}
 
 	/**
