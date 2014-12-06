@@ -103,6 +103,7 @@ public class Main {
 	/**
 	 * This method returns the size of the array.
 	 * 
+	 * @param selectedList
 	 * @return
 	 * @author noahgoldsmith
 	 */
@@ -136,7 +137,7 @@ public class Main {
 	public static void searchList(String searchField, String searchValue) {
 		matchingContacts = new ContactList();
 		matchingContacts = list.searchForField(searchField, searchValue);
-		if (matchingContacts.getSize() <= 0){
+		if (matchingContacts.getSize() <= 0) {
 			notifyNoSearchMatch();
 		}
 	}
@@ -167,13 +168,13 @@ public class Main {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method removes the selected person from the list
 	 * 
 	 * @author noahgoldsmith
 	 */
-	public static void removePerson(){
+	public static void removePerson() {
 		list.removePerson(list.getPerson(window.getPersonIndex()));
 	}
 

@@ -33,21 +33,21 @@ public class ContactList implements Serializable {
 	/**
 	 * Adds a Person object to the contactList.
 	 * 
-	 * @param newPerson
+	 * @param Person
 	 * @author noahgoldsmith
 	 */
 	public void addPerson(Person person) {
 		contactList.add(person);
 		this.sortByField(Main.relayGSortField());
 	}
-	
+
 	/**
 	 * Removes the specified person object from the contactList.
 	 * 
 	 * @param person
 	 * @author noahgoldsmith
 	 */
-	public void removePerson(Person person){
+	public void removePerson(Person person) {
 		contactList.remove(person);
 	}
 
@@ -64,6 +64,7 @@ public class ContactList implements Serializable {
 	/**
 	 * Returns the specified person object.
 	 * 
+	 * @param index
 	 * @return
 	 * @author noahgoldsmith
 	 */

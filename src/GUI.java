@@ -452,7 +452,7 @@ public class GUI {
 		scrollPane.setViewportView(list);
 		list.setSelectedIndex(0);
 		list.setBorder(null);
-		
+
 		JButton btnDelete = new JButton("Delete Contact");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

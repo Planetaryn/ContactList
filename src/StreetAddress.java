@@ -32,8 +32,8 @@ public class StreetAddress implements Serializable {
 	}
 
 	/**
-	 * Parametrized constructor for class StreetAddress. Creates a new object of
-	 * class StreetAddress and fills houseNumber, street, zip, city, state, &
+	 * Parameterized constructor for class StreetAddress. Creates a new object
+	 * of class StreetAddress and fills houseNumber, street, zip, city, state, &
 	 * country with the values passed as parameters.
 	 *
 	 * @author irmarodarte
