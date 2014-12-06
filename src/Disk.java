@@ -16,6 +16,7 @@
  * v8: Added the actual code for the class.
  * v9: This version is fully tested with the non-GUI main program.
  * v10: Removed the word "variable" per guidance from Elaine Haight.
+ * v11: Modified Java docs for constructor per input from Kelly.
  * 
  */
 import java.io.*;
@@ -31,14 +32,9 @@ public class Disk {
 	 * Constructor for the Disk Class finds if the DirectoryProject.txt file
 	 * exists. If it exists, the constructor sets fileExists to true.
 	 * Otherwise, fileExists remains false.
-	 * 
 	 * @param
 	 */
 
-
-	/**
-	 * Constructor for the DiskToFromDisk
-	 */
 	Disk() {
 		if (contactListFile.exists()) {
 			fileExists = true;			
@@ -98,7 +94,6 @@ public class Disk {
 	 * @return - Returns true if read is successful and false if operation
 	 *         failed.
 	 */
-
 	public boolean readFromDisk() {
 		// boolean successfullyreadFromDisk = true;
 		ObjectInputStream objectInputStream = null;
