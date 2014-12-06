@@ -1,69 +1,150 @@
+import java.io.Serializable;
 import java.util.*;
 
 /**
- * Define a reusable class ContactList. It allows the user to select the view they want
- * to do search/sort and returns these results in array list
+ * Define a reusable class ContactList. One object of class ContactList contains
+ * Person objects.
  * 
- * @author Kelly Lam (version 1)
- * Version 2: Noah
+ * @author noahgoldsmith
  */
-public class ContactList {
-	private final int LIST_MAX_LENGTH = 100;
+@SuppressWarnings("serial")
+public class ContactList implements Serializable {
 	private ArrayList<Person> contactList;
 
 	/**
-	 * Constructs a new object of class ContactList of length contactListLength
+	 * Constructs a new object of class ContactList.
 	 * 
-	 * @param contactListLength
+	 * @author noahgoldsmith
 	 */
-	public ContactList(int contactListLength) {
-		contactList = new ArrayList<Person>(contactListLength);
-		System.out
-				.println("An object of class ContactList has been constructed");
+	public ContactList() {
+		contactList = new ArrayList<Person>();
 	}
 
 	/**
-	 * Sets the value of searchField to the value of the parameter
-	 * newSearchField, and returns objects in the contact list that match the search
+	 * This method returns the size of the contactList.
 	 * 
-	 * @param newSearchField
 	 * @return
+	 * @author noahgoldsmith
 	 */
-	public ArrayList<Person> searchByField(String newSearchField, String newSearchValue) {
-		String searchField;
-		String searchValue;
-		System.out.println("Method ContactList.searchByField called");
-		// Call to method to extract field value and compare to searchValue
-		// Store array of objects that match the search
-		// Return that array
-		ArrayList<Person> matches = new ArrayList<Person>();
-		return matches;
+	public int getSize() {
+		return contactList.size();
 	}
 
 	/**
-	 * Sets the value of sortField to the value of the parameter newSortField,
-	 * and sorts the ContactList by sortField
+	 * Adds a Person object to the contactList.
 	 * 
-	 * @param newSortField
-	 * @return
+	 * @param newPerson
+	 * @author noahgoldsmith
 	 */
-	public void sortByField(String newSortField) {
-		String sortField;
-		System.out.println("Method ContactList.sortByField called");
+	public void addPerson(Person person) {
+		contactList.add(person);
+		this.sortByField(Main.relayGSortField());
 	}
 
 	/**
-	 * Call the programme to create a new Person
+	 * Returns the ArrayList contactList.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 */
-	public void newPerson() {
-		System.out.println("Using method newPerson");	
+	public ArrayList<Person> getList() {
+		return contactList;
 	}
-	
+
 	/**
-	 * Return the information of the Contact List
+	 * Returns the specified person object.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
 	 */
-	public String toString() {
-		System.out.println("Using method toString");
-		return ("");
+	public Person getPerson(int index) {
+		return contactList.get(index);
+	}
+
+	/**
+	 * Returns the objects in the contact list that match the search in a new
+	 * ContactList object.
+	 * 
+	 * @param searchField
+	 *            , searchValue
+	 * @return
+	 * @author shmuelshaffer (modified by noahgoldsmith)
+	 */
+	public ContactList searchForField(String searchField, String searchValue) {
+		String searchedField = "";
+		ContactList matchingContacts = new ContactList();
+		for (int i = 0; i < contactList.size(); i++) {
+			switch (searchField) {
+			case "Last Name":
+				searchedField = contactList.get(i).getLastName().toLowerCase();
+				if (searchedField.toLowerCase().equals(
+						searchValue.toLowerCase())) {
+					matchingContacts.addPerson(contactList.get(i));
+				}
+				break;
+
+			case "ZIP code":
+				searchedField = contactList.get(i).getZip().toLowerCase();
+				if (searchedField.toLowerCase().equals(
+						searchValue.toLowerCase())) {
+					matchingContacts.addPerson(contactList.get(i));
+				}
+				break;
+
+			case "Email":
+				searchedField = contactList.get(i).getEmail().toLowerCase();
+				if (searchedField.toLowerCase().equals(
+						searchValue.toLowerCase())) {
+					matchingContacts.addPerson(contactList.get(i));
+				}
+				break;
+			}
+		}
+		return matchingContacts;
+	}
+
+	/**
+	 * This method sorts the ContactList by the field specified by the parameter
+	 * sortField.
+	 * 
+	 * @param SortField
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public void sortByField(String sortField) {
+		String sortFieldI;
+		String sortFieldIIPlusOne;
+		Person tempPerson = new Person();
+		if (sortField == "Name") {
+			for (int sortIndex = 0; sortIndex < 2; sortIndex++) {
+				for (int i = 0; i < contactList.size() - 1; i++) {
+					for (int j = 0; j < contactList.size() - 1 - i; j++) {
+
+						if (sortIndex == 0) { // first sort on first name
+							sortFieldI = contactList.get(j).getFirstName();
+							sortFieldIIPlusOne = contactList.get(j + 1)
+									.getFirstName();
+						} else { // Sort on second name after the sort on first
+									// name
+									// is complete
+							sortFieldI = contactList.get(j).getLastName();
+							sortFieldIIPlusOne = contactList.get(j + 1)
+									.getLastName();
+						}
+						sortFieldI = sortFieldI.toLowerCase();
+						sortFieldIIPlusOne = sortFieldIIPlusOne.toLowerCase();
+						if (sortFieldI.compareTo(sortFieldIIPlusOne) > 0) {
+							// need to swap Person Objects
+							tempPerson = contactList.get(j);
+							contactList.remove(j);
+							contactList.add(j + 1, tempPerson);
+
+						}
+
+					}
+				}
+
+			}
+		}
 	}
 }

@@ -1,3 +1,5 @@
+import java.io.Serializable;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,13 +10,16 @@ import java.util.regex.Pattern;
  * 
  * @author Kelly Lam
  */
-public class Person {
+
+public class Person implements Comparable<Person>, Serializable {
 	private String email;
 	private String phoneNumber;
 	private String firstName;
 	private String lastName;
 	private String notes;
-	private StreetAddress address;
+	private String uuid;
+	private GUINotification dialog;
+	private StreetAddress address = new StreetAddress();
 
 	/**
 	 * Constructor for class Person. Creates a new object of class
@@ -24,17 +29,13 @@ public class Person {
 	 * @author Noah
 	 */
 	public Person() {
-		Person person;
-		person = new Person();
-		person.setFirstName("");
-		person.setLastName("");
-		person.setEmail("");
-		person.setPhoneNumber("");
-		person.setNotes("");
+		this.setFirstName("New Person");
+		this.setLastName("");
+		uuid = UUID.randomUUID().toString();
 	}
 
 	/**
-	 * Sets the value of email to the value of the parameter newEmail
+	 * Sets the value of email to the value of the parameter newEmail.
 	 * 
 	 * @param newEmail
 	 * @author Kelly
@@ -45,7 +46,7 @@ public class Person {
 
 	/**
 	 * Sets the value of phoneNumber to the value of the parameter
-	 * newPhoneNumber
+	 * newPhoneNumber.
 	 * 
 	 * @param newPhoneNumber
 	 * @author Kelly
@@ -55,7 +56,7 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of firstName to the value parameter newFirstName
+	 * Sets the value of firstName to the value parameter newFirstName.
 	 * 
 	 * @param newFirstName
 	 * @author Irma
@@ -65,7 +66,7 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of lastName to the value of the parameter newLastName
+	 * Sets the value of lastName to the value of the parameter newLastName.
 	 * 
 	 * @param newLastName
 	 * @author Irma
@@ -75,7 +76,73 @@ public class Person {
 	}
 
 	/**
-	 * Sets the value of notes to the value of the parameter newNotes
+	 * Sets the value of house number in class StreetAddress to the value of the
+	 * parameter newHouseNumber.
+	 * 
+	 * @param newHouseNumber
+	 * @author noahgoldsmith
+	 */
+	public void setHouseNumber(String newHouseNumber) {
+		address.setHouseNumber(newHouseNumber);
+	}
+
+	/**
+	 * Sets the value of street in class StreetAddress to the value of the
+	 * parameter newStreet.
+	 * 
+	 * @param newStreet
+	 * @author noahgoldsmith
+	 */
+	public void setStreet(String newStreet) {
+		address.setStreet(newStreet);
+	}
+
+	/**
+	 * Sets the value of zip in class StreetAddress to the value of the
+	 * parameter newZip.
+	 * 
+	 * @param newZip
+	 * @author noahgoldsmith
+	 */
+	public void setZip(String newZip) {
+		address.setZip(newZip);
+	}
+
+	/**
+	 * Sets the value of city in class StreetAddress to the value of the
+	 * parameter newCity.
+	 * 
+	 * @param newCity
+	 * @author noahgoldsmith
+	 */
+	public void setCity(String newCity) {
+		address.setCity(newCity);
+	}
+
+	/**
+	 * Sets the value of state in class StreetAddress to the value of the
+	 * parameter newState.
+	 * 
+	 * @param newState
+	 * @author noahgoldsmith
+	 */
+	public void setState(String newState) {
+		address.setState(newState);
+	}
+
+	/**
+	 * Sets the value of country in class StreetAddress to the value of the
+	 * parameter newCountry.
+	 * 
+	 * @param newCountry
+	 * @author noahgoldsmith
+	 */
+	public void setCountry(String newCountry) {
+		address.setCountry(newCountry);
+	}
+
+	/**
+	 * Sets the value of notes to the value of the parameter newNotes.
 	 * 
 	 * @param newNotes
 	 * @author Kelly
@@ -85,7 +152,7 @@ public class Person {
 	}
 
 	/**
-	 * Returns the value of email
+	 * Returns the value of email.
 	 * 
 	 * @return
 	 * @author Kelly
@@ -95,7 +162,7 @@ public class Person {
 	}
 
 	/**
-	 * Returns the value of phoneNumber
+	 * Returns the value of phoneNumber.
 	 * 
 	 * @return
 	 * @author Kelly
@@ -105,7 +172,7 @@ public class Person {
 	}
 
 	/**
-	 * Returns the value of firstName
+	 * Returns the value of firstName.
 	 * 
 	 * @return
 	 * @author Irma
@@ -115,13 +182,73 @@ public class Person {
 	}
 
 	/**
-	 * Returns the value of lastName
+	 * Returns the value of lastName.
 	 * 
 	 * @return
 	 * @author Irma
 	 */
 	public String getLastName() {
 		return lastName;
+	}
+
+	/**
+	 * Returns a string containing a persons house number.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public String getHouseNumber() {
+		return address.getHouseNumber();
+	}
+
+	/**
+	 * Returns a string containing a persons street.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public String getStreet() {
+		return address.getStreet();
+	}
+
+	/**
+	 * Returns a string containing a persons zipcode.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public String getZip() {
+		return address.getZip();
+	}
+
+	/**
+	 * Returns a string containing a persons city.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public String getCity() {
+		return address.getCity();
+	}
+
+	/**
+	 * Returns a string containing a persons state.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public String getState() {
+		return address.getState();
+	}
+
+	/**
+	 * Returns a string containing a persons country.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public String getCountry() {
+		return address.getCountry();
 	}
 
 	/**
@@ -135,6 +262,16 @@ public class Person {
 	}
 
 	/**
+	 * This method returns the person objects universally unique identifier.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public String getUUID() {
+		return uuid;
+	}
+
+	/**
 	 * Verify the phone number format to make sure the phone number is valid.
 	 * Returns true if the phone number is correct.
 	 * 
@@ -144,16 +281,21 @@ public class Person {
 	 */
 	public boolean verifyPhoneFormat(String testPhoneNumber) {
 		String verifyPhoneNumber = testPhoneNumber;
-		
+
 		Pattern pattern = Pattern.compile("\\d{3}-\\d{3}-\\d{4}");
 		Matcher matcher = pattern.matcher(verifyPhoneNumber);
-		
-		if (matcher.matches()) {
+
+		if (matcher.matches() == true || verifyPhoneNumber.isEmpty()) {
 			return true;
-		}
-		else {
+		} else {
+
+			try {
+				dialog = new GUINotification("Error:Incorrect Format!",
+						"Phone number must be in the form ###-###-####");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return false;
-			// Pop out "Phone Number must be in the form XXX-XXX-XXXX" in GUI.
 		}
 	}
 
@@ -167,29 +309,52 @@ public class Person {
 	 */
 	public boolean verifyEmailFormat(String testEmail) {
 		String verifyEmail = testEmail;
-		
-		Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+		Pattern pattern = Pattern
+				.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 		Matcher matcher = pattern.matcher(verifyEmail);
-		
-		if (matcher.matches()) {
+
+		if (matcher.matches() == true || verifyEmail.isEmpty()) {
 			return true;
-		}
-		else {
+		} else {
+			try {
+				dialog = new GUINotification("Error:Incorrect Format!",
+						"Email must be in the form ______@_____.____");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return false;
-			// Pop out "Email must be in the form ______@_____.____" in GUI.
 		}
 	}
 
 	/**
-	 * Returns a string containing a persons first name, last name, email
-	 * address, phone number, address, & notes.
+	 * This method compares the person object person1 to another person object
+	 * person2. returns -1 if person1 < person2m returns 0 if person1 ==
+	 * person2, returns 1 if person1 > person2.
+	 * 
+	 * @param person2
+	 * @author noahgoldsmith
+	 */
+	public int compareTo(Person person2) {
+		int comparisonValue = 0;
+		return comparisonValue;
+	}
+
+	/**
+	 * Returns a string containing a persons first name & last name.
 	 * 
 	 * @return
 	 * @author Kelly
 	 */
+	@Override
 	public String toString() {
-		System.out.println("ToString method is called");
-		return ("");
+		String contact = "";
+		contact += (this.getFirstName() + " " + this.getLastName() + "\n");
+		contact += ("Email: " + this.getEmail() + "\n");
+		contact += ("Phone: " + this.getPhoneNumber() + "\n");
+		contact += (address);
+		contact += ("Notes:" + this.getNotes() + "\n");
+		return (contact);
 	}
 
 }
