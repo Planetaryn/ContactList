@@ -159,10 +159,19 @@ public class Main {
 		if (list.getSize() == 0) {
 			list.addPerson(person);
 		} else {
-			if (checkLastName() == true) {
+			if (checkLastName() == true && checkFirstName() == true) {
 				list.addPerson(person);
 			}
 		}
+	}
+	
+	/**
+	 * This method removes the selected person from the list
+	 * 
+	 * @author noahgoldsmith
+	 */
+	public static void removePerson(){
+		list.removePerson(list.getPerson(window.getPersonIndex()));
 	}
 
 	/**
@@ -191,6 +200,31 @@ public class Main {
 	}
 
 	/**
+	 * This method checks to see if all person objects in the list have a last
+	 * name. If they do not, it notifies the user.
+	 * 
+	 * @return
+	 * @author noahgoldsmith
+	 */
+	public static boolean checkFirstName() {
+		boolean hasFirstName = true;
+		for (int i = 0; i < list.getSize(); i++) {
+			if (list.getPerson(i).getFirstName().isEmpty()) {
+				hasFirstName = false;
+				try {
+					dialog = new GUINotification(
+							("Error: A person has no first name!"),
+							"You must enter a first name for "
+									+ list.getPerson(i).getLastName() + "!");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return hasFirstName;
+	}
+
+	/**
 	 * This method finds a person by the specified UUID. It then returns that
 	 * persons index in the list.
 	 * 
@@ -199,13 +233,16 @@ public class Main {
 	 * @author noahgoldsmith
 	 */
 	public static int findUUID(String uuid) {
-		int index = 0;
-		for (int i = 0; i < list.getSize(); i++) {
-			if (list.getPerson(i).getUUID() == uuid) {
-				index = i;
+		int index = -1;
+		boolean found = false;
+		do {
+			index++;
+			if (list.getPerson(index).getUUID() == uuid) {
+				;
+				found = true;
 			}
-		}
-		return index;
+		} while (index < list.getSize() && found == false);
+		return (index);
 	}
 
 	/**
@@ -213,6 +250,7 @@ public class Main {
 	 * StreetAddress object. If there is no person currently selected in the
 	 * GUI, the method will not run.
 	 * 
+	 * @param shownList
 	 * @param firstName
 	 * @param lastName
 	 * @param email
@@ -226,41 +264,42 @@ public class Main {
 	 * @param country
 	 * @author noahgoldsmith
 	 */
-	public static void updatePerson(String firstName, String lastName,
-			String email, String phoneNumber, String notes, String houseNumber,
-			String street, String zip, String city, String state, String country) {
+	public static void updatePerson(String shownList, String firstName,
+			String lastName, String email, String phoneNumber, String notes,
+			String houseNumber, String street, String zip, String city,
+			String state, String country) {
 
 		if (window.getPersonIndex() != -1) {
-			if (lastName.isEmpty()) {
+			if (lastName.isEmpty()
+					|| (firstName.isEmpty() || firstName == "New Person")) {
 				try {
-					dialog = new GUINotification("Error: No last name!",
-							"You must enter a last name for this person.");
+					dialog = new GUINotification("Error: Incomplete Name",
+							"You must enter a first & last name for this person.");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			} else {
-				if (list.getPerson(window.getPersonIndex()).verifyEmailFormat( //TODO There may be a better way to do this using ands
-						email) == true) {
-					if (list.getPerson(window.getPersonIndex())
-							.verifyPhoneFormat(phoneNumber) == true) {
-						list.getPerson(window.getPersonIndex()).setFirstName(
-								firstName);
-						list.getPerson(window.getPersonIndex()).setLastName(
-								lastName);
-						list.getPerson(window.getPersonIndex()).setEmail(email);
-						list.getPerson(window.getPersonIndex()).setPhoneNumber(
-								phoneNumber);
-						list.getPerson(window.getPersonIndex()).setNotes(notes);
-						list.getPerson(window.getPersonIndex()).setHouseNumber(
-								houseNumber);
-						list.getPerson(window.getPersonIndex()).setStreet(
-								street);
-						list.getPerson(window.getPersonIndex()).setZip(zip);
-						list.getPerson(window.getPersonIndex()).setCity(city);
-						list.getPerson(window.getPersonIndex()).setState(state);
-						list.getPerson(window.getPersonIndex()).setCountry(
-								country);
-					}
+				if (list.getPerson(window.getPersonIndex()).verifyEmailFormat(
+						email) == true
+						&& list.getPerson(window.getPersonIndex())
+								.verifyPhoneFormat(phoneNumber) == true
+						&& shownList == "Contact List") {
+					list.getPerson(window.getPersonIndex()).setFirstName(
+							firstName);
+					list.getPerson(window.getPersonIndex()).setLastName(
+							lastName);
+					list.getPerson(window.getPersonIndex()).setEmail(email);
+					list.getPerson(window.getPersonIndex()).setPhoneNumber(
+							phoneNumber);
+					list.getPerson(window.getPersonIndex()).setNotes(notes);
+					list.getPerson(window.getPersonIndex()).setHouseNumber(
+							houseNumber);
+					list.getPerson(window.getPersonIndex()).setStreet(street);
+					list.getPerson(window.getPersonIndex()).setZip(zip);
+					list.getPerson(window.getPersonIndex()).setCity(city);
+					list.getPerson(window.getPersonIndex()).setState(state);
+					list.getPerson(window.getPersonIndex()).setCountry(country);
+
 				}
 			}
 		}
@@ -291,13 +330,24 @@ public class Main {
 	 * class Person to class GUI, without the GUI ever touching class Person. It
 	 * will return an empty string if no person is currently selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static String relayGEmail() {
+	public static String relayGEmail(String shownList) {
 		String email = "";
-		if (window.getPersonIndex() != -1) {
-			email = list.getPerson(window.getPersonIndex()).getEmail();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				email = list.getPerson(window.getPersonIndex()).getEmail();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				email = matchingContacts.getPerson(window.getPersonIndex())
+						.getEmail();
+			}
+			break;
 		}
 		return email;
 	}
@@ -307,14 +357,25 @@ public class Main {
 	 * from class Person to class GUI, without the GUI ever touching class
 	 * Person.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static String relayGPhoneNumber() {
+	public static String relayGPhoneNumber(String shownList) {
 		String phoneNumber = "";
-		if (window.getPersonIndex() != -1) {
-			phoneNumber = list.getPerson(window.getPersonIndex())
-					.getPhoneNumber();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				phoneNumber = list.getPerson(window.getPersonIndex())
+						.getPhoneNumber();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				phoneNumber = matchingContacts.getPerson(
+						window.getPersonIndex()).getPhoneNumber();
+			}
+			break;
 		}
 		return phoneNumber;
 	}
@@ -325,13 +386,25 @@ public class Main {
 	 * Person. It will return an empty string if no person is currently
 	 * selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static String relayGFirstName() {
+	public static String relayGFirstName(String shownList) {
 		String firstName = "";
-		if (window.getPersonIndex() != -1) {
-			firstName = list.getPerson(window.getPersonIndex()).getFirstName();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				firstName = list.getPerson(window.getPersonIndex())
+						.getFirstName();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				firstName = matchingContacts.getPerson(window.getPersonIndex())
+						.getFirstName();
+			}
+			break;
 		}
 		return firstName;
 	}
@@ -342,14 +415,25 @@ public class Main {
 	 * Person. It will return an empty string if no person is currently
 	 * selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static String relayGLastName() {
+	public static String relayGLastName(String shownList) {
 		String lastName = "";
-		if (window.getPersonIndex() != -1) {
-			lastName = list.getPerson(window.getPersonIndex()).getLastName();
-
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				lastName = list.getPerson(window.getPersonIndex())
+						.getLastName();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				lastName = matchingContacts.getPerson(window.getPersonIndex())
+						.getLastName();
+			}
+			break;
 		}
 		return lastName;
 	}
@@ -359,13 +443,24 @@ public class Main {
 	 * class Person to class GUI, without the GUI ever touching class Person. It
 	 * will return an empty string if no person is currently selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static String relayGNotes() {
+	public static String relayGNotes(String shownList) {
 		String notes = "";
-		if (window.getPersonIndex() != -1) {
-			notes = list.getPerson(window.getPersonIndex()).getNotes();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				notes = list.getPerson(window.getPersonIndex()).getNotes();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				notes = matchingContacts.getPerson(window.getPersonIndex())
+						.getNotes();
+			}
+			break;
 		}
 		return notes;
 	}
@@ -376,15 +471,26 @@ public class Main {
 	 * touching class StreetAddress. It will return an empty string if no person
 	 * is currently selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 * 
 	 */
-	public static String relayGHouseNumber() {
+	public static String relayGHouseNumber(String shownList) {
 		String houseNumber = "";
-		if (window.getPersonIndex() != -1) {
-			houseNumber = list.getPerson(window.getPersonIndex())
-					.getHouseNumber();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				houseNumber = list.getPerson(window.getPersonIndex())
+						.getHouseNumber();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				houseNumber = matchingContacts.getPerson(
+						window.getPersonIndex()).getHouseNumber();
+			}
+			break;
 		}
 		return houseNumber;
 	}
@@ -395,14 +501,25 @@ public class Main {
 	 * touching class StreetAddress. It will return an empty string if no person
 	 * is currently selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 * 
 	 */
-	public static String relayGStreet() {
+	public static String relayGStreet(String shownList) {
 		String street = "";
-		if (window.getPersonIndex() != -1) {
-			street = list.getPerson(window.getPersonIndex()).getStreet();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				street = list.getPerson(window.getPersonIndex()).getStreet();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				street = matchingContacts.getPerson(window.getPersonIndex())
+						.getStreet();
+			}
+			break;
 		}
 		return street;
 	}
@@ -413,14 +530,25 @@ public class Main {
 	 * class StreetAddress. It will return an empty string if no person is
 	 * currently selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 * 
 	 */
-	public static String relayGZip() {
+	public static String relayGZip(String shownList) {
 		String zip = "";
-		if (window.getPersonIndex() != -1) {
-			zip = list.getPerson(window.getPersonIndex()).getZip();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				zip = list.getPerson(window.getPersonIndex()).getZip();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				zip = matchingContacts.getPerson(window.getPersonIndex())
+						.getZip();
+			}
+			break;
 		}
 		return zip;
 	}
@@ -431,14 +559,25 @@ public class Main {
 	 * class StreetAddress. It will return an empty string if no person is
 	 * currently selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 * 
 	 */
-	public static String relayGCity() {
+	public static String relayGCity(String shownList) {
 		String city = "";
-		if (window.getPersonIndex() != -1) {
-			city = list.getPerson(window.getPersonIndex()).getCity();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				city = list.getPerson(window.getPersonIndex()).getCity();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				city = matchingContacts.getPerson(window.getPersonIndex())
+						.getCity();
+			}
+			break;
 		}
 		return city;
 	}
@@ -449,14 +588,25 @@ public class Main {
 	 * touching class StreetAddress. It will return an empty string if no person
 	 * is currently selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 * 
 	 */
-	public static String relayGState() {
+	public static String relayGState(String shownList) {
 		String state = "";
-		if (window.getPersonIndex() != -1) {
-			state = list.getPerson(window.getPersonIndex()).getState();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				state = list.getPerson(window.getPersonIndex()).getState();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				state = matchingContacts.getPerson(window.getPersonIndex())
+						.getState();
+			}
+			break;
 		}
 		return state;
 	}
@@ -467,14 +617,25 @@ public class Main {
 	 * touching class StreetAddress. It will return an empty string if no person
 	 * is currently selected.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 * 
 	 */
-	public static String relayGCountry() {
+	public static String relayGCountry(String shownList) {
 		String country = "";
-		if (window.getPersonIndex() != -1) {
-			country = list.getPerson(window.getPersonIndex()).getCountry();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				country = list.getPerson(window.getPersonIndex()).getCountry();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				country = matchingContacts.getPerson(window.getPersonIndex())
+						.getCountry();
+			}
+			break;
 		}
 		return country;
 	}
@@ -483,13 +644,24 @@ public class Main {
 	 * This method returns the UUID of the person object currently selected in
 	 * the JList.
 	 * 
+	 * @param shownList
 	 * @return
 	 * @author noahgoldsmith
 	 */
-	public static String relayGUUID() {
+	public static String relayGUUID(String shownList) {
 		String uuid = "";
-		if (window.getPersonIndex() != -1) {
-			uuid = list.getPerson(window.getPersonIndex()).getUUID();
+		switch (shownList) {
+		case "Contact List":
+			if (window.getPersonIndex() != -1) {
+				uuid = list.getPerson(window.getPersonIndex()).getUUID();
+			}
+			break;
+		case "Search Results":
+			if (window.getPersonIndex() != -1) {
+				uuid = matchingContacts.getPerson(window.getPersonIndex())
+						.getUUID();
+			}
+			break;
 		}
 		return uuid;
 	}

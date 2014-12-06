@@ -44,6 +44,8 @@ public class GUI {
 	private JScrollPane scrollPane_1;
 	@SuppressWarnings("unused")
 	private JSeparator separator;
+	private JButton btnNewContact;
+	private JButton btnSave;
 	private JTextField txtCity;
 	private JTextField txtCountry;
 	private JTextField txtEmail;
@@ -89,7 +91,7 @@ public class GUI {
 
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 576, 443);
+		frame.setBounds(100, 100, 642, 443);
 		frame.addWindowListener(new WindowEventHandler());
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -104,7 +106,7 @@ public class GUI {
 		frame.getContentPane().add(txtSearch);
 
 		txtFirstName = new JTextField();
-		txtFirstName.setBounds(313, 16, 250, 28);
+		txtFirstName.setBounds(313, 16, 319, 28);
 		txtFirstName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		txtFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -116,7 +118,7 @@ public class GUI {
 		frame.getContentPane().add(txtFirstName);
 
 		txtLastName = new JTextField();
-		txtLastName.setBounds(313, 56, 250, 28);
+		txtLastName.setBounds(313, 56, 319, 28);
 		txtLastName.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		txtLastName.setText("");
@@ -132,7 +134,7 @@ public class GUI {
 		frame.getContentPane().add(lblEmail);
 
 		txtEmail = new JTextField();
-		txtEmail.setBounds(313, 96, 250, 28);
+		txtEmail.setBounds(313, 96, 319, 28);
 		txtEmail.setText("");
 		txtEmail.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
 				null, null));
@@ -145,13 +147,13 @@ public class GUI {
 		panelAddress.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
 		panelAddress.setBackground(Color.WHITE);
-		panelAddress.setBounds(313, 176, 250, 57);
+		panelAddress.setBounds(313, 176, 319, 57);
 		frame.getContentPane().add(panelAddress);
 		panelAddress.setLayout(null);
 
 		txtHouseNumber = new JTextField();
 		txtHouseNumber.setText("House #");
-		txtHouseNumber.setBounds(6, 6, 70, 16);
+		txtHouseNumber.setBounds(6, 6, 103, 16);
 		txtHouseNumber
 				.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
 		txtHouseNumber.setColumns(10);
@@ -162,7 +164,7 @@ public class GUI {
 		txtStreet.setText("Street");
 		txtStreet.setColumns(10);
 		txtStreet.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
-		txtStreet.setBounds(75, 6, 169, 16);
+		txtStreet.setBounds(108, 6, 205, 16);
 		txtStreet.getDocument().addDocumentListener(listener);
 		panelAddress.add(txtStreet);
 
@@ -170,7 +172,7 @@ public class GUI {
 		txtCity.setText("City");
 		txtCity.setColumns(10);
 		txtCity.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
-		txtCity.setBounds(6, 21, 122, 16);
+		txtCity.setBounds(6, 21, 129, 16);
 		txtCity.getDocument().addDocumentListener(listener);
 		panelAddress.add(txtCity);
 
@@ -178,7 +180,7 @@ public class GUI {
 		txtState.setText("State");
 		txtState.setColumns(10);
 		txtState.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
-		txtState.setBounds(127, 21, 59, 16);
+		txtState.setBounds(134, 21, 90, 16);
 		txtState.getDocument().addDocumentListener(listener);
 		panelAddress.add(txtState);
 
@@ -186,7 +188,7 @@ public class GUI {
 		txtCountry.setText("Country");
 		txtCountry.setColumns(10);
 		txtCountry.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
-		txtCountry.setBounds(6, 36, 238, 16);
+		txtCountry.setBounds(6, 36, 307, 16);
 		txtCountry.getDocument().addDocumentListener(listener);
 		panelAddress.add(txtCountry);
 
@@ -194,12 +196,12 @@ public class GUI {
 		txtZip.setText("ZIP code");
 		txtZip.setColumns(10);
 		txtZip.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
-		txtZip.setBounds(185, 21, 59, 16);
+		txtZip.setBounds(223, 21, 90, 16);
 		txtZip.getDocument().addDocumentListener(listener);
 		panelAddress.add(txtZip);
 
 		txtPhone = new JTextField();
-		txtPhone.setBounds(313, 136, 250, 28);
+		txtPhone.setBounds(313, 136, 319, 28);
 		txtPhone.setText("");
 		txtPhone.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null,
 				null, null));
@@ -211,7 +213,7 @@ public class GUI {
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null,
 				null, null, null));
-		scrollPane_1.setBounds(313, 244, 250, 133);
+		scrollPane_1.setBounds(313, 244, 319, 133);
 		frame.getContentPane().add(scrollPane_1);
 
 		txtpnNotes = new JTextPane();
@@ -289,7 +291,7 @@ public class GUI {
 		});
 		frame.getContentPane().add(btnSearch);
 
-		JButton btnNewContact = new JButton("New Contact");
+		btnNewContact = new JButton("New Contact");
 		btnNewContact.setToolTipText("Creates a new blank contact");
 		btnNewContact.addActionListener(new ActionListener() {
 			/**
@@ -323,11 +325,11 @@ public class GUI {
 		});
 		btnNewContact.setForeground(Color.BLACK);
 		btnNewContact.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		btnNewContact.setBounds(313, 384, 127, 28);
+		btnNewContact.setBounds(313, 384, 110, 28);
 		frame.getContentPane().add(btnNewContact);
 
-		JButton btnSave = new JButton("Save Contact");
-		btnSave.setBounds(436, 384, 127, 28);
+		btnSave = new JButton("Save Contact");
+		btnSave.setBounds(417, 384, 110, 28);
 		btnSave.addActionListener(new ActionListener() {
 			/**
 			 * This method updates the currently selected person object, then
@@ -340,7 +342,7 @@ public class GUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int selection = list.getSelectedIndex();
-				uuid = Main.relayGUUID();
+				uuid = Main.relayGUUID(shownList);
 				updatePerson();
 				updateFields();
 				Main.sortList(sortField);
@@ -396,13 +398,20 @@ public class GUI {
 		comboShow.addActionListener(new ActionListener() {
 			/**
 			 * This method sets the variable shownList to the value displayed in
-			 * the JComboBox comboShow.
+			 * the JComboBox comboShow. It also disables the new contact and
+			 * save contact button while viewing search results.
 			 * 
 			 * @param e
 			 * @author noahgoldsmith
 			 */
 			public void actionPerformed(ActionEvent e) {
 				shownList = comboShow.getSelectedItem().toString();
+				btnSave.setEnabled(true);
+				btnNewContact.setEnabled(true);
+				if (shownList == "Search Results") {
+					btnSave.setEnabled(false);
+					btnNewContact.setEnabled(false);
+				}
 				updateModel();
 				if (Main.getSize(shownList) != 0) {
 					list.setSelectedIndex(0);
@@ -443,6 +452,18 @@ public class GUI {
 		scrollPane.setViewportView(list);
 		list.setSelectedIndex(0);
 		list.setBorder(null);
+		
+		JButton btnDelete = new JButton("Delete Contact");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main.removePerson();
+				updateModel();
+			}
+		});
+		btnDelete.setForeground(Color.BLACK);
+		btnDelete.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnDelete.setBounds(522, 384, 110, 28);
+		frame.getContentPane().add(btnDelete);
 
 	}
 
@@ -611,11 +632,12 @@ public class GUI {
 	 */
 	public void updatePerson() {
 		if (list.getSelectedIndex() != -1) {
-			Main.updatePerson(txtFirstName.getText(), txtLastName.getText(),
-					txtEmail.getText(), txtPhone.getText(),
-					txtpnNotes.getText(), txtHouseNumber.getText(),
-					txtStreet.getText(), txtZip.getText(), txtCity.getText(),
-					txtState.getText(), txtCountry.getText());
+			Main.updatePerson(shownList, txtFirstName.getText(),
+					txtLastName.getText(), txtEmail.getText(),
+					txtPhone.getText(), txtpnNotes.getText(),
+					txtHouseNumber.getText(), txtStreet.getText(),
+					txtZip.getText(), txtCity.getText(), txtState.getText(),
+					txtCountry.getText());
 		}
 	}
 
@@ -645,16 +667,16 @@ public class GUI {
 	 * @author noahgoldsmith
 	 */
 	public void updateFields() {
-		txtHouseNumber.setText(Main.relayGHouseNumber());
-		txtStreet.setText(Main.relayGStreet());
-		txtZip.setText(Main.relayGZip());
-		txtCity.setText(Main.relayGCity());
-		txtState.setText(Main.relayGState());
-		txtCountry.setText(Main.relayGCountry());
-		txtFirstName.setText(Main.relayGFirstName());
-		txtLastName.setText(Main.relayGLastName());
-		txtEmail.setText(Main.relayGEmail());
-		txtPhone.setText(Main.relayGPhoneNumber());
-		txtpnNotes.setText(Main.relayGNotes());
+		txtHouseNumber.setText(Main.relayGHouseNumber(shownList));
+		txtStreet.setText(Main.relayGStreet(shownList));
+		txtZip.setText(Main.relayGZip(shownList));
+		txtCity.setText(Main.relayGCity(shownList));
+		txtState.setText(Main.relayGState(shownList));
+		txtCountry.setText(Main.relayGCountry(shownList));
+		txtFirstName.setText(Main.relayGFirstName(shownList));
+		txtLastName.setText(Main.relayGLastName(shownList));
+		txtEmail.setText(Main.relayGEmail(shownList));
+		txtPhone.setText(Main.relayGPhoneNumber(shownList));
+		txtpnNotes.setText(Main.relayGNotes(shownList));
 	}
 }

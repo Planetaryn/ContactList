@@ -40,6 +40,16 @@ public class ContactList implements Serializable {
 		contactList.add(person);
 		this.sortByField(Main.relayGSortField());
 	}
+	
+	/**
+	 * Removes the specified person object from the contactList.
+	 * 
+	 * @param person
+	 * @author noahgoldsmith
+	 */
+	public void removePerson(Person person){
+		contactList.remove(person);
+	}
 
 	/**
 	 * Returns the ArrayList contactList.
@@ -147,4 +157,5 @@ public class ContactList implements Serializable {
 			}
 		}
 	}
+
 }
